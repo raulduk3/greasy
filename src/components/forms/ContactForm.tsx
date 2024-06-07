@@ -4,54 +4,75 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 
+import { verifyNewEmail } from '@/lib/serverActions';
+
 const ContactContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-    gap: 2vmin;
-    width: 50vw;
+    width: 33vw;
+    height: 100%;
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 50%;
+        margin: 0 2vh;
+    }
 
     form {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 2vmin;
+        align-items: center;
+        width: 100%;
 
         div {
+            width: 80%;
             display: flex;
             flex-direction: column;
             gap: 0.45vmin;
+            align-items: center;
         }
     }    
 }
 `;
 
-function ContactForm({ onSubmit }: { onSubmit: (data: { answer: string }) => void }) {
-    const [input, setInput] = useState('');
+function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [displayError, setDisplayError] = useState('');
 
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
-        onSubmit({ answer: input }); // Send data back to parent
+        if(await verifyNewEmail(email)) {
+            onSubmit({
+                name: name,
+                email: email,
+            }); 
+        } else {
+            setDisplayError("Email already generated flashcards.");
+        }
     };
 
     return (
         <ContactContainer>
-            <h1>Contact Form</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
                         Name
                     </label>
-                    <input type="text" required />
+                    <input name="name" type="text" defaultValue="" placeholder="John Doe" onChange={(e) => { setName(e.target.value) }} required />
                 </div>
                 <div>
                     <label>
                         Email
                     </label>
-                    <input type="email" required />
+                    <input name="email" type="email" onChange={(e) => { setEmail(e.target.value)}} required />
                 </div>
                 <button type="submit">Submit</button>
             </form>
+            <p>{displayError}</p>
         </ContactContainer>
     );
 }

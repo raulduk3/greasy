@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 
-function ContactForm({ onSubmit }: { onSubmit: (data: { answer: string }) => void }) {
+function ActivitiesForm({ onSubmit }: { onSubmit: (data: { answer: string }) => void }) {
     const [input, setInput] = useState('');
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
@@ -21,4 +21,4 @@ function ContactForm({ onSubmit }: { onSubmit: (data: { answer: string }) => voi
     );
 }
 
-export default ContactForm;
+export default ActivitiesForm;
