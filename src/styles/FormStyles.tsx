@@ -5,67 +5,76 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
+    p {
+        margin: 0;
+    }
+
     button {
-        background-color: ${props => props.theme.background};
-        color: ${props => props.theme.colors.primary};
-        border-radius: 3px;
         border: 1px solid ${props => props.theme.colors.primary};
         padding: 5px 10px;
-    }
-
-    button[type="submit"] {
+        width: 63.4922px;
         background-color: ${props => props.theme.colors.primary};
         color: ${props => props.theme.background};
+        border: 1px solid ${props => props.theme.background};
     }
         
+    button[type="submit"] {
+        background-color: ${props => props.theme.background};
+        color: ${props => props.theme.colors.primary};
+        align-self: end;
+    }
+
     form {
         display: flex;
+        font-size: 1em;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+        align-items: start;
+        padding: 10px 20px;
+        margin: 15px 0;
+        border: 1px solid ${props => props.theme.colors.primary};
+        background-color: ${props => props.theme.colors.primary};
+        color: ${props => props.theme.background};
         
+        div:last-child {
+            margin:  0.5vmin 0 0 0;  
+        }
+
+        div:first-child {
+            margin: 0.5vmin 0 1vmin 0;
+        }
+
         div {
-            width: 80%;
             display: flex;
-            justify-content: center;
-            font-size: 1.34vmin;
-            gap: 0.5vmin;
-            padding: 1vmin;
-            align-items: end;
-            
+            flex-direction: column;
+            margin:  0 0 1vmin 0;
+            width: 100%;
+
             label {
+                font-size: 1em;
                 display: flex;
                 flex-direction: row;
-                gap: 1vmin;
-                justify-content: center;
+                justify-content: space-between;
             }
-            
+
             input {
                 border: none;
-                color: ${props => props.theme.colors.primary};
-                border-bottom: 1px solid ${props => props.theme.colors.primary};
-                background-color: ${props => props.theme.background};
+                color: ${props => props.theme.background};
+                border-bottom: 1px solid ${props => props.theme.background};
+                background-color: ${props => props.theme.colors.primary};
                 outline: none;
-                font-size: 1.34vmin;
+                padding: 5px 0;   
+                flex-grow: 1;
             }
-
-            input:focus-visible {
-                border: none;
-                border-bottom: 1px solid ${props => props.theme.colors.primary};
-            }    
-            
         }
-    }  
+    }
 `;
-
 export const List = styled.ul`
     list-style-type: none;
     padding: 0;
-    margin: 1vmin;
+    margin: 0 0;
     display: flex;
     flex-direction: column;
     gap: 0.5vmin;
-    align-items: center;
+    align-items: start;
 `;

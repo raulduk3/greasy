@@ -14,7 +14,7 @@ function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         if(activities.length === 0) {
-            setDisplayError('Please provide at least one friend.');
+            setDisplayError('Please provide at least one activity.');
             return;
         }
         onSubmit({ activities: activities }); // Send data back to parent
@@ -22,6 +22,10 @@ function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] 
 
     const handleAdd = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+        if(input === '') {  
+            setDisplayError('Please provide an activity.');
+            return;
+        }
         setactivities([...activities, input]);
         setInput('');
     };

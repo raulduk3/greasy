@@ -39,8 +39,10 @@ export default function RootLayout({
 
 							{/* Footer */}
 							<Footer>
-								<a href="/data-privacy">Data Privacy</a> 
-								<a href="/terms-of-service">Terms of Service</a>
+								<div>
+									<a href="/data-privacy">Data Privacy</a> 
+									<a href="/terms-of-service">Terms of Service</a>
+								</div>
 							</Footer>
 					</Body>
 				</ThemeClient>

@@ -26,8 +26,10 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
 
     return (
         <Container>
-            <p>Provide your contact information.</p>
             <form onSubmit={handleSubmit}>
+                <div> 
+                    <p>Provide your contact information.</p>
+                    </div>
                 <div>
                     <label>
                         Name

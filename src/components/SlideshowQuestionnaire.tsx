@@ -53,7 +53,8 @@ const DisplayMessage = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
+	text-align: center;
 `;
 
 function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactElement[] }) {

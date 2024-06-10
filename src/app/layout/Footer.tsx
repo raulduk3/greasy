@@ -13,6 +13,16 @@ const Footer = styled.section`
     font-size: 0.8em;
     gap: 2vmin;
 
+    div {
+        width: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+        gap: 1vmin;
+    }
+
     a { 
         border: 1px solid ${props => props.theme.colors.primary};
         padding: 10px;
@@ -21,6 +31,8 @@ const Footer = styled.section`
         text-decoration: none;
         padding: 10px;
         margin: 0;
+
+        width: 50%;
     }
 `;
 

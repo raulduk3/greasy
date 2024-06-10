@@ -22,14 +22,20 @@ function LocationForm({ onSubmit }: { onSubmit: (data: { locations: string[] }) 
 
     const handleAdd = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+        if(input === '') {  
+            setDisplayError('Please provide a location.');
+            return;
+        }
         setlocations([...locations, input]);
         setInput('');
     };
 
     return (
         <Container>
-            <p>Provide the name's of your favorite locations.</p>
             <form onSubmit={handleSubmit}>
+                <div>
+                    <p>Provide the name's of your favorite locations.</p>
+                </div>
                 <div>
                     <List>
                         {locations.map((friend, index) => <li key={index}>{friend}</li>)}

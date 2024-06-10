@@ -22,14 +22,20 @@ function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => 
 
     const handleAdd = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+        if(input === '') {  
+            setDisplayError('Please provide a friend\'s name.');
+            return;
+        }
         setFriends([...friends, input]);
         setInput('');
     };
 
     return (
         <Container>
-            <p>Provide the name's of your favorite friends.</p>
             <form onSubmit={handleSubmit}>
+                <div> 
+                    <p>Provide the name's of your favorite friends.</p>
+                </div>
                 <div>
                     <List>
                         {friends.map((friend, index) => <li key={index}>{friend}</li>)}
