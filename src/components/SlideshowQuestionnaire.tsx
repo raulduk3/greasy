@@ -6,13 +6,25 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
-	from { opacity: 0; }
-	to { opacity: 1; }
+	from { 
+		opacity: 0;
+		transform: translateY(-20px); 
+	}
+	to { 
+		opacity: 1;
+		transform: translateY(0); 
+	}
 `;
 
 const fadeOut = keyframes`
-	from { opacity: 1; }
-	to { opacity: 0; }
+	from { 
+		opacity: 1;
+		transform: translateY(0); 
+	}
+	to { 
+		opacity: 0;
+		transform: translateY(-20px); 
+	}
 `;
 
 interface QuestionContainerProps {
@@ -59,14 +71,17 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactEleme
 		const newFormData = [...formData];
 		newFormData[currentFormIndex] = data;
 		setFormData(newFormData);
-
+	
+		// Convert formData to a string
+		const formDataString = JSON.stringify(newFormData);
+	
 		// Initiate fade out effect before changing the form
 		setFadeOut(true);
 		setTimeout(async () => {
 			if (currentFormIndex < formComponents.length - 1) {
 				setCurrentFormIndex(currentFormIndex + 1);
 			} else {
-				if(await submitUserData(newFormData))
+				if(await submitUserData(formDataString))
 				{
 					setCompleted(true);
 				}

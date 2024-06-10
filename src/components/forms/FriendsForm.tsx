@@ -2,23 +2,51 @@
 'use client';
 
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
-function ContactForm({ onSubmit }: { onSubmit: (data: { answer: string }) => void }) {
+import { Container, List } from '../../styles/FormStyles';
+
+function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => void }) {
     const [input, setInput] = useState('');
+    const [friends, setFriends] = useState<string[]>([]);
+    const [displayError, setDisplayError] = useState(''); 
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        onSubmit({ answer: input }); // Send data back to parent
+        if(friends.length === 0) {
+            setDisplayError('Please provide at least one friend.');
+            return;
+        }
+        onSubmit({ friends: friends }); // Send data back to parent
+    };
+
+    const handleAdd = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        setFriends([...friends, input]);
+        setInput('');
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Friends
-                <input type="text" value={input} onChange={(e) => setInput(e.target.value)} required />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <Container>
+            <p>Provide the name's of your favorite friends.</p>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <List>
+                        {friends.map((friend, index) => <li key={index}>{friend}</li>)}
+                    </List>
+                </div>
+                <div>
+                    <label>
+                        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder='Jane' />
+                        <button onClick={handleAdd}>Add</button>
+                    </label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+            <p>{displayError}</p>
+        </Container>  
     );
 }
 

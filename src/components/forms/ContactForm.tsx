@@ -2,41 +2,10 @@
 'use client';
 
 import styled from 'styled-components';
+import { Container } from '../../styles/FormStyles';
 import React, { useState } from 'react';
 
 import { verifyNewEmail } from '@/lib/serverActions';
-
-const ContactContainer = styled.div`
-    width: 33vw;
-    height: 100%;
-
-    input {
-        width: 100%;
-    }
-
-    button {
-        width: 50%;
-        margin: 0 2vh;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2vmin;
-        align-items: center;
-        width: 100%;
-
-        div {
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.45vmin;
-            align-items: center;
-        }
-    }    
-}
-`;
 
 function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     const [email, setEmail] = useState('');
@@ -56,24 +25,27 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     };
 
     return (
-        <ContactContainer>
+        <Container>
+            <p>Provide your contact information.</p>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
                         Name
                     </label>
-                    <input name="name" type="text" defaultValue="" placeholder="John Doe" onChange={(e) => { setName(e.target.value) }} required />
+                    <input name="name" type="text" defaultValue="" placeholder="Jane Doe" onChange={(e) => { setName(e.target.value) }} required />
                 </div>
                 <div>
                     <label>
                         Email
                     </label>
-                    <input name="email" type="email" onChange={(e) => { setEmail(e.target.value)}} required />
+                    <input name="email" type="email" onChange={(e) => { setEmail(e.target.value)}} placeholder='example@web.com' required />
                 </div>
-                <button type="submit">Submit</button>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
             <p>{displayError}</p>
-        </ContactContainer>
+        </Container>
     );
 }
 
