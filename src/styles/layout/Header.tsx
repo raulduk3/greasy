@@ -9,10 +9,9 @@ const Header = styled.section`
     // align-items: center;
     // justify-content: end;
     gap: 0.6vmin;
-    padding: 2vh 4vw;
+    padding: 10vh 0;
     flex: 0 1 auto;
     margin: 0;
-    max-height: 14vh;
     text-align: center;
 
     a {
