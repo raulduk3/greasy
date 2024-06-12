@@ -29,7 +29,7 @@ export default async function Image() {
                     color: '#7DDF64',
                 }}
             >
-                GREasy
+                Get GREasy
             </div>
         ),
         // ImageResponse options
