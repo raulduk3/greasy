@@ -9,6 +9,7 @@ import Body from "@/styles/layout/Body";
 import Themer from "@/styles/theme/Themer";
 import ThemeClient from "../styles/theme/ThemeClient";
 
+import { Roboto } from 'next/font/google'
 import Link from "next/link"; // Import the 'Link' component from the appropriate library
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
@@ -22,46 +23,53 @@ export const metadata: Metadata = {
 	]
 };
 
+const roboto = Roboto({
+	weight: ['400', '700'],
+	style: ['normal', 'italic'],
+	subsets: ['latin'],
+	display: 'swap',
+})
+
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className={roboto.className}>
 			<StyledComponentsRegistry>
 				<ThemeClient>
 					<Themer>
-							{/* Header */}
-							<Header>
-								<Link href="/">
-									<h1>GR<span>Easy</span></h1>
-								</Link>
-								<h4>Personalized GRE flashcards directly to your inbox 🎉</h4>
-							</Header>
-							
-							{/* Main content */}
-							<Body>
-								{children}
-							</Body>
+						{/* Header */}
+						<Header>
+							<Link href="/">
+								<h1>GR<span>Easy</span></h1>
+							</Link>
+							<h4>Personalized GRE flashcards directly to your inbox 🎉</h4>
+						</Header>
 
-							{/* Footer */}
-							<Footer>
-								<div>
-									<Link href="/questionnaire">Generate</Link> 
-								</div>
-								<div>
-									<Link href="/data-privacy">Data Privacy</Link> 
-								</div>
-								<div>
-									<Link href="/terms-of-service">Terms of Service</Link>
-								</div>
-								<div>
-									© 2024 GREasy 
-									| 
-									Created with love by ra
-								</div>
-							</Footer>
+						{/* Main content */}
+						<Body>
+							{children}
+						</Body>
+
+						{/* Footer */}
+						<Footer>
+							<div>
+								<Link href="/questionnaire">Generate</Link>
+							</div>
+							<div>
+								<Link href="/data-privacy">Data Privacy</Link>
+							</div>
+							<div>
+								<Link href="/terms-of-service">Terms of Service</Link>
+							</div>
+							<div>
+								© 2024 GREasy
+								|
+								Created with love by ra
+							</div>
+						</Footer>
 					</Themer>
 				</ThemeClient>
 			</StyledComponentsRegistry>
