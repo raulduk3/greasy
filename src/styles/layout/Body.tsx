@@ -8,7 +8,7 @@ const Body = styled.section`
     flex-direction: column;
     justify-content: center;
     flex: 1 1 auto;
-    height: calc(100vh - 30vh);
+    height: calc(100vh - 20vh);
 `;
 
 export default Body;
