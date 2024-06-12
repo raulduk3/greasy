@@ -16,6 +16,9 @@ import '@/styles/global.css'; // Import the global styles from the appropriate f
 export const metadata: Metadata = {
 	title: "GREasy",
 	description: "Personalized GRE flashcards directly to your inbox.",
+	icons: [
+		{ rel: "icon", href: "/favicon.ico", url: "/favicon.ico" },
+	]
 };
 
 export default function RootLayout({
