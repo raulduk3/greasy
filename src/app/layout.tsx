@@ -17,7 +17,7 @@ import '@/styles/global.css'; // Import the global styles from the appropriate f
 export const metadata: Metadata = {
 	title: "GREasy",
 	description: "Personalized GRE flashcards directly to your inbox.",
-	metadataBase: new URL("https://greasyvocab.com"),
+	metadataBase: new URL("https://develop.greasyvocab.com"),
 	icons: [
 		{ rel: "icon", href: "/favicon.ico", url: "/favicon.ico" },
 	]
