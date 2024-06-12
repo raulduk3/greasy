@@ -12,7 +12,7 @@ const Header = styled.section`
     flex: 0 1 auto;
     margin: 0;
     text-align: center;
-    height: 20vh;
+    height: 15vh;
 
     a {
         display: inline-block;
