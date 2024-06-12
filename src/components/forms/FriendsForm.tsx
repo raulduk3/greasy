@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import { Container, List } from '../../styles/forms/FormStyles';
 
-function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => void }) {
+function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     const [input, setInput] = useState('');
     const [friends, setFriends] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 

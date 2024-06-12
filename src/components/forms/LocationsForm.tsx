@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { Container, List } from '../../styles/forms/FormStyles';
 
-function LocationForm({ onSubmit }: { onSubmit: (data: { locations: string[] }) => void }) {
+function LocationForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     const [input, setInput] = useState('');
     const [locations, setlocations] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 

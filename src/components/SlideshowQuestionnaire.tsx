@@ -1,11 +1,11 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState, useEffect, ReactElement } from 'react';
 import { submitUserData } from '@/lib/serverActions';
 import { QuestionContainer, FormContainer, DisplayMessage } from '@/styles/SlideshowQuestionnaireStyles';
-import Link from 'next/link';
 
-function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactElement[] }) {
+function SlideshowQuestionnaire({ formComponents }: { formComponents: any }) {
 	const [currentFormIndex, setCurrentFormIndex] = useState(0);
 	const [formData, setFormData] = useState<any[]>([]);
 	const [completed, setCompleted] = useState(false);
@@ -34,7 +34,7 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactEleme
 		}, 1800);
 	};
 
-	const CurrentForm = formComponents[currentFormIndex] as unknown as React.ComponentType<any>;
+	const CurrentForm = formComponents[currentFormIndex] as unknown as React.ComponentType<{ onSubmit: (data: any) => void }>;
 
 	return (
 		<QuestionContainer $fadeOut={fadeOut}>

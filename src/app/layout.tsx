@@ -7,11 +7,11 @@ import Footer from "@/styles/layout/Footer";
 import Body from "@/styles/layout/Body";
 
 import Themer from "@/styles/theme/Themer";
+import ThemeClient from "../styles/theme/ThemeClient";
 
 import Link from "next/link"; // Import the 'Link' component from the appropriate library
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
-import ThemeClient from "./ThemeClient";
 
 export const metadata: Metadata = {
 	title: "Greasy",

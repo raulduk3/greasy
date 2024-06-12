@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { Container, List } from '../../styles/forms/FormStyles';
 
-function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] }) => void }) {
+function ActivitiesForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     const [input, setInput] = useState('');
     const [activities, setactivities] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 

@@ -5,7 +5,7 @@ import { Container } from '../../styles/forms/FormStyles';
 import React, { useState } from 'react';
 import { verifyNewEmail } from '@/lib/serverActions';
 
-function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
+function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
     const [displayError, setDisplayError] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
