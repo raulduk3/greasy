@@ -36,7 +36,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
             <form action={handleSubmit}>
                 <div> 
                     <h2>Friends</h2>
-                    <p>Provide the name's of your favorite friends. Pick the most meaningful names!</p>
+                    <p>Provide the name's of your favorite friends. Try to pick at least the five most meaningful names!</p>
                 </div>
                 <div>
                     <List>
