@@ -9,6 +9,8 @@ const forms = [ContactForm, FriendsForm, LocationForm, ActivitiesForm];
 
 export default function Home() {
 	return (
-		<></>
+		<>
+			<SlideshowQuestionnaire formComponents={forms} />
+		</>
 	);
 }
