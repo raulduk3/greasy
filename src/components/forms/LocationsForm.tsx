@@ -4,15 +4,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Container, List } from '../../styles/FormStyles';
+import { Container, List } from '../../styles/forms/FormStyles';
 
 function LocationForm({ onSubmit }: { onSubmit: (data: { locations: string[] }) => void }) {
     const [input, setInput] = useState('');
     const [locations, setlocations] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 
 
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
+    const handleSubmit = () => {
         if(locations.length === 0) {
             setDisplayError('Please provide at least one friend.');
             return;
@@ -32,13 +31,14 @@ function LocationForm({ onSubmit }: { onSubmit: (data: { locations: string[] }) 
 
     return (
         <Container>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <div>
-                    <p>Provide the name's of your favorite locations.</p>
+                    <h2>Locations</h2>
+                    <p>Provide the name's of your favorite locations. Countries, states, cities, towns. Anywhere you can imagine!</p>
                 </div>
                 <div>
                     <List>
-                        {locations.map((friend, index) => <li key={index}>{friend}</li>)}
+                        {locations.map((location, index) => <li key={index}> - {location}</li>)}
                     </List>
                 </div>
                 <div>

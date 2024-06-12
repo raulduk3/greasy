@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import StyledComponentsRegistry from "@/lib/registry";
 import styled from "styled-components";
 
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
-import Body from "./layout/Body";
+import Header from "@/styles/layout/Header";
+import Footer from "@/styles/layout/Footer";
+import Body from "@/styles/layout/Body";
+
+import Themer from "@/styles/theme/Themer";
 
 import Link from "next/link"; // Import the 'Link' component from the appropriate library
 
@@ -25,26 +27,38 @@ export default function RootLayout({
 		<html lang="en">
 			<StyledComponentsRegistry>
 				<ThemeClient>
-					<Body>
+					<Themer>
 							{/* Header */}
 							<Header>
 								<Link href="/">
-									<h1>Gr<span>easy</span></h1>
+									<h1>GR<span>Easy</span></h1>
 								</Link>
 								<h4>Personalized GRE flashcards directly to your inbox 🎉</h4>
 							</Header>
 							
 							{/* Main content */}
-							{children}
+							<Body>
+								{children}
+							</Body>
 
 							{/* Footer */}
 							<Footer>
 								<div>
-									<a href="/data-privacy">Data Privacy</a> 
-									<a href="/terms-of-service">Terms of Service</a>
+									<Link href="/questionaire">Generate</Link> 
+								</div>
+								<div>
+									<Link href="/data-privacy">Data Privacy</Link> 
+								</div>
+								<div>
+									<Link href="/terms-of-service">Terms of Service</Link>
+								</div>
+								<div>
+									© 2024 GREasy 
+									| 
+									Created with love by ra
 								</div>
 							</Footer>
-					</Body>
+					</Themer>
 				</ThemeClient>
 			</StyledComponentsRegistry>
 		</html>

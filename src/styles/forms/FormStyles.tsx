@@ -5,9 +5,15 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 8vw;
 
-    p {
+    h2 {
         margin: 0;
+        font-size: 1.4em;
+    }
+    
+    p {
+        margin: 1vmin 0 0 0;
     }
 
     button {
@@ -29,19 +35,24 @@ export const Container = styled.div`
         display: flex;
         font-size: 1em;
         flex-direction: column;
-        align-items: start;
-        padding: 10px 20px;
+        align-items: center;
+        justify-content: end;
+        padding: 25px 20px 15px 20px;
         margin: 15px 0;
-        border: 1px solid ${props => props.theme.colors.primary};
         background-color: ${props => props.theme.colors.primary};
         color: ${props => props.theme.background};
+
+        filter: drop-shadow(0px 0px 2px black);
         
         div:last-child {
-            margin:  0.5vmin 0 0 0;  
+            margin:  2.5vmin 0 0 0;  
+            align-self: end;
         }
 
         div:first-child {
-            margin: 0.5vmin 0 1vmin 0;
+            display: flex-item;
+            margin: 0vmin 0 2.5vmin 0;
+            align-self: start;
         }
 
         div {
@@ -65,6 +76,7 @@ export const Container = styled.div`
                 outline: none;
                 padding: 5px 0;   
                 flex-grow: 1;
+                font-size: 1em;
             }
         }
     }
@@ -76,5 +88,6 @@ export const List = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 0.5vmin;
+    font-size: 1em;
     align-items: start;
 `;

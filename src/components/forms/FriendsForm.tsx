@@ -2,17 +2,18 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useFormStatus } from 'react-dom';
 import styled from 'styled-components';
 
-import { Container, List } from '../../styles/FormStyles';
+import { Container, List } from '../../styles/forms/FormStyles';
 
 function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => void }) {
     const [input, setInput] = useState('');
     const [friends, setFriends] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 
+    const { pending } = useFormStatus()
 
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
+    const handleSubmit = () => {
         if(friends.length === 0) {
             setDisplayError('Please provide at least one friend.');
             return;
@@ -32,13 +33,14 @@ function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => 
 
     return (
         <Container>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <div> 
-                    <p>Provide the name's of your favorite friends.</p>
+                    <h2>Friends</h2>
+                    <p>Provide the name's of your favorite friends. Pick the most meaningful names!</p>
                 </div>
                 <div>
                     <List>
-                        {friends.map((friend, index) => <li key={index}>{friend}</li>)}
+                        {friends.map((friend, index) => <li key={index}> - {friend}</li>)}
                     </List>
                 </div>
                 <div>
@@ -48,7 +50,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => 
                     </label>
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={pending}>Submit</button>
                 </div>
             </form>
             <p>{displayError}</p>

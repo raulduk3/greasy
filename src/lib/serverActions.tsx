@@ -3,6 +3,7 @@
 // TODO: Implement
 export async function verifyNewEmail(email: string) {
     // Contact database of submissions.
+    console.log(email);
     return true;
 }
 

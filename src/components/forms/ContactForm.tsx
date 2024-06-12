@@ -1,46 +1,38 @@
 // components/forms/FirstForm.js
 'use client';
 
-import styled from 'styled-components';
-import { Container } from '../../styles/FormStyles';
+import { Container } from '../../styles/forms/FormStyles';
 import React, { useState } from 'react';
-
 import { verifyNewEmail } from '@/lib/serverActions';
 
 function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
     const [displayError, setDisplayError] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
 
-    const handleSubmit = async (event: any) => {
-        event.preventDefault();
-        if(await verifyNewEmail(email)) {
-            onSubmit({
-                name: name,
-                email: email,
-            }); 
-        } else {
-            setDisplayError("Email already generated flashcards.");
-        }
+    const handleSubmit = async (formData: any) => {
+        await verifyNewEmail(email);
+        onSubmit({ name: name, email: email }); 
     };
 
     return (
         <Container>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <div> 
-                    <p>Provide your contact information.</p>
-                    </div>
+                    <h2>Begin by providing your basic contact information.</h2>
+                    <p>We will only contact you via email once.</p>
+                </div>
                 <div>
                     <label>
                         Name
                     </label>
-                    <input name="name" type="text" defaultValue="" placeholder="Jane Doe" onChange={(e) => { setName(e.target.value) }} required />
+                    <input name="name" type="text" placeholder="Jane Doe"  onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div>
                     <label>
                         Email
                     </label>
-                    <input name="email" type="email" onChange={(e) => { setEmail(e.target.value)}} placeholder='example@web.com' required />
+                    <input name="email" type="email" placeholder='example@web.com'  onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div>
                     <button type="submit">Submit</button>

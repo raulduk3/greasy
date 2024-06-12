@@ -8,8 +8,12 @@ const Header = styled.section`
     flex-direction: column;
     // align-items: center;
     // justify-content: end;
-    gap: 0.2vmin;
-    padding: 2vmin;
+    gap: 0.6vmin;
+    padding: 2vh 4vw;
+    flex: 0 1 auto;
+    margin: 0;
+    max-height: 14vh;
+    text-align: center;
 
     a {
         display: inline-block;
@@ -17,13 +21,14 @@ const Header = styled.section`
         color: ${props => props.theme.colors.primary};
         h1 { 
             margin: 0;
+            font-size: 3.5em;
         }   
     }
 
     h4 {
-        display: inline;
-        color: ${props => props.theme.colors.secondary};
-        margin: 0;  
+        color: ${props => props.theme.colors.primary};
+        font-size: .89em;
+        margin: 0;
     }
 
     span {

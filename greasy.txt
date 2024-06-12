@@ -1,0 +1,823 @@
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//.env.local ===
+AUTH_SECRET=WJSrU3q0kpESmlxY2nHhkyNQmvg5sVNn9hEKZd7x/Ng=
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//LICENSE ===
+MIT License
+
+Copyright (c) 2024 Richard Álvarez
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//next.config.mjs ===
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    compiler: {
+        styledComponents: true,
+    }
+};
+
+export default nextConfig;
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//next-env.d.ts ===
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//README.md ===
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//package.json ===
+{
+  "name": "gre-flashcards",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "styled-components": "^6.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "typescript": "^5"
+  }
+}
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//.prettierrc ===
+{
+	"tabWidth": 4,
+	"useTabs": true
+}
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//tsconfig.json ===
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//.eslintrc.json ===
+{
+  "extends": "next/core-web-vitals"
+}
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/app/ThemeClient.tsx ===
+"use client"
+import { ThemeProvider } from "styled-components";
+import { mainTheme } from "@/styles/ThemeConfig";
+
+export default function ThemeClient({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <ThemeProvider theme={mainTheme}>
+            {children}
+        </ThemeProvider>
+    )
+} 
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/app/layout.tsx ===
+import type { Metadata } from "next";
+import StyledComponentsRegistry from "@/lib/registry";
+import styled from "styled-components";
+
+import Header from "@/styles/layout/Header";
+import Footer from "@/styles/layout/Footer";
+import Body from "@/styles/layout/Body";
+
+import Link from "next/link"; // Import the 'Link' component from the appropriate library
+
+import '@/styles/global.css'; // Import the global styles from the appropriate file
+import ThemeClient from "./ThemeClient";
+
+export const metadata: Metadata = {
+	title: "Greasy",
+	description: "Personalized GRE flashcards directly to your inbox.",
+};
+
+export default function RootLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
+	return (
+		<html lang="en">
+			<StyledComponentsRegistry>
+				<ThemeClient>
+					<Body>
+							{/* Header */}
+							<Header>
+								<Link href="/">
+									<h1>GR<span>Easy</span></h1>
+								</Link>
+								<h4>Personalized GRE flashcards directly to your inbox 🎉</h4>
+							</Header>
+							
+							{/* Main content */}
+							{children}
+
+							{/* Footer */}
+							<Footer>
+								<div>
+									<a href="/data-privacy">Data Privacy</a> 
+									<span> | </span>
+									<a href="/terms-of-service">Terms of Service</a>
+								</div>
+								<div>
+									© 2024 GREasy
+								</div>
+								<div>
+									Created with love by ra
+								</div>
+							</Footer>
+					</Body>
+				</ThemeClient>
+			</StyledComponentsRegistry>
+		</html>
+	);
+}
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/app/page.tsx ===
+import styles from "./page.module.css";
+import SlideshowQuestionnaire from '../components/SlideshowQuestionnaire';
+import ContactForm from '../components/forms/ContactForm';
+import FriendsForm from '../components/forms/FriendsForm';
+import LocationForm from '../components/forms/LocationsForm';
+import ActivitiesForm from '../components/forms/ActivitiesForm';
+
+const forms = [ContactForm, FriendsForm, LocationForm, ActivitiesForm];
+
+export default function Home() {
+	return (
+		<SlideshowQuestionnaire formComponents={forms} />
+	);
+}
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/styles/ThemeConfig.tsx ===
+export const mainTheme = { 
+    background: '#3B413C',
+    colors: {
+        primary: '#FFF',
+        secondary: '#E0E0E0',
+        tertiary: '#7DDF64'
+    }
+};
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/styles/layout/Body.tsx ===
+'use client';
+
+import styled from "styled-components";
+
+const Body = styled.body`
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.colors.primary};
+    
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+`;
+
+export default Body;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/styles/layout/Footer.tsx ===
+'use client';
+
+import styled from "styled-components";
+
+const Footer = styled.section`
+    display: flex;
+    max-width: 100%;
+    height: 8vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    background-color: ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.background};
+    padding: 2vmin;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 1vmin;
+        text-align: center;
+        
+        span {
+            display: inline-block;
+            text-align: center;
+            width: 1vw;
+        }
+    }
+
+    a { 
+        color: ${props => props.theme.background};
+        padding: 0 1vmin;
+        font-style: italic;
+        text-decoration: underline;
+        margin: 0;
+        text-align: center;
+    }
+`;
+
+export default Footer;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/styles/layout/Header.tsx ===
+'use client';
+
+import styled from "styled-components";
+
+const Header = styled.section`
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: end;
+    gap: 0.6vmin;
+    padding: 2vmin 4vmin;
+    height: 10vh;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: ${props => props.theme.colors.primary};
+        h1 { 
+            margin: 0;
+            font-size: 3.5em;
+        }   
+    }
+
+    h4 {
+        color: ${props => props.theme.colors.secondary};
+        font-size: 0.85em;
+        margin: 0;
+    }
+
+    span {
+        color: ${props => props.theme.colors.tertiary};
+    }
+`;
+
+export default Header;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/styles/global.css ===
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/styles/FormStyles.tsx ===
+import styled from 'styled-components';
+
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        margin: 0;
+    }
+
+    button {
+        border: 1px solid ${props => props.theme.colors.primary};
+        padding: 5px 10px;
+        width: 63.4922px;
+        background-color: ${props => props.theme.colors.primary};
+        color: ${props => props.theme.background};
+        border: 1px solid ${props => props.theme.background};
+    }
+        
+    button[type="submit"] {
+        background-color: ${props => props.theme.background};
+        color: ${props => props.theme.colors.primary};
+        align-self: end;
+    }
+
+    form {
+        display: flex;
+        font-size: 1em;
+        flex-direction: column;
+        align-items: start;
+        padding: 10px 20px;
+        margin: 15px 0;
+        border: 1px solid ${props => props.theme.colors.primary};
+        background-color: ${props => props.theme.colors.primary};
+        color: ${props => props.theme.background};
+        
+        div:last-child {
+            margin:  2.5vmin 0 0 0;  
+        }
+
+        div:first-child {
+            margin: 1.25vmin 0 3.5vmin 0;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            margin:  0 0 1vmin 0;
+            width: 100%;
+
+            label {
+                font-size: 1em;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            input {
+                border: none;
+                color: ${props => props.theme.background};
+                border-bottom: 1px solid ${props => props.theme.background};
+                background-color: ${props => props.theme.colors.primary};
+                outline: none;
+                padding: 5px 0;   
+                flex-grow: 1;
+            }
+        }
+    }
+`;
+export const List = styled.ul`
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vmin;
+    align-items: start;
+`;
+
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/components/forms/FriendsForm.tsx ===
+// components/forms/FirstForm.js
+'use client';
+
+import React, { useState } from 'react';
+import { useFormStatus } from 'react-dom';
+import styled from 'styled-components';
+
+import { Container, List } from '../../styles/FormStyles';
+
+function ContactForm({ onSubmit }: { onSubmit: (data: { friends: string[] }) => void }) {
+    const [input, setInput] = useState('');
+    const [friends, setFriends] = useState<string[]>([]);
+    const [displayError, setDisplayError] = useState(''); 
+    const {pending } = useFormStatus()
+
+    const handleSubmit = () => {
+        if(friends.length === 0) {
+            setDisplayError('Please provide at least one friend.');
+            return;
+        }
+        onSubmit({ friends: friends }); // Send data back to parent
+    };
+
+    const handleAdd = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        if(input === '') {  
+            setDisplayError('Please provide a friend\'s name.');
+            return;
+        }
+        setFriends([...friends, input]);
+        setInput('');
+    };
+
+    return (
+        <Container>
+            <form action={handleSubmit}>
+                <div> 
+                    <p>Provide the name's of your favorite friends.</p>
+                </div>
+                <div>
+                    <List>
+                        {friends.map((friend, index) => <li key={index}> - {friend}</li>)}
+                    </List>
+                </div>
+                <div>
+                    <label>
+                        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder='Jane' />
+                        <button onClick={handleAdd}>Add</button>
+                    </label>
+                </div>
+                <div>
+                    <button type="submit" disabled={pending}>Submit</button>
+                </div>
+            </form>
+            <p>{displayError}</p>
+        </Container>  
+    );
+}
+
+export default ContactForm;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/components/forms/LocationsForm.tsx ===
+// components/forms/FirstForm.js
+'use client';
+
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+import { Container, List } from '../../styles/FormStyles';
+
+function LocationForm({ onSubmit }: { onSubmit: (data: { locations: string[] }) => void }) {
+    const [input, setInput] = useState('');
+    const [locations, setlocations] = useState<string[]>([]);
+    const [displayError, setDisplayError] = useState(''); 
+
+    const handleSubmit = () => {
+        if(locations.length === 0) {
+            setDisplayError('Please provide at least one friend.');
+            return;
+        }
+        onSubmit({ locations: locations }); // Send data back to parent
+    };
+
+    const handleAdd = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        if(input === '') {  
+            setDisplayError('Please provide a location.');
+            return;
+        }
+        setlocations([...locations, input]);
+        setInput('');
+    };
+
+    return (
+        <Container>
+            <form action={handleSubmit}>
+                <div>
+                    <p>Provide the name's of your favorite locations.</p>
+                </div>
+                <div>
+                    <List>
+                        {locations.map((location, index) => <li key={index}> - {location}</li>)}
+                    </List>
+                </div>
+                <div>
+                    <label>
+                        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder='i.e. Chicago' />
+                        <button onClick={handleAdd}>Add</button>
+                    </label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+            <p>{displayError}</p>
+        </Container>  
+    );
+}
+
+export default LocationForm;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/components/forms/ContactForm.tsx ===
+// components/forms/FirstForm.js
+'use client';
+
+import { Container } from '../../styles/FormStyles';
+import React, { useState } from 'react';
+import { verifyNewEmail } from '@/lib/serverActions';
+
+function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }) {
+    const [displayError, setDisplayError] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+
+    const handleSubmit = (formData: any) => {
+        onSubmit({ name: name, email: email }); 
+    };
+
+    return (
+        <Container>
+            <form action={handleSubmit}>
+                <div> 
+                    <p>Provide your contact information.</p>
+                </div>
+                <div>
+                    <label>
+                        Name
+                    </label>
+                    <input name="name" type="text" placeholder="Jane Doe"  onChange={(e) => setName(e.target.value)} required />
+                </div>
+                <div>
+                    <label>
+                        Email
+                    </label>
+                    <input name="email" type="email" placeholder='example@web.com'  onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+            <p>{displayError}</p>
+        </Container>
+    );
+}
+
+export default ContactForm;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/components/forms/ActivitiesForm.tsx ===
+// components/forms/FirstForm.js
+'use client';
+
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+import { Container, List } from '../../styles/FormStyles';
+
+function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] }) => void }) {
+    const [input, setInput] = useState('');
+    const [activities, setactivities] = useState<string[]>([]);
+    const [displayError, setDisplayError] = useState(''); 
+
+    const handleSubmit = async () => {
+        if(activities.length === 0) {
+            setDisplayError('Please provide at least one activity.');
+            return;
+        }
+        onSubmit({ activities: activities }); // Send data back to parent
+    };
+
+    const handleAdd = async (event: any) => {
+        event.preventDefault();
+        if(input === '') {  
+            setDisplayError('Please provide an activity.');
+            return;
+        }
+        setactivities([...activities, input]);
+        setInput('');
+    };
+
+    return (
+        <Container>
+            <form action={handleSubmit}>
+                <div>
+                    <p>Provide the name's of your favorite activities.</p>
+                </div>
+                <div>
+                    <List>
+                        {activities.map((activities, index) => <li key={index}> - {activities}</li>)}
+                    </List>
+                </div>
+                <div>
+                    <label>
+                        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder='i.e. Biking' />
+                        <button onClick={handleAdd}>Add</button>
+                    </label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+            <p>{displayError}</p>
+        </Container>  
+    );
+}
+
+export default ActivitiesForm;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/components/SlideshowQuestionnaire.tsx ===
+// components/SlideshowQuestionnaire.js
+'use client';
+
+import { submitUserData } from '@/lib/serverActions';
+import React, { useState, useEffect, ReactElement } from 'react';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+	from { 
+		opacity: 0;
+		transform: translateY(-20px); 
+	}
+	to { 
+		opacity: 1;
+		transform: translateY(0); 
+	}
+`;
+
+const fadeOut = keyframes`
+	from { 
+		opacity: 1;
+		transform: translateY(0); 
+	}
+	to { 
+		opacity: 0;
+		transform: translateY(-20px); 
+	}
+`;
+
+interface QuestionContainerProps {
+	$fadeOut: boolean;
+}
+
+const QuestionContainer = styled.div<QuestionContainerProps>`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	animation: ${props => props.$fadeOut ? fadeOut : fadeIn} 1.8s ease forwards;
+	height: 89vh;
+`;
+
+const FormContainer = styled.div`
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+`;
+
+const DisplayMessage = styled.div`
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	width: 25vw;
+	text-align: center;
+`;
+
+function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactElement[] }) {
+	const [currentFormIndex, setCurrentFormIndex] = useState(0);
+	const [formData, setFormData] = useState<any[]>([]);
+	const [completed, setCompleted] = useState(false);
+	const [fadeOut, setFadeOut] = useState(false);
+
+	useEffect(() => {
+		setFadeOut(false); // Reset fade out effect
+	}, [currentFormIndex, completed]);
+
+	const handleFormSubmit = async (data: any) => {
+		// Save data from the submitted form
+		const newFormData = [...formData];
+		newFormData[currentFormIndex] = data;
+		setFormData(newFormData);
+
+		// Convert formData to a string
+		const formDataString = JSON.stringify(newFormData);
+	
+		// Initiate fade out effect before changing the form
+		setFadeOut(true);
+		setTimeout(async () => {
+			if (currentFormIndex < formComponents.length - 1) {
+				setCurrentFormIndex(currentFormIndex + 1);
+			} else {
+				if(await submitUserData(formDataString))
+				{
+					setCompleted(true);
+				}
+			}
+		}, 1800);
+	};
+
+	const CurrentForm = formComponents[currentFormIndex] as unknown as React.ComponentType<any>;
+
+	return (
+		<QuestionContainer $fadeOut={fadeOut}>
+			{ completed 
+				? 	<DisplayMessage>
+						<p>Completed.</p>
+					</DisplayMessage> 
+				: 	<FormContainer>
+						<CurrentForm onSubmit={handleFormSubmit} />
+					</FormContainer> } 
+		</QuestionContainer>
+	);
+}
+
+export default SlideshowQuestionnaire;
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/lib/serverActions.tsx ===
+'use server';
+
+// TODO: Implement
+export async function verifyNewEmail(email: string) {
+    // Contact database of submissions.
+    console.log(email);
+    return true;
+}
+
+// TODO: Implement
+export async function submitUserData(data: string) {
+    console.log(data);
+    return true;
+}
+=========================
+
+=== Content of: /Users/richardalvarez/Dev/gre-flashcards//src/lib/registry.tsx ===
+'use client'
+
+import React, { useState } from 'react'
+import { useServerInsertedHTML } from 'next/navigation'
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
+
+export default function StyledComponentsRegistry({
+    children,
+}: {
+    children: React.ReactNode
+}) {
+    // Only create stylesheet once with lazy initial state
+    // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
+    const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())
+
+    useServerInsertedHTML(() => {
+        const styles = styledComponentsStyleSheet.getStyleElement()
+        styledComponentsStyleSheet.instance.clearTag()
+        return <>{styles}</>
+    })
+
+    if (typeof window !== 'undefined') return <>{children}</>
+
+    return (
+        <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
+            {children}
+        </StyleSheetManager>
+    )
+}
+=========================
+

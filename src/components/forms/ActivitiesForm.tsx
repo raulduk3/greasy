@@ -4,15 +4,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Container, List } from '../../styles/FormStyles';
+import { Container, List } from '../../styles/forms/FormStyles';
 
 function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] }) => void }) {
     const [input, setInput] = useState('');
     const [activities, setactivities] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 
 
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
         if(activities.length === 0) {
             setDisplayError('Please provide at least one activity.');
             return;
@@ -20,7 +19,7 @@ function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] 
         onSubmit({ activities: activities }); // Send data back to parent
     };
 
-    const handleAdd = (event: { preventDefault: () => void; }) => {
+    const handleAdd = async (event: any) => {
         event.preventDefault();
         if(input === '') {  
             setDisplayError('Please provide an activity.');
@@ -32,11 +31,14 @@ function ActivitiesForm({ onSubmit }: { onSubmit: (data: { activities: string[] 
 
     return (
         <Container>
-            <p>Provide the name's of your favorite activities.</p>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
+                <div>
+                    <h2>Activities and things</h2>
+                    <p>Provide a list of your favorite foods, objects, ideas, activities, etc.</p>
+                </div>
                 <div>
                     <List>
-                        {activities.map((friend, index) => <li key={index}>{friend}</li>)}
+                        {activities.map((activities, index) => <li key={index}> - {activities}</li>)}
                     </List>
                 </div>
                 <div>

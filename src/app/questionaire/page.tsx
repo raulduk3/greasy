@@ -1,4 +1,3 @@
-import styles from "./page.module.css";
 import SlideshowQuestionnaire from '@/components/SlideshowQuestionnaire';
 import ContactForm from '@/components/forms/ContactForm';
 import FriendsForm from '@/components/forms/FriendsForm';
@@ -7,8 +6,8 @@ import ActivitiesForm from '@/components/forms/ActivitiesForm';
 
 const forms = [ContactForm, FriendsForm, LocationForm, ActivitiesForm];
 
-export default function Home() {
+export default function Page() {
 	return (
-		<></>
+		<SlideshowQuestionnaire formComponents={forms} />
 	);
 }

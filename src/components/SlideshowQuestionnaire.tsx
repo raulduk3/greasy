@@ -1,61 +1,9 @@
-// components/SlideshowQuestionnaire.js
 'use client';
 
-import { submitUserData } from '@/lib/serverActions';
 import React, { useState, useEffect, ReactElement } from 'react';
-import styled, { keyframes } from 'styled-components';
-
-const fadeIn = keyframes`
-	from { 
-		opacity: 0;
-		transform: translateY(-20px); 
-	}
-	to { 
-		opacity: 1;
-		transform: translateY(0); 
-	}
-`;
-
-const fadeOut = keyframes`
-	from { 
-		opacity: 1;
-		transform: translateY(0); 
-	}
-	to { 
-		opacity: 0;
-		transform: translateY(-20px); 
-	}
-`;
-
-interface QuestionContainerProps {
-	$fadeOut: boolean;
-}
-
-const QuestionContainer = styled.div<QuestionContainerProps>`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	flex-grow: 1;
-	animation: ${props => props.$fadeOut ? fadeOut : fadeIn} 1.8s ease forwards;
-`;
-
-const FormContainer = styled.div`
-	min-height: 300px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-`;
-
-const DisplayMessage = styled.div`
-	min-height: 100px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-	text-align: center;
-`;
+import { submitUserData } from '@/lib/serverActions';
+import { QuestionContainer, FormContainer, DisplayMessage } from '@/styles/SlideshowQuestionnaireStyles';
+import Link from 'next/link';
 
 function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactElement[] }) {
 	const [currentFormIndex, setCurrentFormIndex] = useState(0);
@@ -68,22 +16,18 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactEleme
 	}, [currentFormIndex, completed]);
 
 	const handleFormSubmit = async (data: any) => {
-		// Save data from the submitted form
 		const newFormData = [...formData];
 		newFormData[currentFormIndex] = data;
 		setFormData(newFormData);
-	
-		// Convert formData to a string
+
 		const formDataString = JSON.stringify(newFormData);
-	
-		// Initiate fade out effect before changing the form
+
 		setFadeOut(true);
 		setTimeout(async () => {
 			if (currentFormIndex < formComponents.length - 1) {
 				setCurrentFormIndex(currentFormIndex + 1);
 			} else {
-				if(await submitUserData(formDataString))
-				{
+				if (await submitUserData(formDataString)) {
 					setCompleted(true);
 				}
 			}
@@ -94,13 +38,19 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: ReactEleme
 
 	return (
 		<QuestionContainer $fadeOut={fadeOut}>
-			{ completed 
-				? 	<DisplayMessage>
+			{completed ? (
+				<FormContainer>
+					<DisplayMessage>
 						<p>Completed.</p>
-					</DisplayMessage> 
-				: 	<FormContainer>
-						<CurrentForm onSubmit={handleFormSubmit} />
-					</FormContainer> } 
+						<p>Check your email for your flashcards.</p>
+						<p><Link href="/">Back.</Link></p>
+					</DisplayMessage>
+				</FormContainer>
+			) : (
+				<FormContainer>
+					<CurrentForm onSubmit={handleFormSubmit} />
+				</FormContainer>
+			)}
 		</QuestionContainer>
 	);
 }

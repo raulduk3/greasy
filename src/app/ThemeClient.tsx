@@ -1,6 +1,7 @@
-"use client"
+"use client";
+
 import { ThemeProvider } from "styled-components";
-import { mainTheme } from "@/styles/ThemeConfig";
+import { mainTheme } from "@/styles/theme/ThemeConfig";
 
 export default function ThemeClient({
     children,
