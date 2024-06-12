@@ -14,7 +14,7 @@ import Link from "next/link"; // Import the 'Link' component from the appropriat
 import '@/styles/global.css'; // Import the global styles from the appropriate file
 
 export const metadata: Metadata = {
-	title: "Greasy",
+	title: "GREasy",
 	description: "Personalized GRE flashcards directly to your inbox.",
 };
 
