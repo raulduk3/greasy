@@ -9,6 +9,8 @@ const Themer = styled.body`
     padding: 0;
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;

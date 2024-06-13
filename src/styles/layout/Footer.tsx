@@ -8,11 +8,11 @@ const Footer = styled.section`
     max-width: 100%;
     justify-content: center;
     align-items: center;
-    font-size: 0.8em;
+    font-size: .9em;
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.background};
-    gap: 1.2vmin;
-    padding: 1vmin 0;
+    gap: 0.5vh;
+    padding: 2.3vh 0;
     flex: 0 1 100px;
 
     div {
@@ -22,6 +22,7 @@ const Footer = styled.section`
         width: 100%;
         gap: 1vmin;
         text-align: center;
+        padding: 1vmin;
         
         span {
             display: inline-block;

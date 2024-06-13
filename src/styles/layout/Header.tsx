@@ -27,7 +27,7 @@ const Header = styled.section`
 
     h4 {
         color: ${props => props.theme.colors.primary};
-        font-size: 1.2em;
+        font-size: 1.45em;
         margin: 0;
         font-weight: normal;
         width: 80%;
