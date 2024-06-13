@@ -7,13 +7,12 @@ const Header = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 1vmin;
+    justify-content: space-evenly;
     flex: 0 1 auto;
     margin: 0;
     text-align: center;
     height: 14vh;
-    padding: 2.5vh 0;
+    padding: 0 0 1.5vh 0;
 
     a {
         display: inline-block;

@@ -32,7 +32,6 @@ export default function Home() {
             </Hero>
             <SplashContainer>
                 <Column style={{
-                    width: '40%',
                     flexDirection: 'row',
                     justifyContent: 'space-around'
                 }}>

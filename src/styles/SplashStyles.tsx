@@ -50,8 +50,6 @@ const Hero = styled.div`
 
 const SplashContainer = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 35vh; 
     gap: 20px;
     margin: 0 5vw;
@@ -68,6 +66,7 @@ const Column = styled.div`
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.background};  
     padding: 2vmin;
+    width: 50%;
 
     h2 { 
         margin: 0;
