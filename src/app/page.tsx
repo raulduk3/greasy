@@ -51,7 +51,19 @@ export default function Home() {
                 </Column>
                 <Column>
                     <h2>Why GREasy?</h2>
-                    <DetailText>Customize your learning experience with personalized GRE flashcards sent directly to your inbox.</DetailText>
+                    <ul style={{
+                        marginTop: '10px',
+                        marginBottom: '0px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '2px',
+                    }}>
+                        <li>One hundred flashcards per bundle.</li>
+                        <li>Increased word retention from personal connection</li>
+                        <li>Customizable formatting</li>
+                        <li>Join now and recieve bonues later</li>
+                    </ul>
+                    <DetailText style={{margin: '10px'}}>Customize your learning experience with personalized GRE flashcards sent directly to your inbox.</DetailText>
                     <Link href="/questionnaire" passHref>
                         <CTAButton>Take the questionnaire!</CTAButton>
                     </Link>
