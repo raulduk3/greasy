@@ -12,7 +12,8 @@ const Header = styled.section`
     flex: 0 1 auto;
     margin: 0;
     text-align: center;
-    height: 15vh;
+    height: 14vh;
+    padding: 2.5vh 0;
 
     a {
         display: inline-block;
@@ -29,6 +30,7 @@ const Header = styled.section`
         font-size: 1.2em;
         margin: 0;
         font-weight: normal;
+        width: 80%;
     }
 
     span {

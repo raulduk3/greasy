@@ -6,9 +6,9 @@ const Body = styled.section`
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     flex: 1 1 auto;
-    height: calc(100vh - 15vh);
+    min-height: calc(100vh - 19vh);
 `;
 
 export default Body;

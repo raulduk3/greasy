@@ -29,6 +29,7 @@ export const Container = styled.div`
         background-color: ${props => props.theme.background};
         color: ${props => props.theme.colors.primary};
         align-self: end;
+        width: 50%;
     }
 
     form {

@@ -11,7 +11,7 @@ const Footer = styled.section`
     font-size: 0.8em;
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.background};
-    gap: 0.8vmin;
+    gap: 1.2vmin;
     padding: 1vmin 0;
     flex: 0 1 100px;
 
