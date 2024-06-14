@@ -34,15 +34,15 @@ export default function Splash() {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '2vw',
-                    listStyle: 'disc',
+                    listStyle: 'none',
                     listStylePosition: 'inside',
                     padding: '0',
                     margin: '10px'
                 }}>
-                    <li>One hundred flashcards per bundle.</li>
-                    <li>Increased word retention from personal connection</li>
-                    <li>Customizable formatting</li>
-                    <li>Join now and recieve bonues later</li>
+                    <li> - One hundred flashcards per bundle.</li>
+                    <li> - Increased word retention from personal connection</li>
+                    <li> - Customizable formatting</li>
+                    <li> - Join now and recieve bonues later</li>
                 </ul>
                 <DetailText style={{ margin: '10px' }}>Customize your learning experience with personalized GRE flashcards sent directly to your inbox.</DetailText>
                 <Link href="/questionnaire" passHref>

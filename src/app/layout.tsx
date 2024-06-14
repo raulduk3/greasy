@@ -54,7 +54,6 @@ export default function RootLayout({
 								listStyle: 'none',
 								padding: 0,
 								margin: '20px',
-								textDecoration: 'underline',
 							}}>
 								<li><Link href="/about">About</Link></li>
 								<li><Link href="/questionnaire">Generate</Link></li>
