@@ -46,6 +46,20 @@ export default function RootLayout({
 								<h1>GR<span>Easy</span></h1>
 							</Link>
 							<h4>Personalized GRE flashcards directly to your inbox 🎉</h4>
+							<ul style={{
+								display: 'flex',
+								flexDirection: 'row',
+								gap: '1.5vw',
+								justifyContent: 'center',
+								textAlign: 'center',
+								listStyle: 'none',
+								padding: 0,
+								margin: '20px',
+							}}>
+								<li>Link 1</li>
+								<li>Link 2</li>
+								<li>Link 3</li>
+							</ul>
 						</Header>
 
 						{/* Main content */}

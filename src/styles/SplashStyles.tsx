@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Hero = styled.div`
     overflow: hidden;
     position: relative;
-    height: 42vh;
+    min-height: 42vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,17 +21,17 @@ const Hero = styled.div`
         color: ${props => props.theme.background};
         background-color: ${props => props.theme.colors.primary};
         margin: 5vmin;
-        padding: 1vmin;
+        padding: 2vh 4vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 35%; 
+        width: 80%; 
         box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 
         h1 { 
             text-align: left;
-            margin: 20px 0 0 0;
+            margin: 0;
         }
 
         p { 
@@ -45,12 +45,13 @@ const Hero = styled.div`
         filter: grayscale(80%);
         position: absolute;
         z-index: -1;
+        object-fit: cover;
     }
 `;
 
 const SplashContainer = styled.div`
     display: flex;
-    min-height: 35vh; 
+    justify-content: center;
     gap: 20px;
     margin: 0 5vw;
     padding: 5vmin 5vmin;
@@ -60,12 +61,11 @@ const Column = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.background};  
-    padding: 2vmin;
+    padding: 2vh 4vw;
     width: 50%;
 
     h2 { 

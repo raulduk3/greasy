@@ -26,23 +26,17 @@ export default function Home() {
                 </div>
                 <Image src="/hero_01.jpeg" alt="Engage with Vocabulary" width={0}
                     height={0}
-                    sizes="100vw"
-                    style={{ width: '100%', height: 'auto' }}>
+                        sizes="(max-width: 768px) 100vh, (max-width: 1200px) 100vw"
+                        style={{ width: '100%', height: '100%' }}>
                 </Image>
             </Hero>
             <SplashContainer>
-                <Column style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-around'
-                }}>
-                    <Image src="/gre_prep.jpeg" alt="Engage with Vocabulary" width={0} height={0} sizes="25vw" style={{
-                        width: '50%',
+                <Column>
+                    <Image src="/gre_prep.jpeg" alt="Engage with Vocabulary" width={0} height={0} sizes="(max-width: 768px) 100%" style={{
+                        width: '100%',
                         height: 'auto',
                     }} />
-                    <div style={{
-                        padding: '2vmin',
-                        textAlign: 'left',
-                    }}>
+                    <div>
                         <Headline style={{margin: 0}}>Personalize your GRE Learning Experiences!</Headline>
                         <p>Get GREasy today!</p>
                         <Link href="/review">Read and leave a review here.</Link>
@@ -55,7 +49,7 @@ export default function Home() {
                         marginBottom: '0px',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '2px',
+                        gap: '2vw',
                     }}>
                         <li>One hundred flashcards per bundle.</li>
                         <li>Increased word retention from personal connection</li>

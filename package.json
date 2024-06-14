@@ -1,6 +1,10 @@
 {
-  "name": "gre-flashcards",
-  "version": "0.1.2",
+  "name": "greasy",
+  "author": {
+    "name": "Richard Alvarez",
+    "email": "rawalvarez731@gmail.com"
+  },
+  "version": "0.132",
   "private": true,
   "scripts": {
     "dev": "next dev",
