@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link"; // Import the 'Link' component from the appropriate library
+import { Roboto } from 'next/font/google'
+
 import StyledComponentsRegistry from "@/lib/registry";
-import styled from "styled-components";
 
 import Header from "@/styles/layout/Header";
 import Footer from "@/styles/layout/Footer";
 import Body from "@/styles/layout/Body";
 
 import Themer from "@/styles/theme/Themer";
-import ThemeClient from "../styles/theme/ThemeClient";
-
-import { Roboto } from 'next/font/google'
-import Link from "next/link"; // Import the 'Link' component from the appropriate library
+import ThemeClient from "@/styles/theme/ThemeClient";
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
 
@@ -28,7 +27,7 @@ const roboto = Roboto({
 	style: ['normal', 'italic'],
 	subsets: ['latin'],
 	display: 'swap',
-})
+});
 
 export default function RootLayout({
 	children,
@@ -49,16 +48,17 @@ export default function RootLayout({
 							<ul style={{
 								display: 'flex',
 								flexDirection: 'row',
-								gap: '1.5vw',
-								justifyContent: 'center',
+								gap: '3vw',
+								justifyContent: 'space-evenly',
 								textAlign: 'center',
 								listStyle: 'none',
 								padding: 0,
 								margin: '20px',
+								textDecoration: 'underline',
 							}}>
-								<li>Link 1</li>
-								<li>Link 2</li>
-								<li>Link 3</li>
+								<li><Link href="/about">About</Link></li>
+								<li><Link href="/questionnaire">Generate</Link></li>
+								<li><Link href="/contact">Contact Us</Link></li>
 							</ul>
 						</Header>
 

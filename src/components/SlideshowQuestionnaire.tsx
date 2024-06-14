@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useState, useEffect, ReactElement } from 'react';
 import { submitUserData } from '@/lib/serverActions';
-import { QuestionContainer, FormContainer, DisplayMessage } from '@/styles/SlideshowQuestionnaireStyles';
+import { QuestionContainer, FormContainer, DisplayMessage } from '@/styles/components/SlideshowQuestionnaireStyles';
 
 function SlideshowQuestionnaire({ formComponents }: { formComponents: any }) {
 	const [currentFormIndex, setCurrentFormIndex] = useState(0);

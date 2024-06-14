@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Container, List } from '../../styles/forms/FormStyles';
+import { Container, List } from '../../styles/components/FormStyles';
 
 function LocationForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     const [input, setInput] = useState('');

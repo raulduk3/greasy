@@ -1,7 +1,7 @@
 // components/forms/FirstForm.js
 'use client';
 
-import { Container } from '../../styles/forms/FormStyles';
+import { Container } from '../../styles/components/FormStyles';
 import React, { useState } from 'react';
 import { verifyNewEmail } from '@/lib/serverActions';
 
