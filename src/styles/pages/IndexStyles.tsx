@@ -1,31 +1,34 @@
 'use client';
 
 import styled from 'styled-components';
+import { mediaQueries } from '@/styles/mediaQueries';
 
 const SplashContainer = styled.div`
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 6vw;
     margin: 0 5vw;
     padding: 5vmin 5vmin;
 `;
 
 const Column = styled.div`
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.background};  
-    padding: 2vh 4vw;
-    width: 50%;
+    padding: 1vh 2vw;
 
     h2 { 
         margin: 0;
         font-size: 1.5rem;
         color: ${props => props.theme.background}; /* Theme accent color */
+    }
+
+    @media ${mediaQueries.large} {
+        flex-direction: row;
     }
 `;
 

@@ -48,8 +48,8 @@ export default function RootLayout({
 							<ul style={{
 								display: 'flex',
 								flexDirection: 'row',
-								gap: '3vw',
-								justifyContent: 'space-evenly',
+								gap: '20px',
+								justifyContent: 'center',
 								textAlign: 'center',
 								listStyle: 'none',
 								padding: 0,

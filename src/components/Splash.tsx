@@ -7,23 +7,23 @@ export default function Splash() {
     return (
         <SplashContainer>
             <Column>
-                <Image src="/gre_prep.jpeg" alt="Engage with Vocabulary" width={0} height={0} sizes="(max-width: 768px) 100%" style={{
-                    width: '100%',
-                    height: 'auto',
-                }} />
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '2vw',
+                    gap: '1vh',
+                    padding: '2vh 1vw',
                     margin: '10px',
-                    justifyContent: 'start',
-                    alignSelf: 'end'
+                    justifyContent: 'sart',
                 }}>
+                    <Image src="/gre_prep.jpeg" alt="Engage with Vocabulary" width={0} height={0} sizes="(max-width: 768px) 0%, (max-width: 1200px) 25vw" style={{
+                        width: '100%',
+                        height: 'auto',
+                    }} />
                     <Headline style={{ margin: 0 }}>Personalize your GRE Learning Experiences!</Headline>
                     <p>Get GREasy today!</p>
                     <Link style={{ 
-                        alignSelf: 'end',
-                    }} href="/review">Read and leave a review here.</Link>
+                        alignSelf: 'center',
+                    }} href="/review">Read and leave reviews here.</Link>
                 </div>
             </Column>
             <Column>
@@ -33,7 +33,7 @@ export default function Splash() {
                     marginBottom: '0px',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '2vw',
+                    gap: '1vh',
                     listStyle: 'none',
                     listStylePosition: 'inside',
                     padding: '0',
