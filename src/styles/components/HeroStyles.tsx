@@ -6,7 +6,7 @@ import { mediaQueries } from '@/styles/mediaQueries';
 const HeroContainer = styled.div`
     overflow: hidden;
     position: relative;
-    min-height: 42vh;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,6 @@ const HeroDiv = styled.div`
     align-items: center;
     justify-content: center;
     width: 80%; 
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 
     // Styles for large screens
     @media ${mediaQueries.large} {
