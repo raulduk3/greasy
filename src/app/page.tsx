@@ -50,6 +50,8 @@ export default function Home() {
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '2vw',
+                        listStyle: 'none',
+                        margin: '10px'
                     }}>
                         <li>One hundred flashcards per bundle.</li>
                         <li>Increased word retention from personal connection</li>

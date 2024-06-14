@@ -15,11 +15,9 @@ const Hero = styled.div`
     width: 100%;
     align-self: center;
 
-    box-shadow: inset 3px 3px 10px 0 rgba(0,0,0,0.5);
-
     div {
         color: ${props => props.theme.background};
-        background-color: ${props => props.theme.colors.primary};
+        background-color: rgba(255, 255, 255, 0.9);
         margin: 5vmin;
         padding: 2vh 4vw;
         display: flex;
@@ -95,17 +93,13 @@ const DetailText = styled.p`
 
 const CTAButton = styled.button`
     padding: 10px 20px;
-    color: ${props => props.theme.background}; /* Theme background color */
     font-size: 1rem;
     background-color: ${props => props.theme.colors.primary}; /* Theme accent color */
-    border: 1px solid ${props => props.theme.colors.primary}; /* Theme accent color */
+    border: none; /* Theme accent color */
     font-weight: bold;
     cursor: pointer;
-
-    &:hover {
-        background-color: #659f54; /* Darker shade for hover effect */
-        color: white;
-    }
+    background-color: #659f54; /* Darker shade for hover effect */
+    color: white;
 `;
 
 export { SplashContainer, Column, SplashImage, Headline, DetailText, CTAButton, Hero };

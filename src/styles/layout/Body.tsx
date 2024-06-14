@@ -6,8 +6,8 @@ const Body = styled.section`
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    gap: 4vh;
+    justify-content: space-evenly;
+    gap: 2vh;
     flex: 1 1 auto;
     min-height: calc(100vh - 19vh);
     max-width: 100vw;
