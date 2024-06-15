@@ -22,6 +22,10 @@ const HeroContainer = styled.div`
         z-index: -1;
         object-fit: cover;
     }
+
+    @meda ${mediaQueries.large} {
+        min-height: 60vh;
+    }
 `;
 
 const HeroDiv = styled.div`
