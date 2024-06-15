@@ -17,6 +17,8 @@ const HeroContainer = styled.div`
     align-self: center;
     margin: 2vh 0;
 
+    align-self: start;
+
     img {
         filter: grayscale(80%);
         position: absolute;
@@ -57,6 +59,7 @@ const HeroP = styled.p`
     width: 80%;
     font-size: 1rem;
     margin: 15px;
+    text-align: left;
 `;
 
 export { HeroContainer, HeroDiv, HeroHeader, HeroP };
