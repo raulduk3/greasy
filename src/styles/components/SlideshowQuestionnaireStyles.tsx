@@ -34,7 +34,6 @@ export const QuestionContainer = styled.div<QuestionContainerProps>`
     animation: ${({ $fadeOut }) => ($fadeOut ? fadeOut : fadeIn)} 1.8s ease forwards;
     height: 100%;
     align-self: center;  
-        margin-bottom: 50px;
 `;
 
 export const FormContainer = styled.div`

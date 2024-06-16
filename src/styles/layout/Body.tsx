@@ -6,6 +6,7 @@ const Body = styled.section`
     margin: 0;
     display: flex;
     justify-content: start;
+    flex-direction: column;
     flex: 1 1 auto;
     max-width: 100vw;
     text-align: center;

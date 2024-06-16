@@ -15,7 +15,7 @@ const HeroContainer = styled.div`
     align-items: center;
     width: 100%;
     align-self: center;
-    margin: 2vh 0;
+    margin: 1vh 0;
 
     align-self: start;
 
