@@ -32,7 +32,7 @@ export const QuestionContainer = styled.div<QuestionContainerProps>`
     justify-content: center;
     opacity: 0;
     animation: ${({ $fadeOut }) => ($fadeOut ? fadeOut : fadeIn)} 1.8s ease forwards;
-    height: 100%;
+    height: 50vh;
     align-self: center;  
 `;
 
