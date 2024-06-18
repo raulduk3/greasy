@@ -8,7 +8,7 @@ import { Container, List } from '../../styles/components/FormStyles';
 
 function ActivitiesForm({ onSubmit }: { onSubmit: (data: any) => void }) {
     const [input, setInput] = useState('');
-    const [activities, setactivities] = useState<string[]>([]);
+    const [activities, setActivities] = useState<string[]>([]);
     const [displayError, setDisplayError] = useState(''); 
 
     const handleSubmit = async () => {
@@ -16,7 +16,7 @@ function ActivitiesForm({ onSubmit }: { onSubmit: (data: any) => void }) {
             setDisplayError('Please provide at least one activity.');
             return;
         }
-        onSubmit({ activities: activities }); // Send data back to parent
+        onSubmit({ activities: activities }); 
     };
 
     const handleAdd = async (event: any) => {
@@ -25,7 +25,7 @@ function ActivitiesForm({ onSubmit }: { onSubmit: (data: any) => void }) {
             setDisplayError('Please provide an activity.');
             return;
         }
-        setactivities([...activities, input]);
+        setActivities([...activities, input]);
         setInput('');
     };
 

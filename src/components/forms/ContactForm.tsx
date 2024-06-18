@@ -3,16 +3,20 @@
 
 import { Container } from '../../styles/components/FormStyles';
 import React, { useState } from 'react';
-import { verifyNewEmail } from '@/lib/serverActions';
+import { verifyEmail } from '@/lib/verifyEmail';
 
 function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
     const [displayError, setDisplayError] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
-    const handleSubmit = async (formData: any) => {
-        await verifyNewEmail(email);
-        onSubmit({ name: name, email: email }); 
+    const handleSubmit = async (formData: FormData) => {
+        const emailValue = (formData.get('email') ?? '').toString();
+        if(await verifyEmail(emailValue) == false) {
+            setDisplayError('Email already exists.');
+            return;
+        }
+        onSubmit(formData); 
     };
 
     return (

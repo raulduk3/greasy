@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect, ReactElement } from 'react';
-import { submitUserData } from '@/lib/serverActions';
+import { createUser } from '@/lib/createUser';
 import { QuestionContainer, FormContainer, DisplayMessage } from '@/styles/components/SlideshowQuestionnaireStyles';
+import generateFlashcard from '@/lib/generateFlashcard';
 
 function SlideshowQuestionnaire({ formComponents }: { formComponents: any }) {
 	const [currentFormIndex, setCurrentFormIndex] = useState(0);
-	const [formData, setFormData] = useState<any[]>([]);
+	const [formData, setFormData] = useState<FormData[]>([]);
 	const [completed, setCompleted] = useState(false);
 	const [fadeOut, setFadeOut] = useState(false);
 
@@ -17,18 +18,21 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: any }) {
 
 	const handleFormSubmit = async (data: any) => {
 		const newFormData = [...formData];
-		newFormData[currentFormIndex] = data;
+		newFormData.push(data);
 		setFormData(newFormData);
-
-		const formDataString = JSON.stringify(newFormData);
 
 		setFadeOut(true);
 		setTimeout(async () => {
 			if (currentFormIndex < formComponents.length - 1) {
 				setCurrentFormIndex(currentFormIndex + 1);
 			} else {
-				if (await submitUserData(formDataString)) {
+				try {
+					await createUser(newFormData);
+					await generateFlashcard(Object.assign({}, ...newFormData));
 					setCompleted(true);
+				}  catch (error: any)
+				{
+					throw new error;
 				}
 			}
 		}, 1800);

@@ -9,7 +9,6 @@ const Body = styled.section`
     flex-direction: column;
     flex: 1 1 auto;
     max-width: 100vw;
-    text-align: center;
 `;
 
 export default Body;
