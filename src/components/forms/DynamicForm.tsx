@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Title, Description, List, ListItem, Form, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
+import { Container, Title, Description, List, ListItem, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
 
 interface DynamicFormProps {
     title: string;

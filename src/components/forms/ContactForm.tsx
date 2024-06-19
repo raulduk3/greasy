@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Title, Description, Form, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
+import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
 import { verifyEmail } from '@/lib/verifyEmail';
 
 function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
