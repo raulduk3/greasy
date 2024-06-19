@@ -20,7 +20,7 @@ const HeroContainer = styled.div`
     align-self: start;
 
     img {
-        filter: blur(2.5px);
+        filter: blur(1.5px);
         position: absolute;
         z-index: -1;
         object-fit: cover;
