@@ -4,7 +4,7 @@
     "name": "Richard Alvarez",
     "email": "rawalvarez731@gmail.com"
   },
-  "version": "0.132",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
