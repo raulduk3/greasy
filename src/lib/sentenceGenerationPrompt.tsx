@@ -1,5 +1,12 @@
-export default function sentenceGenerationPrompt(name: string, friends: string[], locations: string[], activities: string[]) {
+'use server';
+
+function getRandomElement(arr: string[]) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+export default function sentenceGenerationPrompt(word: { id: any; word: any; definition: any; example: any; partOfSpeech: any; }, friends: string[], locations: string[], activities: string[]) {
     return `
-        Write a GRE-style sentence that clearly illustrates the definition of 'mercurial.'  ${friends[0]}, ${locations[0]}, ${activities[0]}.
+        ${word.definition}
+        Write a GRE-style sentence that clearly illustrates the definition of '${word.word}.' Inspired by: ${getRandomElement(friends)}, ${getRandomElement(locations)}, ${getRandomElement(activities)}.
     `;
 }

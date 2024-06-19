@@ -1,59 +1,16 @@
-// components/forms/FirstForm.js
 'use client';
 
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import DynamicForm from './DynamicForm';
 
-import { Container, List } from '../../styles/components/FormStyles';
-
-function ActivitiesForm({ onSubmit }: { onSubmit: (data: any) => void }) {
-    const [input, setInput] = useState('');
-    const [activities, setActivities] = useState<string[]>([]);
-    const [displayError, setDisplayError] = useState(''); 
-
-    const handleSubmit = async () => {
-        if(activities.length === 0) {
-            setDisplayError('Please provide at least one activity.');
-            return;
-        }
-        onSubmit({ activities: activities }); 
-    };
-
-    const handleAdd = async (event: any) => {
-        event.preventDefault();
-        if(input === '') {  
-            setDisplayError('Please provide an activity.');
-            return;
-        }
-        setActivities([...activities, input]);
-        setInput('');
-    };
-
+const ActivitiesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     return (
-        <Container>
-            <form action={handleSubmit}>
-                <div>
-                    <h2>Activities and things</h2>
-                    <p>Provide a list of your favorite foods, objects, ideas, activities, etc.</p>
-                </div>
-                <div>
-                    <List>
-                        {activities.map((activities, index) => <li key={index}> - {activities}</li>)}
-                    </List>
-                </div>
-                <div>
-                    <label>
-                        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder='i.e. Biking' />
-                        <button onClick={handleAdd}>Add</button>
-                    </label>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-            <p>{displayError}</p>
-        </Container>  
+        <DynamicForm
+            title="Activities"
+            description="Provide the names of your favorite activities. Sports, hobbies, anything you enjoy!"
+            placeholder="i.e. Biking"
+            onSubmit={onSubmit}
+        />
     );
-}
+};
 
 export default ActivitiesForm;

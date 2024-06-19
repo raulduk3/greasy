@@ -45,6 +45,7 @@ export default function RootLayout({
 								<h1>GR<span>Easy</span></h1>
 							</Link>
 							<h4>Personalized GRE flashcards directly to your inbox 🎉</h4>
+							{/* TODO: Factor this into a styled componenent */}
 							<ul style={{
 								display: 'flex',
 								flexDirection: 'row',

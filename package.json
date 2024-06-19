@@ -13,19 +13,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.31",
     "@vercel/postgres": "^0.8.0",
-    "ai": "^3.1.37",
-    "axios": "^1.7.2",
-    "csv-parser": "^3.0.0",
-    "dotenv": "^16.4.5",
     "langsmith": "^0.1.31",
     "next": "14.2.3",
     "openai": "^4.51.0",
-    "pg-escape": "^0.2.0",
     "react": "^18",
     "react-dom": "^18",
-    "sqlstring": "^2.3.3",
     "styled-components": "^6.1.11",
     "tqdm": "^2.0.3"
   },

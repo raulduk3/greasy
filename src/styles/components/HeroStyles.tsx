@@ -42,6 +42,16 @@ const HeroDiv = styled.div`
     justify-content: center;
     width: 80%; 
 
+    a {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: rgb(101, 159, 84);
+        color: white;
+    }
+
     // Styles for large screens
     @media ${mediaQueries.large} {
         // font-size: 2rem;

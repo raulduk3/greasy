@@ -2,8 +2,8 @@
 
 import { sql } from '@vercel/postgres';
 
-export async function createUser(formData: FormData[]) {
-    // Contact database of submissions.
+export async function createUser(formData: any) {
+    // Insert user data into database.
     console.log(formData);
     return true;
 }
