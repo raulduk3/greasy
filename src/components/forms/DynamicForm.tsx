@@ -39,6 +39,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, description, placehold
                 <div>
                     <Title>{title}</Title>
                     <Description>{description}</Description>
+                    <p>Add one at a time.</p>
                 </div>
                 <div>
                     <List>
