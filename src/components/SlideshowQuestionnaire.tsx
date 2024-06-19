@@ -3,11 +3,13 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { createUser } from '@/lib/createUser';
-import { QuestionContainer, FormContainer, DisplayMessage } from '@/styles/components/SlideshowQuestionnaireStyles';
+import { QuestionContainer, FormContainer, DisplayMessage, 
+    FlashcardContainer, FlashcardsContainer, FlashcardPartOfSpeech, FlashcardDefinition, FlashcardSentence, FlashcardWord } from '@/styles/components/SlideshowQuestionnaireStyles';
 import generateFlashcards from '@/lib/generateFlashcards';
 
 function SlideshowQuestionnaire({ formComponents }: { formComponents: React.ComponentType<{ onSubmit: (data: any) => void }>[] }) {
     const [currentFormIndex, setCurrentFormIndex] = useState(0);
+    const [flashcards, setFlashcards] = useState<any[]>([]);
     const [formData, setFormData] = useState<Record<string, any>[]>([]);
     const [completed, setCompleted] = useState(false);
     const [fadeOut, setFadeOut] = useState(false);
@@ -26,7 +28,7 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: React.Comp
             } else {
                 try {
                     let userData = Object.assign({}, ...[...formData, data]);
-                    await generateFlashcards(userData);
+                    setFlashcards(await generateFlashcards(userData));
                     await createUser(userData);
                     setCompleted(true);
                 } catch (error) {
@@ -46,6 +48,18 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: React.Comp
                         <p>Completed.</p>
                         <p>Check your email for your flashcards.</p>
                         <p><Link href="/">Back.</Link></p>
+                        <FlashcardsContainer>
+                            {
+                                flashcards.map((flashcard, index) => (
+                                    <FlashcardContainer key={index}>
+                                        <FlashcardWord>{flashcard.word}</FlashcardWord>
+                                        <FlashcardPartOfSpeech>{flashcard.partOfSpeech}</FlashcardPartOfSpeech>
+                                        <FlashcardDefinition>{flashcard.def}</FlashcardDefinition>
+                                        <FlashcardSentence>{flashcard.sentence}</FlashcardSentence>
+                                    </FlashcardContainer>
+                                ))
+                            }
+                        </FlashcardsContainer>
                     </DisplayMessage>
                 </FormContainer>
             ) : (
