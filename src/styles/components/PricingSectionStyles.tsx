@@ -9,6 +9,13 @@ export const SectionContainer = styled.div`
     justify-content: center;
     padding: 35px;
     
+
+    @media ${mediaQueries.large} {
+        flex-direction: row;
+        justify-content: center;
+        gap: 25px;
+    }
+
     @media ${mediaQueries.medium} {
         flex-direction: row;
         justify-content: center;

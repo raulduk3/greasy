@@ -21,7 +21,7 @@ export const PricingSection: React.FC = () => {
                     <li>Sent to your email</li>
                     <li>No data recorded</li>
                 </ul>
-                <Link href="/questionnaire">Try for free!</Link>
+                <Link href="/q/demo">Try for free!</Link>
             </Card>
             <Card>
                 <h1>Basic Package</h1>
@@ -32,7 +32,7 @@ export const PricingSection: React.FC = () => {
                     <li>Sent to your email</li>
                     <li>Data recorded for future purchases</li>
                 </ul>
-                <Link href="/basic">Buy now!</Link>
+                <Link href="/q/basic">Buy now!</Link>
             </Card>
         </SectionContainer>
     );

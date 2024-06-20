@@ -5,73 +5,77 @@ import React, { useState, useEffect } from 'react';
 import { createUser } from '@/lib/createUser';
 import {
     QuestionContainer, FormContainer, DisplayMessage,
-    FlashcardContainer, FlashcardsContainer, FlashcardPartOfSpeech, FlashcardDefinition, FlashcardSentence, FlashcardWord
 } from '@/styles/components/SlideshowQuestionnaireStyles';
 import generateFlashcards from '@/lib/generateFlashcards';
 import { DynamicFormProps } from './forms/DynamicForm';
 
+function sendEmail(userData: any, flashcards: any) {
+    return fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userData,
+            flashcards,
+        }),
+    });
+}
+
 function SlideshowQuestionnaire({ formComponents, length }: { length: number, formComponents: React.ComponentType<DynamicFormProps>[] }) {
     const [currentFormIndex, setCurrentFormIndex] = useState(0);
-    const [flashcards, setFlashcards] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<Record<string, any>[]>([]);
     const [completed, setCompleted] = useState(false);
     const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
         setFadeOut(false);
-    }, [currentFormIndex, completed]);
+    }, [currentFormIndex, loading, completed]);
 
-    const handleFormSubmit = async (data: any) => {
+    const iterate = async (data: any) => {
         setFormData(prevData => [...prevData, data]);
-        setFadeOut(true);
-
-        setTimeout(async () => {
-            if (currentFormIndex < formComponents.length - 1) {
-                setCurrentFormIndex(currentFormIndex + 1);
-            } else {
-                try {
-                    let userData = Object.assign({}, ...[...formData, data]);
-                    console.log(userData);
-                    setFlashcards(await generateFlashcards(userData));
-                    await createUser(userData);
-                    setCompleted(true);
-                } catch (error) {
-                    console.error(error);
-                }
+        
+        if (currentFormIndex == formComponents.length - 1) {
+            try {                    
+                setFadeOut(false);
+                setLoading(true);
+                
+                let userData = Object.assign({}, ...[...formData, data]);
+                let flashcards = await generateFlashcards(userData);
+                
+                await createUser(userData);
+                await sendEmail(userData, flashcards);
+                
+                setLoading(false);
+                setCompleted(true);
+            } catch (error) {
+                console.error(error);
             }
-        }, 1800);
+        } else {
+            setFadeOut(true);
+            setCurrentFormIndex(currentFormIndex + 1);
+        }
     };
 
     const CurrentForm = formComponents[currentFormIndex];
 
     return (
-        <QuestionContainer $fadeOut={fadeOut}>
-            {completed ? (
-                <FormContainer>
-                    <DisplayMessage>
-                        <p>Completed.</p>
-                        <p>Check your email for your flashcards.</p>
-                        <p><Link href="/">Back.</Link></p>
-                        <FlashcardsContainer>
-                            {
-                                flashcards.map((flashcard, index) => (
-                                    <FlashcardContainer key={index}>
-                                        <FlashcardWord>{flashcard.word}</FlashcardWord>
-                                        <FlashcardPartOfSpeech>{flashcard.partOfSpeech}</FlashcardPartOfSpeech>
-                                        <FlashcardDefinition>{flashcard.def}</FlashcardDefinition>
-                                        <FlashcardSentence>{flashcard.sentence}</FlashcardSentence>
-                                    </FlashcardContainer>
-                                ))
-                            }
-                        </FlashcardsContainer>
-                    </DisplayMessage>
-                </FormContainer>
-            ) : (
-                <FormContainer>
-                    <CurrentForm length={length} onSubmit={handleFormSubmit} title={''} description={''} placeholder={''} />
-                </FormContainer>
-            )}
-        </QuestionContainer>
+        !loading ? <QuestionContainer $fadeOut={fadeOut}>
+                {completed ? (
+                    <FormContainer>
+                        <DisplayMessage>
+                            <p>Completed.</p>
+                            <p>Check your email for your flashcards.</p>
+                            <p><Link href="/">Back.</Link></p>
+                        </DisplayMessage>
+                    </FormContainer>
+                ) : (
+                    <FormContainer>
+                        <CurrentForm length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
+                    </FormContainer>
+                )}
+        </QuestionContainer> : <p>Generating cards...</p>
     );
 }
 

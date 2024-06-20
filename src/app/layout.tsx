@@ -60,9 +60,6 @@ export default function RootLayout({
 						{/* Footer */}
 						<Footer>
 							<div>
-								<Link href="/questionnaire">Generate</Link>
-							</div>
-							<div>
 								<Link href="/data-privacy">Data Privacy</Link>
 							</div>
 							<div>
