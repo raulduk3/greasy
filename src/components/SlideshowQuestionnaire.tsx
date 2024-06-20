@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { createUser } from '@/lib/createUser';
+import { createUser } from '@/lib/user/createUser';
 import {
     QuestionContainer, FormContainer, DisplayMessage,
 } from '@/styles/components/SlideshowQuestionnaireStyles';

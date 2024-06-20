@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react';
 import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
-import { verifyEmail } from '@/lib/verifyEmail';
+import { verifyNewUser } from '@/lib/user/verifyNewUser';
 
 function PayForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
     const [displayError, setDisplayError] = useState('');
     const [formData, setFormData] = useState({ name: '', email: '' });
 
     const handleSubmit = async () => {
-        const emailValid = await verifyEmail(formData.email);
+        const emailValid = await verifyNewUser(formData.email);
         if (emailValid) {
             onSubmit(formData);
         } else {
