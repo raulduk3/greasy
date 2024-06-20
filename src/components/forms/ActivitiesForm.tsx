@@ -7,7 +7,7 @@ const ActivitiesForm: React.FC<DynamicFormProps> = ({ onSubmit, length }) => {
         <DynamicForm
             title="Activities"
             description="Provide the names of your favorite activities and things. Sports, hobbies, items, ideas, or anything you enjoy!"
-            placeholder="Anything here..."
+            placeholder="Activity"
             length={length}
             onSubmit={onSubmit}
         />

@@ -13,6 +13,28 @@ export const PricingSection: React.FC = () => {
     return (
         <SectionContainer>
             <Card>
+                <h1>Premium Package</h1>
+                <p>$2.00</p>
+                <ul>
+                    <li>Two-hundred premium GRE flashcards</li>
+                    <li>Personalized sentences using gpt4</li>
+                    <li>Sent to your email</li>
+                    <li>Data recorded for future purchases</li>
+                </ul>
+                <Link href="/q/basic">Buy now!</Link>
+            </Card>
+            <Card>
+                <h1>Basic Package</h1>
+                <p>$1.00</p>
+                <ul>
+                    <li>One-hundred premium GRE flashcards</li>
+                    <li>Personalized sentences using gpt4</li>
+                    <li>Sent to your email</li>
+                    <li>Data recorded for future purchases</li>
+                </ul>
+                <Link href="/q/basic">Buy now!</Link>
+            </Card>
+            <Card>
                 <h1>Free Demo</h1>
                 <p>$0.00</p>
                 <ul>
@@ -22,17 +44,6 @@ export const PricingSection: React.FC = () => {
                     <li>No data recorded</li>
                 </ul>
                 <Link href="/q/demo">Try for free!</Link>
-            </Card>
-            <Card>
-                <h1>Basic Package</h1>
-                <p>$1.00</p>
-                <ul>
-                    <li>One-hundred GRE premium flashcards</li>
-                    <li>Personalized sentences using gpt4</li>
-                    <li>Sent to your email</li>
-                    <li>Data recorded for future purchases</li>
-                </ul>
-                <Link href="/q/basic">Buy now!</Link>
             </Card>
         </SectionContainer>
     );

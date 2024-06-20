@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
+import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '@/styles/components/FormStyles';
 
 export interface DynamicFormProps {
     title: string;
@@ -39,14 +39,17 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
                 </div>
                 <div>
                     {Array.from({ length }).map((_, index) => (
-                        <Label key={index}>
+                        <div  key={index}>
+                            <Label>
+                                {placeholder + ` ${index + 1}`}
+                            </Label>
                             <Input 
                                 type="text" 
                                 value={inputs[index]} 
                                 onChange={(e) => handleChange(index, e.target.value)} 
-                                placeholder={placeholder} 
+                                placeholder="..."
                             />
-                        </Label>
+                        </div>
                     ))}
                 </div>
                 <div>

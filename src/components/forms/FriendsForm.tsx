@@ -7,8 +7,8 @@ const FriendsForm: React.FC<DynamicFormProps> = ({ onSubmit, length }) => {
         <DynamicForm
             title="Friends"
             length={length}
-            description="Provide the names of your favorite friends. Try to pick at least the five most meaningful names!"
-            placeholder="Friend's name here..."
+            description="Provide the names of your favorite friends. Try to pick the most meaningful names!"
+            placeholder="Friend"
             onSubmit={onSubmit}
         />
     );

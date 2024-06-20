@@ -46,7 +46,11 @@ export const Card = styled.div`
     }
 
     ul {
-        list-style-position: inside;
+        :before {
+            content: "• ";
+        }
+        
+        list-style-type: none;
         text-align: left;
 
         li {

@@ -30,12 +30,27 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
                     <Description>We will only contact you via email once.</Description>
                 </div>
                 <div>
-                    <Label>Name</Label>
-                    <Input name="name" type="text" placeholder="John Doe" onChange={handleChange} required />
+                    <Label>
+                        Name
+                        <Input name="name" type="text" placeholder="John Doe" onChange={handleChange} required />
+                    </Label>
                 </div>
                 <div>
-                    <Label>Email</Label>
-                    <Input name="email" type="email" placeholder='example@web.com' onChange={handleChange} required />
+                    <Label>
+                        Email
+                        <Input name="email" type="email" placeholder='example@web.com' onChange={handleChange} required />
+                    </Label>
+                </div>
+                <div style={{
+                    flexDirection: 'row',
+                    gap: '1vmin',
+                }}>
+                    <Label style={{
+                        width: 'auto',
+                    }}>
+                        Confirm permission to email? 
+                    </Label>
+                    <input type='checkbox' name='toggle' value='toggle' required />
                 </div>
                 <div>
                     <Button type="submit">Submit</Button>

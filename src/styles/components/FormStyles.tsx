@@ -7,10 +7,6 @@ export const Container = styled.div`
     justify-content: center;
     margin: 0 8vw;
 
-    div:last-child {
-        align-self: center;
-        flex-direction: row;
-    }
 
     form { 
         display: flex;
@@ -23,16 +19,28 @@ export const Container = styled.div`
         color: ${props => props.theme.background};
         filter: drop-shadow(0px 0px 2px black);
 
-
         div {
             width: 100%;
-            margin: 0.7rem 0;
+            margin: 0.4rem 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            justify-content: start;
+                        
+            label  {
+                font-size: 1em;
+                margin: 0.5vmin 0;
+                text-align: center;
+                align-self: start;
 
-            input {
-                width: 100%;
+                gap: 0.5vmin;
+            }
+
+            label:has(input) {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: center;
             }
 
             button {
@@ -84,12 +92,12 @@ export const Input = styled.input`
     padding: 5px 0;   
     flex-grow: 1;
     font-size: 1em;
+    width: 100%;
 `;
 
 export const Button = styled.button`
     border: 1px solid ${props => props.theme.colors.primary};
     padding: 5px 10px;
-    width: 63.4922px;
     background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.background};
     border: 1px solid ${props => props.theme.background};
@@ -98,8 +106,9 @@ export const Button = styled.button`
     &[type="submit"] {
         background-color: ${props => props.theme.background};
         color: ${props => props.theme.colors.primary};
-        align-self: end;
-        width: 50%;
+        align-self: center;
+        width: 100%;
+        height: 5vh;
     }
 `;
 

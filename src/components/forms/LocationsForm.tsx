@@ -7,7 +7,7 @@ const LocationForm: React.FC<DynamicFormProps> = ({ onSubmit, length }) => {
         <DynamicForm
             title="Locations"
             description="Provide the names of your favorite locations. Countries, states, cities, towns. Anywhere you can imagine!"
-            placeholder="Any location here..."
+            placeholder="Location"
             length={length}
             onSubmit={onSubmit}
         />

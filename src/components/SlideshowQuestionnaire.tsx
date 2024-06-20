@@ -40,7 +40,6 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
         setTimeout(async () => {
             if (currentFormIndex == formComponents.length - 1) {
                 try {
-                    setFadeOut(false);
                     setLoading(true);
 
                     let userData = Object.assign({}, ...[...formData, data]);
@@ -50,6 +49,7 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
                     await sendEmail(userData, flashcards);
 
                     setCompleted(true);
+                    setFadeOut(false);
                     setLoading(false);
                 } catch (error) {
                     console.error(error);
