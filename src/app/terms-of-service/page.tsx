@@ -35,7 +35,7 @@ const TermsOfServicePage: React.FC = () => {
             </p>
             <h2>Contact Us</h2>
             <p style={{ maxWidth: '800px', textAlign: 'left' }}>
-                If you have any questions about these Terms of Service, please contact us at <a href="mailto:support@greasyvocab.com">support@greasyvocab.com</a>.
+                If you have any questions about these Terms of Service, please contact us at <a href={"mailto:rawalvarez731@gmail.com?subject=GREAsy Support " + new Date().toDateString}>rawalvarez731@gmail.com</a>.
             </p>
         </div>
     );
