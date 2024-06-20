@@ -8,8 +8,8 @@ import { wrapOpenAI } from "langsmith/wrappers";
 import { traceable } from "langsmith/traceable";
 import sentenceGenerationPrompt from './sentenceGenerationPrompt';
 
-function alphabetizeArrayByKey(arr, key) {
-    return arr.sort((a, b) => {
+function alphabetizeArrayByKey(arr: any, key: any) {
+    return arr.sort((a: any, b: any) => {
         if (a[key] < b[key]) {
             return -1;
         }
