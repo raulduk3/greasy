@@ -21,14 +21,14 @@ export const PricingSection: React.FC = () => {
                     <li>Sent to your email</li>
                     <li>Data recorded for future purchases</li>
                 </ul>
-                <Link href="/q/basic">Buy now!</Link>
+                <Link href="/q/premium">Buy now!</Link>
             </Card>
             <Card>
                 <h1>Basic Package</h1>
                 <p>$1.00</p>
                 <ul>
                     <li>One-hundred premium GRE flashcards</li>
-                    <li>Personalized sentences using gpt4</li>
+                    <li>Personalized sentences using gpt-3.5</li>
                     <li>Sent to your email</li>
                     <li>Data recorded for future purchases</li>
                 </ul>
