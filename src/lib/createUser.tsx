@@ -2,7 +2,17 @@
 
 import { sql } from '@vercel/postgres';
 
-export async function createUser(formData: any) {
-    // Insert user data into database.
-    return true;
+export async function createUser(formData: { email: string, name: string }) {
+    const { email, name } = formData;
+
+    try {
+        await sql`
+            INSERT INTO users (email, name)
+            VALUES (${email}, ${name});
+        `;
+        return true;
+    } catch (error) {
+        console.error('Error inserting user:', error);
+        return false;
+    }
 }
