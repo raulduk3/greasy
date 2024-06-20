@@ -45,7 +45,7 @@ const styles = {
         color: 'white',
     },
     message: {
-        margin: '0.75rem 0',
+        margin: '1rem 0 2rem 0',
         fontSize: '1.2rem',
         color: 'white',
         width: '50%',
@@ -136,7 +136,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
             <h3 style={styles.subheader}>Here are your flashcards from <a href="https://greasyvocab.com" style={styles.subheaderLink}>GREasyvocab.com</a></h3>
             <div>
                 <p style={styles.intro}>HEY {name.toUpperCase()}!</p>
-                <p style={styles.message}>We are thrilled to provide you with personalized GRE flashcards to aid in your preparation 😀. <br /> <br /> Below, you'll find the flashcards crafted just for you. Review them carefully and keep practicing to enhance your vocabulary skills.</p>
+                <p style={styles.message}>We are thrilled to provide you with personalized GRE flashcards to aid in your preparation 😀 <br /> <br /> Below, you'll find the flashcards crafted just for you. Review them carefully and keep practicing to enhance your vocabulary skills.</p>
             </div>
             <div style={styles.flashcards}>
                 {flashcards.map((flashcard, index) => (
