@@ -147,7 +147,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
                         <p style={styles.flashcardText}>{flashcard.partOfSpeech}</p>
                         <p style={styles.flashcardText}>{flashcard.def}</p>
                         <p style={styles.flashcardText}>{flashcard.sentence}</p>
-                        <a href={`https://en.wiktionary.org/wiki/${flashcard.word}`} style={styles.flashcardLink}>Wiktionary</a>
+                        <a href={`https://en.wiktionary.org/wiki/${flashcard.word.toLowerCase()}`} style={styles.flashcardLink}>Wiktionary</a>
                     </div>
                 ))}
             </div>
