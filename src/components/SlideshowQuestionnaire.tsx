@@ -8,6 +8,7 @@ import {
 } from '@/styles/components/SlideshowQuestionnaireStyles';
 import generateFlashcards from '@/server/generateFlashcards';
 import { DynamicFormProps } from './forms/DynamicForm';
+import { redirect } from 'next/navigation';
 
 function sendEmail(userData: any, flashcards: any) {
     return fetch('/api/sendEmail', {
@@ -45,8 +46,14 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
                     let userData = Object.assign({}, ...[...formData, data]);
                     let flashcards = await generateFlashcards(userData);
 
-                    await sendEmail(userData, flashcards);
-                    await userCreate(userData);
+                    let sent= await sendEmail(userData, flashcards);
+                    if (sent.status == 200) {
+                        await userCreate(userData);
+                    }
+                    else {
+                        console.error('Email not sent.');
+                        redirect('/');
+                    }
 
                     setCompleted(true);
                     setFadeOut(false);
