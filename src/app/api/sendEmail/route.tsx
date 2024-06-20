@@ -11,10 +11,9 @@ export async function POST(req: Request) {
             from: 'GREasy <cards@greasyvocab.com>',
             to: [emailData.userData.email.trim()],
             subject: 'Your GREasy Flashcards 🎉',
-            react: EmailTemplate({
-                flashcards: emailData.flashcards,
-                name: emailData.userData.name,
-            }),
+            react: <EmailTemplate
+                flashcards={emailData.flashcards}
+                name={emailData.userData.name} />
         });
 
         if (error) {
