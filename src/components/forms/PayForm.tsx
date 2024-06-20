@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
 import { userVerify } from '@/server/user/verify';
+
 function PayForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
     const [displayError, setDisplayError] = useState('');
     const [formData, setFormData] = useState({ name: '', email: '' });
