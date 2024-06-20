@@ -109,7 +109,7 @@ const styles = {
         color: 'white',
     },
     footer: {
-        marginTop: '1rem',
+        marginTop: '1.5rem',
         textAlign: 'center' as 'center',
     },
     footerText: {
@@ -151,16 +151,16 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
                     </div>
                 ))}
             </div>
-            <div style={styles.tips}>
-                <p style={styles.tipsText}>Tips for Effective Studying:</p>
-                <ul style={styles.tipsList}>
-                    <li style={styles.tipsItem}> - Review flashcards daily to reinforce your memory.</li>
-                    <li style={styles.tipsItem}> - Use the flashcards in sentences of your own to understand the context.</li>
-                    <li style={styles.tipsItem}> - Group similar words together to make associations.</li>
-                    <li style={styles.tipsItem}> - Take regular breaks to avoid burnout and keep your mind fresh.</li>
-                </ul>
-            </div>
             <div style={styles.footer}>
+                <div style={styles.tips}>
+                    <p style={styles.tipsText}>Tips for Effective Studying:</p>
+                    <ul style={styles.tipsList}>
+                        <li style={styles.tipsItem}> - Review flashcards daily to reinforce your memory.</li>
+                        <li style={styles.tipsItem}> - Use the flashcards in sentences of your own to understand the context.</li>
+                        <li style={styles.tipsItem}> - Group similar words together to make associations.</li>
+                        <li style={styles.tipsItem}> - Take regular breaks to avoid burnout and keep your mind fresh.</li>
+                    </ul>
+                </div>
                 <p style={styles.footerText}>We hope you find these resources helpful. For more tips and personalized GRE study materials, visit <a href="https://greasyvocab.com" style={styles.footerLink}>GREasyvocab.com</a>.</p>
                 <p style={styles.footerText}>Best of luck with your studies!</p>
             </div>
