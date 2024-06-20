@@ -13,6 +13,8 @@ import Themer from "@/styles/layout/Themer";
 import ThemeClient from "@/styles/theme/ThemeClient";
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
+import { json } from "stream/consumers";
+import Head from "next/head";
 
 export const metadata: Metadata = {
 	title: "GREasy",
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
 		description: "Personalized GRE flashcards directly to your inbox.",
 		type: "website",
 		locale: "en_US",
-		url: "https://greasyvocab.com",	
+		url: "https://greasyvocab.com",
 		images: [
 			{
 				url: "/opengraph-image.png",
@@ -71,28 +73,39 @@ export const metadata: Metadata = {
 	metadataBase: new URL("https://greasyvocab.com"),
 	icons: [
 		{ rel: "icon", href: "/favicon.ico", url: "/favicon.ico" },
-	],
-	jsonLd: {
-		"@context": "https://schema.org",
-		"@type": "WebSite",
-		"url": "https://greasyvocab.com",
-		"name": "GREasy",
-		"publisher": {
-			"@type": "Organization",
-			"name": "GREasy",
-			"url": "https://greasyvocab.com",
-			"logo": {
-				"@type": "ImageObject",
-				"url": "https://greasyvocab.com/favicon.ico",
-				"width": 60,
-				"height": 60
-			}
-		},
-		"mainEntityOfPage": {
-			"@type": "WebPage",
-			"@id": "https://greasyvocab.com"
-		}
-	}
+	]
+};
+
+const JSONLD = 	{
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	"name": "GREasy",
+	"operatingSystem": "All",
+	"applicationCategory": "EducationApplication",
+	"description": "Personalized GRE flashcards directly to your inbox.",
+	"url": "https://greasyvocab.com",
+	"creator": {
+		"@type": "Organization",
+		"name": "GREasy"
+	},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.8",
+		"reviewCount": "24"
+	},
+	"offers": {
+		"@type": "Offer",
+		"price": "0",
+		"priceCurrency": "USD"
+	},		
+	"screenshot": "https://greasyvocab.com/opengraph-image.png",
+	"softwareVersion": "1.0",
+	"downloadUrl": "https://greasyvocab.com/download",
+	"featureList": [
+		"Personalized GRE flashcards",
+		"Daily GRE vocabulary practice",
+		"Email flashcard subscription"
+	]
 };
 
 const roboto = Roboto({
@@ -109,6 +122,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={roboto.className}>
+			<Head>
+				<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify}}>
+				</script>
+			</Head>
 			<StyledComponentsRegistry>
 				<ThemeClient>
 					<Themer>
