@@ -31,51 +31,59 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
 
     useEffect(() => {
         setFadeOut(false);
-    }, [currentFormIndex, loading, completed]);
+    }, [currentFormIndex, loading]);
 
     const iterate = async (data: any) => {
         setFormData(prevData => [...prevData, data]);
-        
-        if (currentFormIndex == formComponents.length - 1) {
-            try {                    
+        setFadeOut(true);
+
+        setTimeout(async () => {
+            if (currentFormIndex == formComponents.length - 1) {
+                try {
+                    setFadeOut(false);
+                    setLoading(true);
+
+                    let userData = Object.assign({}, ...[...formData, data]);
+                    let flashcards = await generateFlashcards(userData);
+
+                    await createUser(userData);
+                    await sendEmail(userData, flashcards);
+
+                    setCompleted(true);
+                    setLoading(false);
+                } catch (error) {
+                    console.error(error);
+                }
+            } else {
                 setFadeOut(false);
-                setLoading(true);
-                
-                let userData = Object.assign({}, ...[...formData, data]);
-                let flashcards = await generateFlashcards(userData);
-                
-                await createUser(userData);
-                await sendEmail(userData, flashcards);
-                
                 setLoading(false);
-                setCompleted(true);
-            } catch (error) {
-                console.error(error);
+                setCurrentFormIndex(currentFormIndex + 1);
             }
-        } else {
-            setFadeOut(true);
-            setCurrentFormIndex(currentFormIndex + 1);
-        }
+        }, 1800);
     };
 
     const CurrentForm = formComponents[currentFormIndex];
 
     return (
         !loading ? <QuestionContainer $fadeOut={fadeOut}>
-                {completed ? (
-                    <FormContainer>
-                        <DisplayMessage>
-                            <p>Completed.</p>
-                            <p>Check your email for your flashcards.</p>
-                            <p><Link href="/">Back.</Link></p>
-                        </DisplayMessage>
-                    </FormContainer>
-                ) : (
-                    <FormContainer>
-                        <CurrentForm length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
-                    </FormContainer>
-                )}
-        </QuestionContainer> : <p>Generating cards...</p>
+            {completed ? (
+                <FormContainer>
+                    <DisplayMessage>
+                        <p>Completed.</p>
+                        <p>Check your email for your flashcards.</p>
+                        <p><Link href="/">Back.</Link></p>
+                    </DisplayMessage>
+                </FormContainer>
+            ) : (
+                <FormContainer>
+                    <CurrentForm length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
+                </FormContainer>
+            )}
+        </QuestionContainer> : <FormContainer>
+            <DisplayMessage>
+                <p>Loading...</p>
+            </DisplayMessage>
+        </FormContainer>
     );
 }
 

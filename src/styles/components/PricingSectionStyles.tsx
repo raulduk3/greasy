@@ -42,12 +42,11 @@ export const Card = styled.div`
 
     p {
         font-size: 1.2em;
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
     }
 
     ul {
         list-style-position: inside;
-        line-height: 1.2
         text-align: left;
 
         li {
@@ -60,7 +59,7 @@ export const Card = styled.div`
         background-color: ${props => props.theme.colors.tertiary};
         color: ${props => props.theme.background};
         padding: 10px 20px;
-        margin: 20px;
+        margin: 10px;
         border-radius: 5px;
         font-weight: bold;
         transition: background-color 0.3s ease;
