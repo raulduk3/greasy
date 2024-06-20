@@ -73,7 +73,7 @@ const styles = {
         color: '#666',
     },
     flashcardText: {
-        margin: '0 0 0.5rem 0',
+        margin: '0.5rem auto',
         fontSize: '1rem',
         color: '#666',
         maxWidth: '80%',
