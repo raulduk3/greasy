@@ -121,8 +121,6 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={roboto.className}>
 			<Head>
-				<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(JSONLD)}}>
-				</script>
 			</Head>
 			<StyledComponentsRegistry>
 				<ThemeClient>
@@ -148,6 +146,8 @@ export default function RootLayout({
 						<Body>
 							{children}
 							<Analytics />
+							<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(JSONLD)}}>
+							</script>
 						</Body>
 
 						{/* Footer */}
