@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import Link from "next/link"; // Import the 'Link' component from the appropriate library
 import { Roboto } from 'next/font/google'
 
@@ -90,6 +91,7 @@ export default function RootLayout({
 						{/* Main content */}
 						<Body>
 							{children}
+							<Analytics />
 						</Body>
 
 						{/* Footer */}
