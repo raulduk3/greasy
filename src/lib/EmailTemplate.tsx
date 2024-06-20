@@ -40,9 +40,11 @@ const styles = {
     },
     intro: {
         margin: '1rem 0',
+        fontWeight: 'bolder' as 'bolder',
         padding: '0',
         fontSize: '2.2rem',
         color: 'white',
+        textAlign: 'center' as 'center',
     },
     message: {
         margin: '1rem 0 2rem 0',
@@ -51,7 +53,7 @@ const styles = {
         width: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        textAlign: 'justify' as 'justify',
+        textAlign: 'center' as 'center',
     },
     flashcards: {
         width: '60%',
@@ -68,7 +70,7 @@ const styles = {
     },
     flashcardHeading: {
         textTransform: 'capitalize' as 'capitalize',
-        margin: '0 0 0.5rem 0',
+        margin: '0.25rem 0 0.5rem 0',
         fontSize: '1.5rem',
         color: '#666',
     },
