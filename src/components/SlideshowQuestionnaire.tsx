@@ -45,8 +45,8 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
                     let userData = Object.assign({}, ...[...formData, data]);
                     let flashcards = await generateFlashcards(userData);
 
-                    await userCreate(userData);
                     await sendEmail(userData, flashcards);
+                    await userCreate(userData);
 
                     setCompleted(true);
                     setFadeOut(false);
