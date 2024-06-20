@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { createUser } from '@/lib/user/createUser';
+import { userCreate } from '@/server/user/create';
 import {
     QuestionContainer, FormContainer, DisplayMessage,
 } from '@/styles/components/SlideshowQuestionnaireStyles';
-import generateFlashcards from '@/lib/generateFlashcards';
+import generateFlashcards from '@/server/generateFlashcards';
 import { DynamicFormProps } from './forms/DynamicForm';
 
 function sendEmail(userData: any, flashcards: any) {
@@ -45,7 +45,7 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
                     let userData = Object.assign({}, ...[...formData, data]);
                     let flashcards = await generateFlashcards(userData);
 
-                    await createUser(userData);
+                    await userCreate(userData);
                     await sendEmail(userData, flashcards);
 
                     setCompleted(true);
