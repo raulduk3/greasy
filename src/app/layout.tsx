@@ -74,11 +74,11 @@ export default function RootLayout({
 		<html lang="en" className={roboto.className}>
 			<StyledComponentsRegistry>
 				<ThemeClient>
-					{/* For SEO */}
-					<h1 style={{
-						display: 'none',
-					}}>GREasy</h1>
 					<Themer>
+						{/* For SEO */}
+						<h1 style={{
+							display: 'none',
+						}}>GREasy</h1>
 						{/* Header */}
 						<Header>
 							<Link href="/">
