@@ -8,7 +8,7 @@ export default async function sentenceGenerationPrompt(word: { id: any; word: an
     return `
         ${word.definition}
         ${word.example}
-        ${getRandomElement(friends)} in ${getRandomElement(locations)}, inspired by ${getRandomElement(activities)}.
+        Use the name ${getRandomElement(friends)} in ${getRandomElement(locations)}, inspired by ${getRandomElement(activities)}.
         Write a 20-25 word GRE-style sentence that clearly illustrates the definition of '${word}.' You MUST use ${word.word}.
     `.trim().replace(/\n/g, '');
 }
