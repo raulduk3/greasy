@@ -100,11 +100,9 @@ const JSONLD = 	{
 	},		
 	"screenshot": "https://greasyvocab.com/opengraph-image.png",
 	"softwareVersion": "1.0",
-	"downloadUrl": "https://greasyvocab.com/download",
+	"downloadUrl": "https://greasyvocab.com/",
 	"featureList": [
 		"Personalized GRE flashcards",
-		"Daily GRE vocabulary practice",
-		"Email flashcard subscription"
 	]
 };
 
@@ -122,8 +120,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={roboto.className}>
-			<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(JSONLD)}}>
-			</script>
+			<Head>
+				<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(JSONLD)}}>
+				</script>
+				</Head>
 			<StyledComponentsRegistry>
 				<ThemeClient>
 					<Themer>
