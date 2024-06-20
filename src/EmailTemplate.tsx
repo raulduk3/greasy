@@ -57,7 +57,7 @@ const styles = {
     },
     flashcards: {
         width: '60%',
-        margin: '1rem auto',
+        margin: '2rem auto',
         textAlign: 'center' as 'center',
     },
     flashcard: {
