@@ -59,11 +59,40 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: "https://greasyvocab.com",	
+		images: [
+			{
+				url: "/opengraph-image.png",
+				width: 800,
+				height: 600,
+				alt: "GREasy - Personalized GRE flashcards",
+			}
+		]
 	},
 	metadataBase: new URL("https://greasyvocab.com"),
 	icons: [
 		{ rel: "icon", href: "/favicon.ico", url: "/favicon.ico" },
-	]
+	],
+	jsonLd: {
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"url": "https://greasyvocab.com",
+		"name": "GREasy",
+		"publisher": {
+			"@type": "Organization",
+			"name": "GREasy",
+			"url": "https://greasyvocab.com",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://greasyvocab.com/favicon.ico",
+				"width": 60,
+				"height": 60
+			}
+		},
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "https://greasyvocab.com"
+		}
+	}
 };
 
 const roboto = Roboto({
