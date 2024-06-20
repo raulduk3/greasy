@@ -8,9 +8,8 @@ const DataPrivacyPage: React.FC = () => {
             alignItems: 'center',
             padding: '2rem',
             fontFamily: 'Arial, sans-serif',
-            color: '#333',
+            color: 'white',
 			gap: '1rem',
-
         }}>
             <h1>Data Privacy</h1>
             <p style={{ maxWidth: '800px', textAlign: 'justify' }}>

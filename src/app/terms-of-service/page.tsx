@@ -8,7 +8,7 @@ const TermsOfServicePage: React.FC = () => {
             alignItems: 'center',
             padding: '2rem',
             fontFamily: 'Arial, sans-serif',
-            color: '#333',
+            color: 'white',
 			gap: '1rem',
         }}>
             <h1>Terms of Service</h1>
