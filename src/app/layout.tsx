@@ -122,7 +122,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={roboto.className}>
-			<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify}}>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(JSONLD)}}>
 			</script>
 			<StyledComponentsRegistry>
 				<ThemeClient>
