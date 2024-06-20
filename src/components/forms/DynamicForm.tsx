@@ -1,58 +1,53 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Title, Description, List, ListItem, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
+import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
 
-interface DynamicFormProps {
+export interface DynamicFormProps {
     title: string;
     description: string;
     placeholder: string;
+    length: number;
     onSubmit: (data: any) => void;
 }
 
-const DynamicForm: React.FC<DynamicFormProps> = ({ title, description, placeholder, onSubmit }) => {
-    const [input, setInput] = useState('');
-    const [items, setItems] = useState<string[]>([]);
+const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, placeholder, onSubmit }) => {
+    const [inputs, setInputs] = useState<string[]>(new Array(length).fill(''));
     const [displayError, setDisplayError] = useState('');
 
-    const handleAdd = (event: React.FormEvent) => {
-        event.preventDefault();
-        if (input === '') {
-            setDisplayError(`Please provide a ${placeholder.toLowerCase()}.`);
-            return;
-        }
-        setItems([...items, input]);
-        setInput('');
+    const handleChange = (index: number, value: string) => {
+        const newInputs = [...inputs];
+        newInputs[index] = value;
+        setInputs(newInputs);
     };
 
-    const handleSubmit = () => {
-        if (items.length === 0) {
-            setDisplayError(`Please provide at least one ${placeholder.toLowerCase()}.`);
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        if (inputs.some(input => input === '') || inputs.length != length) {
+            setDisplayError('Please fill out all fields.');
             return;
         }
-        onSubmit({ [title.toLowerCase()]: items });
+        onSubmit({ [title.toLowerCase()]: [...inputs] });
     };
 
     return (
         <Container>
-            <form action={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <Title>{title}</Title>
                     <Description>{description}</Description>
-                    <p>Add one at a time.</p>
                 </div>
                 <div>
-                    <List>
-                        {items.map((item, index) => (
-                            <ListItem key={index}> - {item}</ListItem>
-                        ))}
-                    </List>
-                </div>
-                <div>
-                    <Label>
-                        <Input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={placeholder} />
-                        <Button onClick={handleAdd}>Add</Button>
-                    </Label>
+                    {Array.from({ length }).map((_, index) => (
+                        <Label key={index}>
+                            <Input 
+                                type="text" 
+                                value={inputs[index]} 
+                                onChange={(e) => handleChange(index, e.target.value)} 
+                                placeholder={placeholder} 
+                            />
+                        </Label>
+                    ))}
                 </div>
                 <div>
                     <Button type="submit">Submit</Button>

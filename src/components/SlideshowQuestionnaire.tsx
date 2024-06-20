@@ -3,11 +3,14 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { createUser } from '@/lib/createUser';
-import { QuestionContainer, FormContainer, DisplayMessage, 
-    FlashcardContainer, FlashcardsContainer, FlashcardPartOfSpeech, FlashcardDefinition, FlashcardSentence, FlashcardWord } from '@/styles/components/SlideshowQuestionnaireStyles';
+import {
+    QuestionContainer, FormContainer, DisplayMessage,
+    FlashcardContainer, FlashcardsContainer, FlashcardPartOfSpeech, FlashcardDefinition, FlashcardSentence, FlashcardWord
+} from '@/styles/components/SlideshowQuestionnaireStyles';
 import generateFlashcards from '@/lib/generateFlashcards';
+import { DynamicFormProps } from './forms/DynamicForm';
 
-function SlideshowQuestionnaire({ formComponents }: { formComponents: React.ComponentType<{ onSubmit: (data: any) => void }>[] }) {
+function SlideshowQuestionnaire({ formComponents, length }: { length: number, formComponents: React.ComponentType<DynamicFormProps>[] }) {
     const [currentFormIndex, setCurrentFormIndex] = useState(0);
     const [flashcards, setFlashcards] = useState<any[]>([]);
     const [formData, setFormData] = useState<Record<string, any>[]>([]);
@@ -28,6 +31,7 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: React.Comp
             } else {
                 try {
                     let userData = Object.assign({}, ...[...formData, data]);
+                    console.log(userData);
                     setFlashcards(await generateFlashcards(userData));
                     await createUser(userData);
                     setCompleted(true);
@@ -64,7 +68,7 @@ function SlideshowQuestionnaire({ formComponents }: { formComponents: React.Comp
                 </FormContainer>
             ) : (
                 <FormContainer>
-                    <CurrentForm onSubmit={handleFormSubmit} />
+                    <CurrentForm length={length} onSubmit={handleFormSubmit} title={''} description={''} placeholder={''} />
                 </FormContainer>
             )}
         </QuestionContainer>

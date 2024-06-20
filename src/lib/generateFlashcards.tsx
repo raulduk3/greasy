@@ -20,7 +20,7 @@ const getWords = async function() {
 };
 
 const generateFlashcards = traceable(
-    async function generateFlashcards(userData) {
+    async function generateFlashcards(userData: any) {
         const openai = wrapOpenAI(new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
             organization: process.env.OPENAI_ORG_ID,

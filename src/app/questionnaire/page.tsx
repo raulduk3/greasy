@@ -8,6 +8,9 @@ const forms = [ContactForm, FriendsForm, LocationForm, ActivitiesForm];
 
 export default function Page() {
 	return (
-		<SlideshowQuestionnaire formComponents={forms} />
+		<>
+			<p style={{alignSelf: 'center', marginBottom: 0, marginTop: '2vh', fontWeight: 'bold'}}>DEMO</p>
+			<SlideshowQuestionnaire length={3} formComponents={forms} />
+		</>
 	);
 }

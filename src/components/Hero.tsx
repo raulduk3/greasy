@@ -8,11 +8,7 @@ export default function Hero() {
         <HeroContainer>
             <HeroDiv>
                 <HeroHeader>Generate bundles of flashcards with tailored sentences.</HeroHeader>
-                <HeroP>Using LLM technology, we take personal data you provide and generate up to one hundred flashcards at your chosen difficulty level.</HeroP>
-                <Link href="/questionnaire" passHref>
-                    Start!
-                </Link>
-                <HeroP>After you finish our survey, check your email for the formatted PDF of flashcards.</HeroP>
+                <HeroP>Using advanced LLM technology, we transform the personal data you provide into up to one hundred customized flashcards at your chosen difficulty level. Complete our survey and receive a formatted PDF of flashcards via email. <Link href="/about">Plus, 50% of all purchases go directly to support Palestine.</Link></HeroP>            
             </HeroDiv>
             <Image src="/hero.jpeg" alt="Engage with Vocabulary" width={0}
                 height={0}

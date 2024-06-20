@@ -1,13 +1,14 @@
 'use client';
 
-import DynamicForm from './DynamicForm';
+import DynamicForm, { DynamicFormProps } from "./DynamicForm";
 
-const LocationForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const LocationForm: React.FC<DynamicFormProps> = ({ onSubmit, length }) => {
     return (
         <DynamicForm
             title="Locations"
             description="Provide the names of your favorite locations. Countries, states, cities, towns. Anywhere you can imagine!"
-            placeholder="i.e. Mars"
+            placeholder="Any location here..."
+            length={length}
             onSubmit={onSubmit}
         />
     );

@@ -33,7 +33,7 @@ export const QuestionContainer = styled.div<QuestionContainerProps>`
     opacity: 0;
     animation: ${({ $fadeOut }) => ($fadeOut ? fadeOut : fadeIn)} 1.8s ease forwards;
     min-height: 50vh;
-    margin: 2vh 0;
+    margin: 1rem 0;
     align-self: center;  
 `;
 

@@ -7,6 +7,11 @@ export const Container = styled.div`
     justify-content: center;
     margin: 0 8vw;
 
+    div:last-child {
+        align-self: center;
+        flex-direction: row;
+    }
+
     form { 
         display: flex;
         flex-direction: column;
@@ -17,6 +22,7 @@ export const Container = styled.div`
         background-color: ${props => props.theme.colors.primary};
         color: ${props => props.theme.background};
         filter: drop-shadow(0px 0px 2px black);
+
 
         div {
             width: 100%;
@@ -43,6 +49,7 @@ export const Title = styled.h2`
 
 export const Description = styled.p`
     margin: 1vmin 0 0 0;
+    text-align: left;
 `;
 
 export const List = styled.ul`

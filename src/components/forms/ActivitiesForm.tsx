@@ -1,13 +1,14 @@
 'use client';
 
-import DynamicForm from './DynamicForm';
+import DynamicForm, { DynamicFormProps } from "./DynamicForm";
 
-const ActivitiesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const ActivitiesForm: React.FC<DynamicFormProps> = ({ onSubmit, length }) => {
     return (
         <DynamicForm
             title="Activities"
-            description="Provide the names of your favorite activities. Sports, hobbies, anything you enjoy!"
-            placeholder="i.e. Biking"
+            description="Provide the names of your favorite activities and things. Sports, hobbies, items, ideas, or anything you enjoy!"
+            placeholder="Anything here..."
+            length={length}
             onSubmit={onSubmit}
         />
     );
