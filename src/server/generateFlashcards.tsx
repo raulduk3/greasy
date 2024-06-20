@@ -8,6 +8,18 @@ import { wrapOpenAI } from "langsmith/wrappers";
 import { traceable } from "langsmith/traceable";
 import sentenceGenerationPrompt from './sentenceGenerationPrompt';
 
+function alphabetizeArrayByKey(arr, key) {
+    return arr.sort((a, b) => {
+        if (a[key] < b[key]) {
+            return -1;
+        }
+        if (a[key] > b[key]) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
 const getWords = async function() {
     const { rows } = await sql`SELECT * FROM words ORDER BY RANDOM() LIMIT 20;`;
     return rows.map((row) => ({
@@ -32,6 +44,8 @@ const generateFlashcards = traceable(
             console.error('No wordsWithData retrieved from the database.');
             return [];
         }
+
+        alphabetizeArrayByKey(wordsWithData, 'word');
 
         const prompts = await Promise.all(wordsWithData.map(async wordData => {
             const promptText = await sentenceGenerationPrompt(wordData, userData.friends, userData.locations, userData.activities);
