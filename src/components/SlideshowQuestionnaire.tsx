@@ -81,7 +81,9 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
             )}
         </QuestionContainer> : <FormContainer>
             <DisplayMessage>
-                <p>Loading...</p>
+                <p style={{
+                    textAlign: 'center',
+                }}>Loading...</p>
             </DisplayMessage>
         </FormContainer>
     );

@@ -9,7 +9,7 @@ const TermsOfServicePage: React.FC = () => {
             padding: '2rem',
             fontFamily: 'Arial, sans-serif',
             color: 'white',
-			gap: '1rem',
+            gap: '1rem',
         }}>
             <h1>Terms of Service</h1>
             <p style={{ maxWidth: '800px', textAlign: 'justify' }}>
@@ -35,7 +35,7 @@ const TermsOfServicePage: React.FC = () => {
             </p>
             <h2>Contact Us</h2>
             <p style={{ maxWidth: '800px', textAlign: 'justify' }}>
-                If you have any questions about these Terms of Service, please contact us at support@greasyvocab.com.
+                If you have any questions about these Terms of Service, please contact us at <a href="mailto:support@greasyvocab.com">support@greasyvocab.com</a>.
             </p>
         </div>
     );
