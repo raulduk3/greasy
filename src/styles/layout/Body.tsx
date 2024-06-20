@@ -9,6 +9,7 @@ const Body = styled.section`
     flex-direction: column;
     flex: 1 1 auto;
     max-width: 100vw;
+    color: white;
 `;
 
 export default Body;
