@@ -24,7 +24,6 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
             justifyContent: 'center',
             gap: '1rem',
             padding: '1rem',
-            fontFamily: 'Arial, sans-serif',
             backgroundColor: '#3B413C',
             color: '#FFF'
         }}>
@@ -54,13 +53,13 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
                     margin: '1.25rem 0',
                     fontSize: '2rem',
                     color: 'white'
-                }}>Dear {name}</p>
+                }}>Hey {name}! 😀</p>
                 <p style={{
-                    margin: '0.5rem 0',
-                    fontSize: '1.5rem',
+                    margin: '0.25rem 0',
+                    fontSize: '1.2rem',
                     color: 'white',
-                    width: '35%',
-                    textAlign: 'left'
+                    width: '50%',
+                    textAlign: 'justify'
                 }}>We are thrilled to provide you with personalized GRE flashcards to aid in your preparation. Below, you'll find the flashcards crafted just for you. Review them carefully and keep practicing to enhance your vocabulary skills.</p>
             </div>
 
@@ -171,7 +170,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
             <p style={{
                 alignSelf: 'start',
                 color: 'white'
-            }}> - The GREasy Team</p>
+            }}> - The GREasy Team 🤙🏽</p>
         </div>
     );
 }
