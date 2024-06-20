@@ -52,6 +52,14 @@ export const metadata: Metadata = {
 		"GRE word practice",
 		"GRE vocab improvement"
 	],
+	openGraph: {
+		siteName: "GREasy",
+		title: "GREasy",
+		description: "Personalized GRE flashcards directly to your inbox.",
+		type: "website",
+		locale: "en_US",
+		url: "https://greasyvocab.com",	
+	},
 	metadataBase: new URL("https://greasyvocab.com"),
 	icons: [
 		{ rel: "icon", href: "/favicon.ico", url: "/favicon.ico" },
