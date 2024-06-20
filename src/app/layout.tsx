@@ -120,8 +120,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={roboto.className}>
-			<Head>
-			</Head>
 			<StyledComponentsRegistry>
 				<ThemeClient>
 					<Themer>
