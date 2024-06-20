@@ -7,6 +7,7 @@ const Body = styled.section`
     display: flex;
     justify-content: start;
     flex-direction: column;
+    justify-content: center;
     flex: 1 1 auto;
     max-width: 100vw;
     color: white;

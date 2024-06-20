@@ -14,8 +14,6 @@ const HeroContainer = styled.div`
     flex-direction: row;
     align-items: center;
     width: 100%;
-    align-self: center;
-
     align-self: start;
 
     img {
