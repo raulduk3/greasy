@@ -135,12 +135,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<Link href="https://www.hrw.org/world-report/2024/country-chapters/israel-and-palestine" className="underline" target="_blank">Human Rights Watch</Link>
 					</div>
 				</header>
-				<main className="flex flex-col flex-1 p-6 items-center justify-center w-full gap-3">
+				<main className="flex flex-col flex-1 py-6 items-center justify-center w-full gap-3">
 					{children}
 					<Analytics />
 					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
 				</main>
-				<footer className="flex flex-col items-center p-4 mt-4 gap-2 text-sm">
+				<footer className="flex flex-col items-center pb-6 gap-2 text-sm">
 					<div className="flex space-x-4">
 						<Link href="/terms-of-service" className="no-underline">Terms of Service</Link>
 					</div>
