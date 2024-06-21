@@ -22,7 +22,7 @@ const PackageCard: React.FC<{
     linkText: string;
 }> = ({ title, price, description, features, link, linkText }) => (
     <div className='flex flex-col items-center align-center flex-basis flex-1 w-10/12 '>
-        <div className="bg-white flex flex-1 h-full flex-col flex-basis text-black p-8 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
+        <div className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
             <h1 className="text-xl text-wrap">{title}</h1>
             <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>
             <ul className="list-disc ml-4 text-gray-900">
