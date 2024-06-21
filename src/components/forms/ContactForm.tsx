@@ -47,7 +47,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
                         Confirm permission to email?
                     </label>
                 </div>
-                <div className="w-full my-2">
+                <div className="self-start w-5/12 mt-4">
                     <button type="submit" className="w-full py-2 bg-green-400 text-white font-bold rounded">Submit</button>
                 </div>
             </form>

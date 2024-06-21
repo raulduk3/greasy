@@ -62,15 +62,15 @@ export default function SlideshowQuestionnaire({ formComponents, length }: { len
                 setLoading(false);
                 setCurrentFormIndex(currentFormIndex + 1);
             }
-        }, 1800);
+        }, 1000);
     };
 
     const CurrentForm = formComponents[currentFormIndex];
 
     return (
-        !loading ? <div className={`flex items-center justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+        !loading ? <div className={`p-6 flex items-center justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
             {completed ? (
-                <div className="flex flex-col items-center justify-center p-6">
+                <div className="flex flex-col items-center justify-center">
                     <div className="text-center">
                         <p>Completed.</p>
                         <p>Check your email for your flashcards.</p>
@@ -78,11 +78,11 @@ export default function SlideshowQuestionnaire({ formComponents, length }: { len
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center p-6">
+                <div className="flex flex-col items-center justify-center">
                     <CurrentForm length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
                 </div>
             )}
-        </div> : <div className="flex flex-col items-center justify-center p-6">
+        </div> : <div className="flex flex-col items-center justify-center">
             <div className="text-center">
                 <p className="text-center">Loading...</p>
             </div>
