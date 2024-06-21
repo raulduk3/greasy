@@ -115,17 +115,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						GR<span className="text-green-500">Easy</span>
 					</Link>
 					<h2 className="text-l text-center mx-4 my-2">Personalized GRE flashcards directly to your inbox 🎉</h2>
-                    <nav className="flex justify-center space-x-4 mt-2 mb-4">
-						<Link href="/about"className="underline">
+					<nav className="flex justify-center space-x-4 mt-2 mb-4">
+						<Link href="/about" className="underline">
 							About
 						</Link>
 						<Link href="/" className="underline">
 							Home
 						</Link>
-						<Link href="/contact"className="underline">
+						<Link href="/contact" className="underline">
 							Contact
 						</Link>
 					</nav>
+					<div className="w-full bg-red-600 text-white text-center text-sm py-1">
+						<span>Genocide in Palestine is ongoing. Learn more and support: </span>
+						<Link href="https://www.un.org/unispal/" className="underline" target="_blank">UNISPAL</Link>
+						<span> | </span>
+						<Link href="https://www.amnesty.org/en/latest/news/" className="underline" target="_blank">Amnesty International</Link>
+						<span> | </span>
+						<Link href="https://www.hrw.org/world-report/2024/country-chapters/israel-and-palestine" className="underline" target="_blank">Human Rights Watch</Link>
+					</div>
 				</header>
 				<main className="flex flex-col flex-1 items-center justify-center w-full">
 					{children}
