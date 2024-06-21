@@ -41,4 +41,4 @@ const PrivacyPage: React.FC = () => {
     );
 }
 
-export default TermsOfServicePage;
+export default PrivacyPage;

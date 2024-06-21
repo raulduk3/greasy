@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const PrivacyPage: React.FC = () => {
+const AboutPage: React.FC = () => {
     return (
         <div className="flex flex-col p-10 m-6 my-10 font-sans gap-3 max-w-lg md:w-auto bg-white text-black rounded-lg">
             <h1 className="text-2xl">About GREasy</h1>
