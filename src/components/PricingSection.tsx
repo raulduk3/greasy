@@ -2,12 +2,11 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { useIsVisible } from '@/lib/useIsVisible';
+import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
-
     return (
-        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-6 md:gap-6 md:flex-row">
+        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-8 md:flex-row md:justify-evenly w-full">
             {packages.map((pkg, index) => (
                 <PackageCard key={index} index={index} {...pkg} />
             ))}
@@ -26,12 +25,12 @@ const PackageCard: React.FC<{
 }> = ({ title, index, price, description, features, link, linkText }) => {
     const ref_main = useRef<HTMLDivElement>(null);
     const isSectionVisible = useIsVisible(ref_main);
-    
+
     const ref_sub = useRef<HTMLDivElement>(null);
     const isCardVisible = useIsVisible(ref_sub);
-    
+
     return (
-        <div ref={ref_main} key={index} className={`flex flex-col items-center align-center flex-basis flex-1 w-11/12 transition-opacity ease-in duration-700 ${isSectionVisible ? "opacity-100" : "opacity-0"}`}>
+        <div ref={ref_main} className={`flex flex-col items-center align-center flex-basis flex-1 w-11/12 transition-opacity ease-in duration-[1800ms] ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
             <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
                 <h1 className="text-xl text-wrap">{title}</h1>
                 <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>

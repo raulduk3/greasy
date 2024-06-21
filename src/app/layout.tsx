@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react"
 import Link from "next/link"; // Import the 'Link' component from the appropriate library
 import { Inter } from 'next/font/google'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils/utils';
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
 import { json } from "stream/consumers";
