@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '../../styles/components/FormStyles';
-import { userVerify } from '@/server/user/verify';
+import { userVerify } from '@/lib/user/verify';
 
 function PayForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
     const [displayError, setDisplayError] = useState('');
@@ -23,10 +22,7 @@ function PayForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactEl
     };
 
     return (
-        <Container>
-            <p>Can't use this just yet :(</p>
-            {displayError && <ErrorMessage>{displayError}</ErrorMessage>}
-        </Container>
+        <p>Can't use this just yet :(</p>
     );
 }
 

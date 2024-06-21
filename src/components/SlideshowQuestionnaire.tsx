@@ -2,11 +2,8 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { userCreate } from '@/server/user/create';
-import {
-    QuestionContainer, FormContainer, DisplayMessage,
-} from '@/styles/components/SlideshowQuestionnaireStyles';
-import generateFlashcards from '@/server/generateFlashcards';
+import { userCreate } from '@/lib/user/create';
+import generateFlashcards from '@/lib/generateFlashcards';
 import { DynamicFormProps } from './forms/DynamicForm';
 import { redirect } from 'next/navigation';
 
@@ -23,7 +20,7 @@ function sendEmail(userData: any, flashcards: any) {
     });
 }
 
-function SlideshowQuestionnaire({ formComponents, length }: { length: number, formComponents: React.ComponentType<DynamicFormProps>[] }) {
+export default function SlideshowQuestionnaire({ formComponents, length }: { length: number, formComponents: React.ComponentType<DynamicFormProps>[] }) {
     const [currentFormIndex, setCurrentFormIndex] = useState(0);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<Record<string, any>[]>([]);
@@ -46,11 +43,10 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
                     let userData = Object.assign({}, ...[...formData, data]);
                     let flashcards = await generateFlashcards(userData);
 
-                    let sent= await sendEmail(userData, flashcards);
+                    let sent = await sendEmail(userData, flashcards);
                     if (sent.status == 200) {
                         await userCreate(userData);
-                    }
-                    else {
+                    } else {
                         console.error('Email not sent.');
                         redirect('/');
                     }
@@ -72,28 +68,24 @@ function SlideshowQuestionnaire({ formComponents, length }: { length: number, fo
     const CurrentForm = formComponents[currentFormIndex];
 
     return (
-        !loading ? <QuestionContainer $fadeOut={fadeOut}>
+        !loading ? <div className={`flex items-center justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
             {completed ? (
-                <FormContainer>
-                    <DisplayMessage>
+                <div className="flex flex-col items-center justify-center">
+                    <div className="text-center">
                         <p>Completed.</p>
                         <p>Check your email for your flashcards.</p>
                         <p><Link href="/">Back.</Link></p>
-                    </DisplayMessage>
-                </FormContainer>
+                    </div>
+                </div>
             ) : (
-                <FormContainer>
+                <div className="flex flex-col items-center justify-center">
                     <CurrentForm length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
-                </FormContainer>
+                </div>
             )}
-        </QuestionContainer> : <FormContainer>
-            <DisplayMessage>
-                <p style={{
-                    textAlign: 'center',
-                }}>Loading...</p>
-            </DisplayMessage>
-        </FormContainer>
+        </div> : <div className="flex flex-col items-center justify-center">
+            <div className="text-center">
+                <p className="text-center">Loading...</p>
+            </div>
+        </div>
     );
 }
-
-export default SlideshowQuestionnaire;

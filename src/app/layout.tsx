@@ -3,14 +3,7 @@ import { Analytics } from "@vercel/analytics/react"
 import Link from "next/link"; // Import the 'Link' component from the appropriate library
 import { Roboto } from 'next/font/google'
 
-import StyledComponentsRegistry from "@/lib/registry";
-
-import { Header, Title, Subtitle, NavList } from "@/styles/layout/Header";
-import Footer from "@/styles/layout/Footer";
-import Body from "@/styles/layout/Body";
-import Themer from "@/styles/layout/Themer";
-
-import ThemeClient from "@/styles/theme/ThemeClient";
+import { cn } from '@/lib/utils';
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
 import { json } from "stream/consumers";
@@ -113,55 +106,38 @@ const roboto = Roboto({
 	display: 'swap',
 });
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
-	return (
-		<html lang="en" className={roboto.className}>
-			<StyledComponentsRegistry>
-				<ThemeClient>
-					<Themer>
-						{/* For SEO */}
-						<h1 style={{
-							display: 'none',
-						}}>GREasy</h1>
-						{/* Header */}
-						<Header>
-							<Link href="/">
-								<Title>GR<span>Easy</span></Title>
-							</Link>
-							<Subtitle>Personalized GRE flashcards directly to your inbox 🎉</Subtitle>
-							<NavList>
-								<li><Link href="/about">About</Link></li>
-								<li><Link href="/">Home</Link></li>
-								<li><Link href="/contact">Contact</Link></li>
-							</NavList>
-						</Header>
-
-						{/* Main content */}
-						<Body>
-							{children}
-							<Analytics />
-							<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(JSONLD)}}>
-							</script>
-						</Body>
-
-						{/* Footer */}
-						<Footer>
-							<div>
-								<Link href="/terms-of-service">Terms of Service</Link>
-							</div>
-							<div>
-								© 2024 GREasy
-								|
-								Created with love by ra
-							</div>
-						</Footer>
-					</Themer>
-				</ThemeClient>
-			</StyledComponentsRegistry>
-		</html>
-	);
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang="en" className={roboto.className}>
+            <body className={cn("flex flex-col min-h-screen max-w-full overflow-x-hidden font-sans bg-gray-700 text-white", roboto.className)}>
+                <header className="flex flex-col items-center text-white">
+                    <Link href="/" className="text-6xl mt-4 font-bold no-underline">
+                        GR<span className="text-green-500">Easy</span>
+                    </Link>
+                    <h2 className="text-l text-center mx-4 my-2">Personalized GRE flashcards directly to your inbox 🎉</h2>
+                    <nav className="flex space-x-4 mt-2 mb-4">
+                        <Link href="/about" >About</Link>
+                        <Link href="/" >Home</Link>
+                        <Link href="/contact" >Contact</Link>
+                    </nav>
+                </header>
+                <main className="flex flex-col flex-1 items-center justify-center w-full">
+                    {children}
+                    <Analytics />
+                    <script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
+                </main>
+                <footer className="flex flex-col items-center p-4 mt-4 gap-2 text-sm">
+                    <div className="flex space-x-4">
+                        <Link href="/terms-of-service" className="no-underline">Terms of Service</Link>
+                    </div>
+                    <div className="flex space-x-4">
+                        <Link href="/terms-of-service" className="no-underline">Privacy</Link>						
+                    </div>
+					<div className="text-center">
+                        © 2024 GREasy | Created with love by ra
+                    </div>
+                </footer>
+            </body>
+        </html>
+    );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Title, Description, Label, Input, Button, ErrorMessage } from '@/styles/components/FormStyles';
 
 export interface DynamicFormProps {
     title: string;
@@ -23,7 +22,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        if (inputs.some(input => input === '') || inputs.length != length) {
+        if (inputs.some(input => input === '') || inputs.length !== length) {
             setDisplayError('Please fill out all fields.');
             return;
         }
@@ -31,33 +30,34 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
     };
 
     return (
-        <Container>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <Title>{title}</Title>
-                    <Description>{description}</Description>
+        <div className="flex flex-col items-center justify-center mx-32 my-8">
+            <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center p-6 my-6 bg-white text-gray-900 shadow-md w-full max-w-md">
+                <div className="w-full my-2">
+                    <h2 className="text-2xl font-bold">{title}</h2>
+                    <p className="text-lg">{description}</p>
                 </div>
-                <div>
+                <div className="w-full my-2 flex flex-col items-start">
                     {Array.from({ length }).map((_, index) => (
-                        <div  key={index}>
-                            <Label>
+                        <div key={index} className="w-full my-2">
+                            <label className="w-full flex flex-col my-1">
                                 {placeholder + ` ${index + 1}`}
-                            </Label>
-                            <Input 
-                                type="text" 
-                                value={inputs[index]} 
-                                onChange={(e) => handleChange(index, e.target.value)} 
-                                placeholder="..."
-                            />
+                                <input 
+                                    type="text" 
+                                    value={inputs[index]} 
+                                    onChange={(e) => handleChange(index, e.target.value)} 
+                                    placeholder="..." 
+                                    className="border-b-2 border-gray-300 focus:border-green-400 outline-none p-2"
+                                />
+                            </label>
                         </div>
                     ))}
                 </div>
-                <div>
-                    <Button type="submit">Submit</Button>
+                <div className="w-full my-2">
+                    <button type="submit" className="w-full py-2 bg-green-400 text-white font-bold rounded">Submit</button>
                 </div>
             </form>
-            {displayError && <ErrorMessage>{displayError}</ErrorMessage>}
-        </Container>
+            {displayError && <p className="text-red-500">{displayError}</p>}
+        </div>
     );
 };
 

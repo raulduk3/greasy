@@ -1,20 +1,20 @@
-import { HeroContainer, HeroDiv, HeroHeader, HeroP } from "@/styles/components/HeroStyles";
-
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Hero() {
     return (
-        <HeroContainer>
-            <HeroDiv>
-                <HeroHeader>Generate bundles of flashcards with tailored sentences.</HeroHeader>
-                <HeroP>Using advanced LLM technology, we transform the personal data you provide into up to one hundred customized flashcards at your chosen difficulty level. Complete our survey and receive a formatted PDF of flashcards via email. <Link href="/about">Plus, 50% of all purchases go directly to support Palestine.</Link></HeroP>            
-            </HeroDiv>
-            <Image src="/hero.jpeg" alt="Engage with Vocabulary" width={0}
-                height={0}
-                sizes="(max-width: 768px) 100vh, (max-width: 1200px) 100vw"
-                style={{ width: '100%', height: '100%' }}>
-            </Image>
-        </HeroContainer>
+        <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center w-full" style={{ backgroundImage: 'url(/hero.jpeg)' }}>
+            <div className="bg-white bg-opacity-90 p-8 m-6 rounded-lg text-center flex items-center flex-col">
+                <h1 className="text-3xl text-gray-900 self-start  text-left">Generate bundles of flashcards with tailored sentences.</h1>
+                <p className="mt-2 text-l text-gray-700 max-w-prose text-left self-start text-left">
+                    Using advanced LLM technology, we transform the personal data you provide into up to one hundred customized flashcards at your chosen difficulty level.
+                    Complete our survey and receive a formatted PDF of flashcards via email.
+                </p>
+                <Link href="/about" className="text-green-500 text-l mt-2 self-start text-left">Plus, 50% of all purchases go directly to support Palestine.</Link>
+                <button className="bg-green-500 hover:bg-green-700 text-white text-m  p-5 rounded-full mt-4 w-full">
+                    Explore packages
+                </button>
+            </div>
+        </div>
     );
 }
