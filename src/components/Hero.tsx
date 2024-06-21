@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-                <div className="relative flex items-center justify-center bg-cover bg-center w-11/12 rounded-lg shadow-xl mt-6" style={{ backgroundImage: 'url(/hero.jpeg)' }}>
+                <div className="relative flex items-center justify-center bg-cover bg-center w-11/12 rounded-lg shadow-xl" style={{ backgroundImage: 'url(/hero.jpeg)' }}>
         <div className="bg-white p-8 m-6 my-15 rounded-lg text-center flex items-center flex-col max-w-lg shadow-lg">
                 <h1 className="text-3xl text-gray-900 self-start  text-left">Generate bundles of flashcards with tailored sentences.</h1>
                 <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
