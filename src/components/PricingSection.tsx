@@ -1,13 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
+import { useIsVisible } from '@/lib/useIsVisible';
 
 export const PricingSection: React.FC = () => {
+
     return (
-        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-6 md:gap-6 md:flex-row md:justify-center">
+        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-6 md:gap-6 md:flex-row">
             {packages.map((pkg, index) => (
-                <PackageCard key={index} {...pkg} />
+                <PackageCard key={index} index={index} {...pkg} />
             ))}
         </div>
     );
@@ -20,28 +22,37 @@ const PackageCard: React.FC<{
     features: string[];
     link: string;
     linkText: string;
-}> = ({ title, price, description, features, link, linkText }) => (
-    <div className='flex flex-col items-center align-center flex-basis flex-1 w-10/12 '>
-        <div className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
-            <h1 className="text-xl text-wrap">{title}</h1>
-            <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>
-            <ul className="list-disc ml-4 text-gray-900">
-                {features.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
-                ))}
-            </ul>
-            <div className='flex flex-1 flex-row justify-center'> 
-                <Link href={link}
-                        className="shadow bg-green-500 text-white w-5/12 py-2 px-4 rounded mt-5 align-center self-end text-center font-bold no-underline hover:bg-green-600 transition duration-200"
-                        role="button"
-                        aria-label={`Start ${title}`}
-                        >
-                        {linkText}
-                </Link>
+    index: number;
+}> = ({ title, index, price, description, features, link, linkText }) => {
+    const ref_main = useRef<HTMLDivElement>(null);
+    const isSectionVisible = useIsVisible(ref_main);
+    
+    const ref_sub = useRef<HTMLDivElement>(null);
+    const isCardVisible = useIsVisible(ref_sub);
+    
+    return (
+        <div ref={ref_main} key={index} className={`flex flex-col items-center align-center flex-basis flex-1 w-11/12 transition-opacity ease-in duration-700 ${isSectionVisible ? "opacity-100" : "opacity-0"}`}>
+            <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
+                <h1 className="text-xl text-wrap">{title}</h1>
+                <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>
+                <ul className="list-disc ml-4 text-gray-900">
+                    {features.map((feature, idx) => (
+                        <li key={idx}>{feature}</li>
+                    ))}
+                </ul>
+                <div className='flex flex-1 flex-row justify-center'> 
+                    <Link href={link}
+                            className="shadow bg-green-500 text-white w-5/12 py-2 px-4 rounded mt-5 align-center self-end text-center font-bold no-underline hover:bg-green-600 transition duration-200"
+                            role="button"
+                            aria-label={`Start ${title}`}
+                            >
+                            {linkText}
+                    </Link>
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+}
 
 const packages = [
     {

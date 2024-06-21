@@ -114,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<Link href="/" className="text-6xl mt-5 font-bold no-underline">
 						GR<span className="text-green-500">Easy</span>
 					</Link>
-					<p className="text-m text-nowrap text-center mx-4 mt-3 mb-4">Personalized GRE flashcards directly to your inbox</p>
+					<p className="text-m text-center mx-4 mt-3 mb-4">Personalized GRE flashcards directly to your inbox</p>
 					<nav className="flex justify-center space-x-4 mb-4">
 						<Link href="/about" className="underline">
 							About
