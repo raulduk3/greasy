@@ -9,7 +9,7 @@ export const PricingSection: React.FC = () => {
             <div className="bg-white text-gray-900 p-6 m-2 shadow-lg shadow rounded-sm w-3/4 md:max-w-auto text-left flex flex-col">
                 <h1 className="text-2xl">Premium Package</h1>
                 <p className="text-xl mb-2">$2.00</p>
-                <ul className="list-disc ml-4">
+                <ul className="list-disc ml-4 text-gray-900 ">
                     <li>Two-hundred premium GRE flashcards</li>
                     <li>Personalized sentences using GPT-4</li>
                     <li>Sent to your email</li>
@@ -20,7 +20,7 @@ export const PricingSection: React.FC = () => {
             <div className="bg-white text-gray-900 p-8 m-2 shadow-lg shadow rounded-sm w-10/12 md:max-w-auto text-left flex flex-col">
                 <h1 className="text-2xl">Basic Package</h1>
                 <p className="text-xl mb-2">$1.00</p>
-                <ul className="list-disc ml-4">
+                <ul className="list-disc ml-4 text-gray-900 ">
                     <li>One-hundred premium GRE flashcards</li>
                     <li>Personalized sentences using GPT-3.5</li>
                     <li>Sent to your email</li>
@@ -31,7 +31,7 @@ export const PricingSection: React.FC = () => {
             <div className="bg-white text-gray-900 p-6 m-2 shadow-lg shadow rounded-sm w-3/4 md:max-w-auto text-left flex flex-col">
                 <h1 className="text-2xl">Free Demo</h1>
                 <p className="text-xl mb-2">$0.00</p>
-                <ul className="list-disc ml-4">
+                <ul className="list-disc ml-4 text-gray-900 ">
                     <li>Fifteen free GRE flashcards</li>
                     <li>Personalized sentences using GPT-3.5</li>
                     <li>Sent to your email</li>
