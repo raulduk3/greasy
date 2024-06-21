@@ -45,7 +45,7 @@ const PackageCard: React.FC<{
 
 const packages = [
     {
-        title: "Two-hundred personalized GRE flashcards",
+        title: "Two-hundred GRE flashcards",
         price: "$2.00",
         description: "Same day delivery",
         features: [
@@ -60,7 +60,7 @@ const packages = [
         linkText: "Start"
     },
     {
-        title: "One-hundred personalized GRE flashcards",
+        title: "One-hundred GRE flashcards",
         price: "$1.00",
         description: "Same day delivery",
         features: [
@@ -74,11 +74,11 @@ const packages = [
         linkText: "Start"
     },
     {
-        title: "Fifteen free personalized GRE flashcards",
+        title: "Sample GRE flashcards",
         price: "$0.00",
         description: "Same day delivery",
         features: [
-            "Sent to your email for viewing",
+            "15 sample flashcards sent to your email",
             "Generated using GPT-3.5",
             "Limited vocabulary",
         ],
