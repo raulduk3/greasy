@@ -6,7 +6,7 @@ import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-8 md:flex-row md:justify-evenly w-full">
+        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-6 md:flex-row justify-center w-full">
             {packages.map((pkg, index) => (
                 <PackageCard key={index} index={index} {...pkg} />
             ))}
@@ -30,7 +30,7 @@ const PackageCard: React.FC<{
     const isCardVisible = useIsVisible(ref_sub);
 
     return (
-        <div ref={ref_main} className={`flex flex-col items-center align-center flex-basis flex-1 w-11/12 transition-opacity ease-in duration-1000 [2000ms] ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
+        <div ref={ref_main} className={`flex flex-col items-center align-center w-11/12 md:w-1/4 transition-opacity ease-in duration-1800 ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
             <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
                 <h1 className="text-xl text-wrap">{title}</h1>
                 <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>

@@ -126,16 +126,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 							Contact
 						</Link>
 					</nav>
-					<div className="w-full bg-red-600 text-white text-center text-sm py-1">
+					<div className="w-full bg-red-600 text-sm p-1 text-white text-center text-sm py-1">
 						<span>Genocide in Palestine is ongoing. Learn more and support: </span>
-						<Link href="https://www.un.org/unispal/" className="underline" target="_blank">UNISPAL</Link>
-						<span> | </span>
-						<Link href="https://www.amnesty.org/en/latest/news/" className="underline" target="_blank">Amnesty International</Link>
-						<span> | </span>
 						<Link href="https://www.hrw.org/world-report/2024/country-chapters/israel-and-palestine" className="underline" target="_blank">Human Rights Watch</Link>
 					</div>
 				</header>
-				<main className="flex flex-col flex-1 items-center justify-start w-full gap-3 p-6">
+				<main className="flex flex-col grow flex-1 items-center justify-start w-full h-full gap-3">
 					{children}
 					<Analytics />
 					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />

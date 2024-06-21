@@ -42,7 +42,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
                     </label>
                 </div>
                 <div className="w-full my-2 flex flex-col items-start">
-                    <label className="w-full flex text-sm items-center gap-2">
+                    <label className="w-full flex text-smitems-center gap-2">
                         <input type='checkbox' name='toggle' value='toggle' required className="w-5 h-5 text-green-400"/>
                         Confirm permission to email?
                     </label>
