@@ -27,7 +27,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
             <form onSubmit={handleSubmit} className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-lg">
                 <div className="w-full mb-2">
                     <h2 className="text-2xl">Begin by providing your basic contact information.</h2>
-                    <p className="text-lg">We will only contact you via email once.</p>
+                    <p className="text-lg">We will contact you via email once only.</p>
                 </div>
                 <div className="w-full my-2 flex flex-col items-start">
                     <label className="w-full flex flex-col my-1">
