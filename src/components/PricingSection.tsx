@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className="flex flex-col justify-center md:h-auto p-6 gap-6 md:gap-6 md:flex-row md:justify-center">
+        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-6 md:gap-6 md:flex-row md:justify-center">
             {packages.map((pkg, index) => (
                 <PackageCard key={index} {...pkg} />
             ))}
@@ -21,8 +21,8 @@ const PackageCard: React.FC<{
     link: string;
     linkText: string;
 }> = ({ title, price, description, features, link, linkText }) => (
-    <div className='flex flex-col items-center align-center flex-basis flex-1'>
-        <div className="bg-white flex flex-1 h-full flex-col text-gray-900 p-8 gap-1 shadow-lg rounded-sm w-full md:max-w-o text-left flex flex-col">
+    <div className='flex flex-col items-center align-center flex-basis flex-1 w-10/12 '>
+        <div className="bg-white flex flex-1 h-full flex-col flex-basis text-black p-8 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
             <h1 className="text-xl text-wrap">{title}</h1>
             <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>
             <ul className="list-disc ml-4 text-gray-900">
