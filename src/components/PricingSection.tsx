@@ -30,7 +30,7 @@ const PackageCard: React.FC<{
     const isCardVisible = useIsVisible(ref_sub);
 
     return (
-        <div ref={ref_main} className={`flex flex-col items-center align-center flex-basis flex-1 w-11/12 transition-opacity ease-in duration-[1800ms] ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
+        <div ref={ref_main} className={`flex flex-col items-center align-center flex-basis flex-1 w-11/12 transition-opacity ease-in duration-1000 [2000ms] ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
             <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
                 <h1 className="text-xl text-wrap">{title}</h1>
                 <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>

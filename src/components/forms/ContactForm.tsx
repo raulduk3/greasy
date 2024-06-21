@@ -23,10 +23,10 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
     };
 
     return (
-        <div className="flex flex-col items-center justify-center w-full p-6">
+        <div className="flex flex-col items-center justify-center w-full">
             <form onSubmit={handleSubmit} className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-lg">
                 <div className="w-full mb-2">
-                    <h2 className="text-2xl">Begin by providing your basic contact information.</h2>
+                    <h2 className="text-2xl mb-1">Begin by providing your basic contact information.</h2>
                     <p className="text-lg">We will contact you via email once only.</p>
                 </div>
                 <div className="w-full my-2 flex flex-col items-start">
@@ -42,7 +42,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
                     </label>
                 </div>
                 <div className="w-full my-2 flex flex-col items-start">
-                    <label className="w-full flex items-center gap-2">
+                    <label className="w-full flex text-sm items-center gap-2">
                         <input type='checkbox' name='toggle' value='toggle' required className="w-5 h-5 text-green-400"/>
                         Confirm permission to email?
                     </label>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const AboutPage: React.FC = () => {
     return (
-        <div className="flex flex-col p-8 m-6 my-10 font-sans gap-3 max-w-lg md:w-auto bg-white text-black rounded-lg">
+        <div className="flex self-center justify-start flex-col p-8 font-sans gap-3 max-w-lg md:w-auto bg-white text-black rounded-lg">
             <h1 className="text-2xl">About GREasy</h1>
             <p className="max-w-xll text-left">
                 Hi, my name is <Link href="https://raulduke.com" className="text-green-500 no-underline">Richard Álvarez</Link> 
