@@ -11,7 +11,7 @@ const ContactPage: React.FC = () => {
                 You can email me at <a href={`mailto:rawalvarez731@gmail.com?subject=GREasy Support Request ${new Date().toDateString()}`} className="text-green-500 no-underline">rawalvarez731@gmail.com</a>. I strive to respond to all inquiries within 24 hours.
                 I look forward to connecting with you and assisting you in your GRE preparation journey!
             </p>
-            <iframe src='https://giphy.com/embed/g79am6uuZJKSc' width='220'  className='self-center' frameBorder='0' class='giphy-embed'></iframe>
+            <iframe src='https://giphy.com/embed/g79am6uuZJKSc' width='220'  className='self-center' frameBorder='0'></iframe>
         </div>
     );
 }
