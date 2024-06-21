@@ -79,7 +79,7 @@ export default function SlideshowQuestionnaire({ formComponents, length }: { len
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center p-6">
-                    <CurrentForm className="rounded" length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
+                    <CurrentForm length={length} onSubmit={iterate} title={''} description={''} placeholder={''} />
                 </div>
             )}
         </div> : <div className="flex flex-col items-center justify-center p-6">
