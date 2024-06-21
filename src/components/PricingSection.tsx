@@ -17,7 +17,7 @@ export const PricingSection: React.FC = () => {
                 </ul>
                 <Link href="/q/premium" className="shadow bg-green-500 text-white py-2 px-4 rounded mt-4 text-center font-bold no-underline hover:bg-green-600 transition duration-200">Start</Link>
             </div>
-            <div className="bg-white text-gray-900 p-6 m-2 shadow-lg shadow rounded-sm w-3/4 md:max-w-auto text-left flex flex-col">
+            <div className="bg-white text-gray-900 p-8 m-2 shadow-lg shadow rounded-sm w-10/12 md:max-w-auto text-left flex flex-col">
                 <h1 className="text-2xl">Basic Package</h1>
                 <p className="text-xl mb-2">$1.00</p>
                 <ul className="list-disc ml-4">
