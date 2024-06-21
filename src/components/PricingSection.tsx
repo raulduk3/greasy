@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className="flex flex-col items-center justify-center p-6 md:flex-row md:justify-center md:gap-6">
+        <div className="flex flex-col items-center justify-center p-6 md:flex-row md:justify-center gap-2 md:gap-4">
             <div className="bg-white text-gray-900 p-6 m-2 shadow-lg shadow rounded-sm max-w-xs text-left flex flex-col gap-2">
                 <h1 className="text-2xl">Premium Package</h1>
                 <p className="text-xl">$2.00</p>

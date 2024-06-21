@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const AboutPage: React.FC = () => {
     return (
-        <div className="flex flex-col items-center p-8 font-sans text-white gap-4 w-auto bg-white text-black">
+        <div className="flex flex-col items-center p-8 font-sans  gap-4 w-auto bg-white text-black">
             <h1 className="text-3xl font-bold">About GREasy</h1>
             <p className="max-w-xl text-left text-left">
                 Welcome to GREasy! <br /> <br /> I’m <Link href="https://raulduke.com" className="text-green-500 no-underline">Richard Álvarez</Link>, a recent college grad who created this tool while prepping for the GRE. <br /> <br /> I wanted a study aid that was more engaging and effective than the usual, so I built GREasy to make mastering GRE vocabulary both fun and personalized. 

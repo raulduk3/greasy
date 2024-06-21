@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactPage: React.FC = () => {
     return (
-        <div className="flex flex-col items-center p-8 font-sans text-white gap-4 w-auto bg-white text-black">
+        <div className="flex flex-col items-center p-8 font-sans gap-4 w-auto bg-white text-black">
             <h1 className="text-3xl font-bold">Contact</h1>
             <p className="max-w-xl text-left">
                 I would love to hear from you! Whether you have questions, feedback, or just want to connect, feel free to reach out.
