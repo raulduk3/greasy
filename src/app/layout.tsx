@@ -145,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<Link href="/terms-of-service" className="no-underline">Terms of Service</Link>
 					</div>
 					<div className="flex space-x-4">
-						<Link href="/terms-of-service" className="no-underline">Privacy</Link>
+						<Link href="/privacy" className="no-underline">Privacy</Link>
 					</div>
 					<div className="text-center">
 						© 2024 GREasy | Created with love by ra
