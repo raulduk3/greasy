@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <div className="flex flex-1 flex-basis grow flex-col flex-grow w-full">
-            <div className="flex items-center justify-center bg-cover bg-center bg-opacity-90 min-h-full w-full" style={{  backgroundImage: 'url(/hero.jpeg)' }}>
+        <div className="flex flex-col flex-grow min-h-[calc(100vh-21.5vh)] w-full">
+            <div className="flex flex-1 items-center justify-center bg-cover bg-center bg-opacity-90 min-h-full w-full" style={{  backgroundImage: 'url(/hero.jpeg)' }}>
                 <div className="bg-white p-8 m-6 rounded-lg text-center flex items-center flex-col max-w-lg shadow-lg">
                     <h1 className="text-3xl text-gray-900 self-start  text-left">Generate bundles of flashcards with tailored sentences</h1>
                     <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
