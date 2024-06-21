@@ -142,10 +142,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				</main>
 				<footer className="flex flex-col items-center pb-6 gap-2 text-sm">
 					<div className="flex space-x-4">
-						<Link href="/terms-of-service" className="no-underline">Terms of Service</Link>
+						<Link href="/terms-of-service" className="">Terms of Service</Link>
 					</div>
 					<div className="flex space-x-4">
-						<Link href="/privacy" className="no-underline">Privacy</Link>
+						<Link href="/privacy" className="">Privacy</Link>
 					</div>
 					<div className="text-center">
 						© 2024 GREasy | Created with love by ra
