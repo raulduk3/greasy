@@ -12,7 +12,7 @@ const forms = [ContactForm, FriendsForm, LocationForm, ActivitiesForm];
 
 export default function Home() {
     return (
-        <>
+        <> 
             <Hero></Hero>
             <PricingSection></PricingSection>
         </>

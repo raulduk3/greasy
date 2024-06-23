@@ -6,7 +6,7 @@ import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className="flex flex-col items-center md:items-stretch align-center p-6 gap-6 md:flex-row justify-center w-full">
+        <div className="flex flex-col items-center md:items-stretch align-center p-8 lg:p-12 lg:gap-12 gap-8 md:flex-row justify-center w-full">
             {packages.map((pkg, index) => (
                 <PackageCard key={index} index={index} {...pkg} />
             ))}
@@ -30,8 +30,8 @@ const PackageCard: React.FC<{
     const isCardVisible = useIsVisible(ref_sub);
 
     return (
-        <div ref={ref_main} className={`flex flex-col items-center align-center w-11/12 md:w-1/4 transition-opacity ease-in duration-1800 ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
-            <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-8 py-6 gap-1 shadow-lg rounded-sm w-full text-left flex flex-col">
+        <div ref={ref_main} className={`flex flex-col flex flex-1 items-center md:items-stretch align-center w-11/12 md:w-auto transition-opacity ease-in duration-1800 ${isSectionVisible.wasViewed ? "opacity-100" : "opacity-0"}`}>
+            <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-5 py-5 gap-1 shadow-lg rounded-sm text-left flex flex-col">
                 <h1 className="text-xl text-wrap">{title}</h1>
                 <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>
                 <ul className="list-disc ml-4 text-gray-900">
@@ -39,7 +39,7 @@ const PackageCard: React.FC<{
                         <li key={idx}>{feature}</li>
                     ))}
                 </ul>
-                <div className='flex flex-1 flex-row justify-center'> 
+                <div className='flex flex-1 flex-row justify-center my-2'> 
                     <Link href={link}
                             className="shadow bg-green-500 text-white w-5/12 py-2 px-4 rounded mt-5 align-center self-end text-center font-bold no-underline hover:bg-green-600 transition duration-200"
                             role="button"

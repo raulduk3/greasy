@@ -30,7 +30,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-6">
+        <>
             <form onSubmit={handleSubmit} className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-lg">
                 <div className="w-full mb-2">
                     <h2 className="text-2xl">{title}</h2>
@@ -57,7 +57,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
                 </div>
             </form>
             {displayError && <p className="text-red-500">{displayError}</p>}
-        </div>
+        </>
     );
 };
 

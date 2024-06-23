@@ -23,7 +23,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
     };
 
     return (
-        <div className="flex flex-col items-center justify-center w-full">
+        <>
             <form onSubmit={handleSubmit} className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-lg">
                 <div className="w-full mb-2">
                     <h2 className="text-2xl mb-1">Begin by providing your basic contact information.</h2>
@@ -52,7 +52,7 @@ function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.Rea
                 </div>
             </form>
             {displayError && <p className="text-red-500">{displayError}</p>}
-        </div>
+        </>
     );
 }
 

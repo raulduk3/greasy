@@ -68,7 +68,7 @@ export default function SlideshowQuestionnaire({ formComponents, length }: { len
     const CurrentForm = formComponents[currentFormIndex];
 
     return (
-        !loading ? <div className={`p-6 flex items-center w-full justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+        !loading ? <div className={`p-6 flex grow w-full justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
             {completed ? (
                 <div className="flex flex-col items-center justify-center">
                     <div className="text-center">
