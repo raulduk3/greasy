@@ -110,7 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en" className={inter.className}>
 			<body className={cn("flex flex-col min-h-screen max-w-full overflow-x-hidden font-sans bg-slate-700 text-white", inter.className)}>
-				<header className="flex flex-col items-center text-white">
+				<header className="flex flex-col items-center text-white min-h-[20vh]">
 					<Link href="/" className="text-6xl mt-5 font-bold no-underline">
 						GR<span className="text-green-500">Easy</span>
 					</Link>
