@@ -6,7 +6,7 @@ import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className="flex flex-col items-center lg:flex-row md:items-stretch align-center p-8 lg:p-16 lg:gap-12 gap-8 justify-center w-full">
+        <div className="flex flex-col items-center lg:flex-row md:items-stretch align-center p-8 lg:p-16 gap-8 justify-center w-full">
             {packages.map((pkg, index) => (
                 <PackageCard key={index} index={index} {...pkg} />
             ))}
