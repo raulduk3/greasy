@@ -114,7 +114,7 @@ const generateFlashcards = traceable(
 
         // Filter out any null completions
         const flashcardSentences: Flashcard[] = completions;
-
+        
         // Insert a new order for the bundle
         const { rows: orderRows } = await sql`
             INSERT INTO orders (user_id, paypal_order_id)
@@ -142,8 +142,8 @@ const generateFlashcards = traceable(
         if (userData.paid) {
             await sql`
                 INSERT INTO customers (user_id, payer_id, payer_email, payer_name)
-                VALUES (${userData.user_id}, ${userData.payer.payer_id}, ${userData.payer.email_address}, ${userData.payer.name.given_name + ' '  + userData.payer.name.surname})
-                ON CONFLICT (payer_id, user_id, payer_email) DO UPDATE 
+                VALUES (${userData.user_id},  ${userData.payer.payer_id}, ${userData.payer.email_address}, ${userData.payer.name.given_name + ' '  + userData.payer.name.surname})
+                ON CONFLICT (payer_id) DO UPDATE 
                 SET payer_email = EXCLUDED.payer_email,
                     payer_name = EXCLUDED.payer_name;
             `;
