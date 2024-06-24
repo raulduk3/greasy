@@ -140,7 +140,6 @@ const generateFlashcards = traceable(
 
         // Insert into customers table if user has paid
         if (userData.paid) {
-            const { payer_id, payer_email, payer_name } = userData;
             await sql`
                 INSERT INTO customers (user_id, payer_id, payer_email, payer_name)
                 VALUES (${userData.user_id}, ${userData.payer.payer_id}, ${userData.payer.email_address}, ${userData.payer.name.given_name + ' '  + userData.payer.name.surname})
