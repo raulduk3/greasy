@@ -56,7 +56,7 @@ const PackageCard: React.FC<{
 const packages = [
     {
         title: "Two-hundred GRE flashcards",
-        price: "$2.00",
+        price: "$3.00",
         description: "Same day delivery",
         features: [
             "Complete cards with word, part of speech, definition, and sentence.",
@@ -71,7 +71,7 @@ const packages = [
     },
     {
         title: "One-hundred GRE flashcards",
-        price: "$1.00",
+        price: "$2.00",
         description: "Same day delivery",
         features: [
             "Complete cards with word, part of speech, definition, and sentence.",
