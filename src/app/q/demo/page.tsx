@@ -10,7 +10,7 @@ const forms: React.ComponentType<any>[] = [ContactForm, FriendsForm, LocationFor
 export default function Page() {
 	return (
 		<>
-			<GenerateFlashcardQuestionnaire reusable={true} cost='0' name='Sample GRE flashcards ' input_length={3} generation_size={15} formComponents={forms} />
+			<GenerateFlashcardQuestionnaire reusable={false} cost='0' name='Sample GRE flashcards ' input_length={3} generation_size={15} formComponents={forms} />
 		</>
 	);
 }
