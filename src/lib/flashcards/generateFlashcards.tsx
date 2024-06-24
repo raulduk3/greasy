@@ -74,21 +74,14 @@ const generateFlashcards = traceable(
 
         // Retrieve random words from the database
         const wordsWithData = await getWords(wordCount);
-        if (!wordsWithData || wordsWithData.length === 0) {
-            console.error('No wordsWithData retrieved from the database.');
-            return [];
-        }
 
         // Alphabetize the words by their text
         alphabetizeArrayByKey(wordsWithData, 'word');
 
         // Generate prompts for each word
-        const prompts: (PromptData | null)[] = await Promise.all(wordsWithData.map(async (wordData): Promise<PromptData | null> => {
+        const prompts: (PromptData)[] = await Promise.all(wordsWithData.map(async (wordData): Promise<PromptData> => {
             const promptText = await sentenceGenerationPrompt(wordData, userData.friends, userData.locations, userData.activities);
-            if (!promptText) {
-                console.error(`Failed to generate prompt for word: ${wordData.word}`);
-                return null;
-            }
+
             return {
                 word: wordData.word,
                 wordData,
@@ -96,16 +89,8 @@ const generateFlashcards = traceable(
             };
         }));
 
-        // Filter out any null prompts
-        const filteredPrompts: PromptData[] = prompts.filter((prompt): prompt is PromptData => prompt !== null);
-
-        if (filteredPrompts.length === 0) {
-            console.error('No valid prompts generated.');
-            return [];
-        }
-
         // Generate sentences for each prompt using OpenAI
-        const completions: (Flashcard | null)[] = await Promise.all(filteredPrompts.map(async (prompt): Promise<Flashcard | null> => {
+        const completions: (Flashcard)[] = await Promise.all(prompts.map(async (prompt): Promise<Flashcard> => {
             try {
                 const completion = await openai.chat.completions.create({
                     model: "gpt-3.5-turbo",
@@ -123,18 +108,13 @@ const generateFlashcards = traceable(
                 };
             } catch (error) {
                 console.error(`Error generating completion for word: ${prompt.word}`, error);
-                return null;
+                throw error;
             }
         }));
 
         // Filter out any null completions
-        const flashcardSentences: Flashcard[] = completions.filter((completion): completion is Flashcard => completion?.sentence !== '');
-
-        if (flashcardSentences.length === 0) {
-            console.error('No valid flashcards generated.');
-            return [];
-        }
-
+        const flashcardSentences: Flashcard[] = completions;
+        
         // Insert a new order for the bundle
         const { rows: orderRows } = await sql`
             INSERT INTO orders (user_id, paypal_order_id)
@@ -160,9 +140,13 @@ const generateFlashcards = traceable(
 
         // Insert into customers table if user has paid
         if (userData.paid) {
+            const { payer_id, payer_email, payer_name } = userData;
             await sql`
-                INSERT INTO customers (user_id)
-                VALUES (${userData.user_id});
+                INSERT INTO customers (user_id, payer_id, payer_email, payer_name)
+                VALUES (${userData.user_id}, ${userData.payer.payer_id}, ${userData.payer.email_address}, ${userData.payer.name.given_name + ' '  + userData.payer.name.surname})
+                ON CONFLICT (payer_id) DO UPDATE 
+                SET payer_email = EXCLUDED.payer_email,
+                    payer_name = EXCLUDED.payer_name;
             `;
         }
 

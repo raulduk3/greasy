@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
-import { userVerify } from '@/lib/user/verify';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { DynamicFormProps } from './DynamicForm';
 
-// Renders errors or successfull transactions on the screen.
-function Message({ content }: { content: any }) {
-    return <p>{content}</p>;
+// Renders errors or successful transactions on the screen.
+function Message({ content }: { content: string | null }) {
+    return content ? <p className="text-red-500">{content}</p> : null;
 }
 
 interface PayFormProps extends DynamicFormProps {
@@ -65,28 +64,46 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
     }
 
     return (
-        <>
-            <Message content={message} />
-            <PayPalScriptProvider
-                options={{
-                    clientId: 'Af9Y7lGXuJAuJbnad2wCA348ncAFjAKnq0CSs30APlpWEl6JHWiYugTR2jxm1fq3eltw2yb9TfU57aOl',
-                    disableFunding: 'credit,card',
-                    currency: 'USD',
-                    intent: 'capture'
-                }}
-            >
-                <PayPalButtons
-                    style={{
-                        color: 'gold',
-                        shape: 'rect',
-                        label: 'pay',
-                        height: 50
+        <form className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-full">
+            <div className="w-full mb-10">
+                <h2 className="text-2xl mb-1">Ready to generate cards</h2>
+                <p className="text-lg">Please use PayPal to complete your purchase</p>
+            </div>
+            <div className="w-full mb-10">
+                <div className="border-t border-b py-2">
+                    <div className="flex justify-between py-1">
+                        <span className="font-semibold">Item:</span>
+                        <span>{name}</span>
+                    </div>
+                    <div className="flex justify-between py-1">
+                        <span className="font-semibold">Price:</span>
+                        <span>${cost}</span>
+                    </div>
+                </div>
+            </div>
+            <div className="w-full">
+                <Message content={message} />
+                <PayPalScriptProvider
+                    options={{
+                        clientId: 'Af9Y7lGXuJAuJbnad2wCA348ncAFjAKnq0CSs30APlpWEl6JHWiYugTR2jxm1fq3eltw2yb9TfU57aOl',
+                        disableFunding: 'credit,card',
+                        currency: 'USD',
+                        intent: 'capture'
                     }}
-                    createOrder={createOrder}
-                    onApprove={onApprove}
-                />
-            </PayPalScriptProvider>
-        </>
+                >
+                    <PayPalButtons
+                        style={{
+                            color: 'gold',
+                            shape: 'rect',
+                            label: 'pay',
+                            height: 50
+                        }}
+                        createOrder={createOrder}
+                        onApprove={onApprove}
+                    />
+                </PayPalScriptProvider>
+            </div>
+        </form>
     );
 }
 

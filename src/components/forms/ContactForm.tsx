@@ -32,6 +32,7 @@ function ContactForm({ onSubmit, reusable }: { onSubmit: (data: any) => void, re
                 <div className="w-full mb-2">
                     <h2 className="text-2xl mb-1">Begin by providing your basic contact information.</h2>
                     <p className="text-lg">We will contact you via email once only.</p>
+                    <p className="text-lg">Be sure to provide the <span className='underline font-bold'>correct</span> email address.</p>
                 </div>
                 <div className="w-full my-2 flex flex-col items-start">
                     <label className="w-full flex flex-col my-1">

@@ -74,7 +74,10 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
                     setLoading(true);
 
                     const userData: UserData = await getUser(Object.assign({}, ...[...formData, data]));
-                    let flashcards: Flashcard[] = await generateFlashcards(userData, generation_size);
+                    let flashcards: Flashcard[] = await generateFlashcards({
+                        id: userData.id || 'NOT_PAYPAL',
+                        ...userData,
+                    }, generation_size);
 
                     let sent = await sendEmail(userData, flashcards);
                     if (sent.status !== 200) {
@@ -109,11 +112,11 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col  grow w-full justify-center  items-center justify-center">
                     <CurrentForm reusable={reusable} cost={cost} name={name} length={input_length} onSubmit={iterate} title={''} description={''} placeholder={''} />
                 </div>
             )}
-        </div> : <div className="flex flex-col items-center justify-center">
+        </div> : <div className="flex flex-col  grow w-full justify-center  items-center justify-center">
             <div className="text-center">
                 <p className="text-center">Loading...</p>
             </div>
