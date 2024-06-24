@@ -69,7 +69,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
             <Message content={message} />
             <PayPalScriptProvider
                 options={{
-                    clientId: 'ATJ211K8-W1niaJgFslfdFiPFOj6D9hTreX5IIL5NOqvDqTec8BJJVF3vEbHSMlQ8l812h3hu2G6Ueig',
+                    clientId: 'Af9Y7lGXuJAuJbnad2wCA348ncAFjAKnq0CSs30APlpWEl6JHWiYugTR2jxm1fq3eltw2yb9TfU57aOl',
                     disableFunding: 'credit,card',
                     currency: 'USD',
                     intent: 'capture'
