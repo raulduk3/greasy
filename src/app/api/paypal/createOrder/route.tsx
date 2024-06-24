@@ -44,6 +44,11 @@ const createOrder = async (data: any) => {
                 },
             }
         ],
+        application_context: {
+            brand_name: "GREasy Vocab",
+            shipping_preference: "NO_SHIPPING",
+            user_action: "PAY_NOW",
+        }
     };
 
     console.log("Payload:", JSON.stringify(payload));

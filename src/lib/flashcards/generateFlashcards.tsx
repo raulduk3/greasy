@@ -40,7 +40,7 @@ const getWords = async function(wordCount: number): Promise<WordData[]> {
             word_id AS id, 
             word, 
             definition, 
-            example, 
+            example_sentence AS example, 
             part_of_speech AS partOfSpeech 
         FROM words 
         ORDER BY RANDOM() 
@@ -65,6 +65,9 @@ const getWords = async function(wordCount: number): Promise<WordData[]> {
  */
 const generateFlashcards = traceable(
     async function generateFlashcards(userData: UserData, wordCount: number): Promise<Flashcard[]> {
+
+        console.log(userData);
+        
         const openai = wrapOpenAI(new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
             organization: process.env.OPENAI_ORG_ID,
@@ -134,18 +137,10 @@ const generateFlashcards = traceable(
             return [];
         }
 
-        // Insert a new bundle for the user
-        const { rows: bundleRows } = await sql`
-            INSERT INTO bundles (user_id)
-            VALUES (${userData.user_id})
-            RETURNING bundle_id;
-        `;
-        const bundleId: number = bundleRows[0].bundle_id;
-
         // Insert a new order for the bundle
         const { rows: orderRows } = await sql`
-            INSERT INTO orders (bundle_id)
-            VALUES (${bundleId})
+            INSERT INTO orders (user_id)
+            VALUES (${userData.user_id})
             RETURNING order_id;
         `;
         const orderId: number = orderRows[0].order_id;
@@ -160,8 +155,8 @@ const generateFlashcards = traceable(
             const sentenceId: number = sentenceRows[0].sentence_id;
 
             await sql`
-                INSERT INTO flashcards (bundle_id, word_id, sentence_id, order_id)
-                VALUES (${bundleId}, ${flashcard.word_id}, ${sentenceId}, ${orderId});
+                INSERT INTO flashcards (word_id, sentence_id, order_id)
+                VALUES (${flashcard.word_id}, ${sentenceId}, ${orderId});
             `;
         }
 
@@ -175,7 +170,6 @@ const generateFlashcards = traceable(
 
         return flashcardSentences.map((flashcard, index) => ({
             ...flashcard,
-            bundle_id: bundleId,
             order_id: orderId,
         }));
     },

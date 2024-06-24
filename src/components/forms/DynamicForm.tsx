@@ -9,6 +9,7 @@ export interface DynamicFormProps {
     length: number;
     cost?: string;
     name?: string;
+    reusable?: boolean;
     onSubmit: (data: any) => void;
 }
 

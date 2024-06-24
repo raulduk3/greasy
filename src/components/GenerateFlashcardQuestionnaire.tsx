@@ -36,10 +36,10 @@ function sendEmail(userData: UserData, flashcards: Flashcard[]): Promise<Respons
 interface GenerateFlashcardQuestionnaireProps {
     input_length: number;
     generation_size: number;
-    cost: string;
-    name: string;
+    cost?: string;
+    name?: string;
+    reusable?: boolean;
     formComponents: React.ComponentType<DynamicFormProps>[];
-    children: React.ReactNode;
 }
 
 /**
@@ -48,7 +48,7 @@ interface GenerateFlashcardQuestionnaireProps {
  * @param {GenerateFlashcardQuestionnaireProps} props - Component properties.
  * @returns {React.ReactElement} - The rendered component.
  */
-export default function GenerateFlashcardQuestionnaire({ input_length, cost, name, formComponents, generation_size }: GenerateFlashcardQuestionnaireProps): React.ReactElement {
+export default function GenerateFlashcardQuestionnaire({ input_length, cost, name, formComponents, reusable, generation_size }: GenerateFlashcardQuestionnaireProps): React.ReactElement {
     const [currentFormIndex, setCurrentFormIndex] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const [formData, setFormData] = useState<UserData[]>([]);
@@ -110,7 +110,7 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center">
-                    <CurrentForm cost={cost} name={name} length={input_length} onSubmit={iterate} title={''} description={''} placeholder={''} />
+                    <CurrentForm reusable={reusable} cost={cost} name={name} length={input_length} onSubmit={iterate} title={''} description={''} placeholder={''} />
                 </div>
             )}
         </div> : <div className="flex flex-col items-center justify-center">

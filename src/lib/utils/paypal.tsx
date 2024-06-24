@@ -1,5 +1,5 @@
 import checkoutNodeJssdk from '@paypal/checkout-server-sdk'
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = process.env;
+const { PAYPAL_CLIENT_ID = '', PAYPAL_CLIENT_SECRET = '', PORT = 8888 } = process.env;
 
 export const PAYPAL_BASE_URL = `https://api-m.paypal.com/v1`;
 

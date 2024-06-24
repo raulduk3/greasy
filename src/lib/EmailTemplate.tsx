@@ -50,7 +50,7 @@ const styles = {
         margin: '1rem 0 2rem 0',
         fontSize: '1.2rem',
         color: 'white',
-        width: '50%',
+        width: '55%',
         marginLeft: 'auto',
         marginRight: 'auto',
         textAlign: 'center' as 'center',

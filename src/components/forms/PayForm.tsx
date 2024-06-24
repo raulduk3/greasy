@@ -57,7 +57,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
     async function onApprove(data: any, actions: any) {
         try {
             const order = await actions.order.capture();
-            onSubmit({ order });
+            onSubmit({ paid: true, order });
         } catch (error) {
             console.error(error);
             setMessage(`Could not capture the order...${error}`);
@@ -70,6 +70,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
             <PayPalScriptProvider
                 options={{
                     clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? '',
+                    disableFunding: 'credit,card',
                     currency: 'USD',
                     intent: 'capture'
                 }}

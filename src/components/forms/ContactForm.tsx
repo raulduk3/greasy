@@ -3,17 +3,21 @@
 import React, { useState } from 'react';
 import { userVerify } from '@/lib/user/verify';
 
-function ContactForm({ onSubmit }: { onSubmit: (data: any) => void }): React.ReactElement {
+function ContactForm({ onSubmit, reusable }: { onSubmit: (data: any) => void, reusable: boolean }): React.ReactElement {
     const [displayError, setDisplayError] = useState('');
     const [formData, setFormData] = useState({ name: '', email: '' });
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const emailValid = await userVerify(formData.email);
-        if (emailValid) {
-            onSubmit(formData);
+        if(!reusable) {
+            const emailValid = await userVerify(formData.email);
+            if (emailValid) {
+                onSubmit(formData);
+            } else {
+                setDisplayError('Email already exists.');
+            }
         } else {
-            setDisplayError('Email already exists.');
+            onSubmit(formData);
         }
     };
 
