@@ -2,7 +2,7 @@ import client from '@/lib/utils/paypal';
 import paypal from '@paypal/checkout-server-sdk';
 import { generateAccessToken } from '@/lib/utils/paypal';
 
-import { PAYPAL_BASE_URL } from '@/lib/utils/paypal';
+import { PAYPAL_BASE_URL } from '@/lib/utils/papyalConstants';
 
 async function handleResponse(response: any) {
     try {

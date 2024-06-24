@@ -65,8 +65,6 @@ const getWords = async function(wordCount: number): Promise<WordData[]> {
  */
 const generateFlashcards = traceable(
     async function generateFlashcards(userData: UserData, wordCount: number): Promise<Flashcard[]> {
-
-        console.log(userData);
         
         const openai = wrapOpenAI(new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
@@ -139,8 +137,8 @@ const generateFlashcards = traceable(
 
         // Insert a new order for the bundle
         const { rows: orderRows } = await sql`
-            INSERT INTO orders (user_id)
-            VALUES (${userData.user_id})
+            INSERT INTO orders (user_id, paypal_order_id)
+            VALUES (${userData.user_id}, ${userData.id})
             RETURNING order_id;
         `;
         const orderId: number = orderRows[0].order_id;
@@ -171,6 +169,7 @@ const generateFlashcards = traceable(
         return flashcardSentences.map((flashcard, index) => ({
             ...flashcard,
             order_id: orderId,
+            paypal_order_id: userData.id,
         }));
     },
     {

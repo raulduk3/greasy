@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { userCreate } from '@/lib/user/create';
+import { getUser } from '@/lib/user/get';
 import generateFlashcards from '@/lib/flashcards/generateFlashcards';
 import { DynamicFormProps } from './forms/DynamicForm';
 import { redirect } from 'next/navigation';
@@ -73,7 +73,7 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
                 try {
                     setLoading(true);
 
-                    const userData: UserData = await userCreate(Object.assign({}, ...[...formData, data]));
+                    const userData: UserData = await getUser(Object.assign({}, ...[...formData, data]));
                     let flashcards: Flashcard[] = await generateFlashcards(userData, generation_size);
 
                     let sent = await sendEmail(userData, flashcards);

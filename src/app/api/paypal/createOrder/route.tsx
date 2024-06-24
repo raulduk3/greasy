@@ -1,4 +1,5 @@
-import { PAYPAL_BASE_URL, generateAccessToken } from "@/lib/utils/paypal";
+import { generateAccessToken } from "@/lib/utils/paypal";
+import { PAYPAL_BASE_URL } from "@/lib/utils/papyalConstants";
 import { redirect } from "next/dist/server/api-utils";
 
 async function handleResponse(response: any) {
@@ -19,18 +20,11 @@ async function handleResponse(response: any) {
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 const createOrder = async (data: any) => {
-    // use the cart information passed from the front-end to calculate the purchase unit details
-    console.log(
-        "shopping cart information passed from the frontend createOrder() callback:",
-        data.cart
-    );
-
     const accessToken = await generateAccessToken();
-    console.log("Access Token:", accessToken);
-    const url = `${PAYPAL_BASE_URL}/checkout/orders`;
+    const url = `${PAYPAL_BASE_URL}/v2/checkout/orders`;
 
     const payload = {
-        intent: "SALE",
+        intent: "CAPTURE",
         redirect_urls: {
             return_url: "https://greasyvocab.com",
             cancel_url: "https://greasyvocab.com",
@@ -39,8 +33,8 @@ const createOrder = async (data: any) => {
             {
                 reference_id: "F4KCMFURNZJYY",
                 amount: {
-                    currency: "USD",
-                    total: '1.00',
+                    currency_code: "USD",
+                    value: data.cost,
                 },
             }
         ],
@@ -50,8 +44,6 @@ const createOrder = async (data: any) => {
             user_action: "PAY_NOW",
         }
     };
-
-    console.log("Payload:", JSON.stringify(payload));
 
     const response = await fetch(url, {
         headers: {
