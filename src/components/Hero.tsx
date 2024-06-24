@@ -8,7 +8,7 @@ export default function Hero() {
                 <div className="bg-white p-8 m-6 rounded-lg text-center flex items-center flex-col max-w-lg shadow-lg">
                     <h1 className="text-3xl text-gray-900 self-start  text-left">Generate bundles of flashcards with tailored sentences</h1>
                     <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
-                        Using advanced LLM technology, we transform the personal data you provide into up to one hundred customized flashcards at your chosen difficulty level.
+                        Using advanced LLM technology, we transform the personal data you provide into customized flashcards at your chosen difficulty level.
                         Complete our survey and receive a formatted PDF of flashcards via email.
                     </p>
                     <Link href="/about" className="text-green-500 text-l mt-2 self-start text-left">Plus, 50% of all purchases go directly to support Palestine.</Link>
