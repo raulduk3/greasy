@@ -73,7 +73,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                 <div className="border-t border-b py-2">
                     <div className="flex justify-between py-1">
                         <span className="font-semibold">Item:</span>
-                        <span>{name}</span>
+                        <span className='text-right'>{name}</span>
                     </div>
                     <div className="flex justify-between py-1">
                         <span className="font-semibold">Price:</span>
