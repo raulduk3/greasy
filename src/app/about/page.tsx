@@ -7,7 +7,7 @@ const AboutPage: React.FC = () => {
             <div className="flex self-center justify-center h-100 flex-col p-8 font-sans gap-3 max-w-lg md:w-auto bg-white text-black rounded-lg">
                 <h1 className="text-2xl">About GREasy</h1>
                 <p className="max-w-xll text-left">
-                    Hi, my name is <Link href="https://raulduke.com" className="text-green-500 no-underline">Richard Álvarez</Link> 
+                    Hi my name is <Link href="https://raulduke.com" className="text-green-500 no-underline">Richard Álvarez</Link> 
                 </p>
                 <p>
                     I am a recent college grad who created this tool while prepping for the GRE. I wanted a study aid that was more engaging and effective than the usual, so I built GREasy to make mastering GRE vocabulary both fun and personalized. 
