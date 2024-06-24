@@ -14,7 +14,7 @@ export async function POST(req: Request) {
             subject: `Your GREasy Flashcards 🎉 Order #${flashcards[0].paypal_order_id}`,
             react: <EmailTemplate
                 flashcards={flashcards}
-                name={userData.payer.name.given_name ? userData.payer.name.given_name : userData.name} />
+                name={userData.name.split(" ")[0]} />
         });
 
         if (error) {
