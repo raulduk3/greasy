@@ -7,6 +7,8 @@ export interface DynamicFormProps {
     description: string;
     placeholder: string;
     length: number;
+    cost?: string;
+    name?: string;
     onSubmit: (data: any) => void;
 }
 

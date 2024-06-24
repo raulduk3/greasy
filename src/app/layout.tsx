@@ -6,8 +6,6 @@ import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils/utils';
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
-import { json } from "stream/consumers";
-import Head from "next/head";
 
 export const metadata: Metadata = {
 	title: "GREasy",
@@ -132,9 +130,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					</div>
 				</header>
 				<main className="flex flex-col grow flex-1 items-center justify-start w-full h-full">
-					{children}
-					<Analytics />
-					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
+						{children}
+						<Analytics />
+						<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
 				</main>
 				<footer className="flex flex-col items-center pb-6 gap-2 text-sm">
 					<div className="flex space-x-4">
