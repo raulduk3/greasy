@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { DynamicFormProps } from './DynamicForm';
+import { PAYPAL_CLIENT_ID } from '@/lib/utils/papyalConstants';
 
 // Renders errors or successful transactions on the screen.
 function Message({ content }: { content: string | null }) {
@@ -129,7 +130,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                 <Message content={message} />
                 <PayPalScriptProvider
                     options={{
-                        clientId: 'ATJ211K8-W1niaJgFslfdFiPFOj6D9hTreX5IIL5NOqvDqTec8BJJVF3vEbHSMlQ8l812h3hu2G6Ueig',
+                        clientId: PAYPAL_CLIENT_ID,
                         disableFunding: 'credit,card',
                         currency: 'USD',
                         intent: 'capture'
