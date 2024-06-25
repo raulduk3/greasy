@@ -36,6 +36,7 @@ const AdminDashboard: React.FC = () => {
                 }
 
                 const data = await response.json();
+                console.log(data);
                 setOrders(data);
             } catch (error: any) {
                 setError(error.message);
