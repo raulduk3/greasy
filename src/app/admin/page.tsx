@@ -11,7 +11,6 @@ const AdminPage: React.FC = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            // Optionally, verify the token with the backend
             setIsAuthenticated(true);
         } else {
             router.push('/login');
