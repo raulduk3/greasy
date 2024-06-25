@@ -80,7 +80,7 @@ const generateFlashcards = traceable(
         alphabetizeArrayByKey(wordsWithData, 'word');
 
         // Generate prompts for each word
-        const prompts: (PromptData)[] = await Promise.all(wordsWithData.map(async (wordData): Promise<PromptData> => {
+        const prompts: PromptData[] = await Promise.all(wordsWithData.map(async (wordData): Promise<PromptData> => {
             const promptText = await sentenceGenerationPrompt(wordData, userData.friends, userData.locations, userData.activities);
 
             return {
@@ -91,7 +91,7 @@ const generateFlashcards = traceable(
         }));
 
         // Generate sentences for each prompt using OpenAI
-        const completions: (Flashcard)[] = await Promise.all(prompts.map(async (prompt): Promise<Flashcard> => {
+        const completions: Flashcard[] = await Promise.all(prompts.map(async (prompt): Promise<Flashcard> => {
             try {
                 const completion = await openai.chat.completions.create({
                     model: "gpt-3.5-turbo",
@@ -132,14 +132,19 @@ const generateFlashcards = traceable(
         }
 
         // Insert into customers table if user has paid
-        if (userData.paid) {
-            await sql`
-                INSERT INTO customers (user_id, payer_id, payer_email, payer_name)
-                VALUES (${userData.user_id},  ${userData.payer.payer_id}, ${userData.payer.email_address}, ${userData.payer.name.given_name + ' '  + userData.payer.name.surname})
-                ON CONFLICT (payer_id) DO UPDATE 
-                SET payer_email = EXCLUDED.payer_email,
-                    payer_name = EXCLUDED.payer_name;
-            `;
+        if (userData.paid && userData.payer) {
+            try {
+                await sql`
+                    INSERT INTO customers (user_id, payer_id, payer_email, payer_name)
+                    VALUES (${userData.user_id},  ${userData.payer.payer_id}, ${userData.payer.email_address}, ${userData.payer.name.given_name + ' '  + userData.payer.name.surname})
+                    ON CONFLICT (payer_id) DO UPDATE 
+                    SET payer_email = EXCLUDED.payer_email,
+                        payer_name = EXCLUDED.payer_name;
+                `;
+            } catch (error) {
+                console.error('Error inserting customer data:', error);
+
+            }
         }
 
         return flashcardSentences.map((flashcard, index) => ({
