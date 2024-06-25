@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 interface Order {
     order_id: number;
     created_at: string;
