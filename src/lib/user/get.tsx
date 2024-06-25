@@ -1,7 +1,6 @@
 'use server';
 
 import { sql } from '@vercel/postgres';
-
 import type { UserData } from './types';
 
 export async function getUser(userData: UserData): Promise<UserData> {

@@ -17,7 +17,6 @@ interface PayFormProps extends DynamicFormProps {
 const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => {
     const [message, setMessage] = useState<string | null>(null);
 
-
     async function newOrder() {
         try {
             const response = await fetch("/api/paypal/createOrder", {

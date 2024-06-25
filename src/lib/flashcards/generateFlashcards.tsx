@@ -143,7 +143,6 @@ const generateFlashcards = traceable(
                 `;
             } catch (error) {
                 console.error('Error inserting customer data:', error);
-
             }
         }
 

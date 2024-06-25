@@ -11,6 +11,8 @@ import { redirect } from 'next/navigation';
 import type { Flashcard } from '@/lib/flashcards/types';
 import { UserData } from '@/lib/user/types';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * Sends an email with the generated flashcards.
  * 

@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import AdminDashboard from '@/components/AdminDashboard';
 import { useRouter } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 const AdminPage: React.FC = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const router = useRouter();
