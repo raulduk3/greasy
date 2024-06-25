@@ -17,7 +17,6 @@ interface PayFormProps extends DynamicFormProps {
 const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => {
     const [message, setMessage] = useState<string | null>(null);
 
-    console.log(PAYPAL_CLIENT_ID);
 
     async function newOrder() {
         try {
