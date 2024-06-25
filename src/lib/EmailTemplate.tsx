@@ -10,6 +10,7 @@ interface Flashcard {
 interface EmailTemplateProps {
     flashcards: Flashcard[];
     name: string;
+    paypalOrderId: string;
 }
 
 const styles = {
@@ -131,11 +132,13 @@ const styles = {
     },
 };
 
-export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcards, name }) => {
+export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcards, name, paypalOrderId }) => {
+    const orderUrl = `https://greasyvocab.com/orders/${paypalOrderId}`;
+
     return (
         <div style={styles.container}>
             <h1 style={styles.header}>GR<span style={styles.headerSpan}>Easy</span></h1>
-            <h3 style={styles.subheader}>Here are your flashcards from <a href="https://greasyvocab.com" style={styles.subheaderLink}>GREasyvocab.com</a></h3>
+            <h3 style={styles.subheader}>Here are your flashcards from <a href={orderUrl} style={styles.subheaderLink}>GREasyvocab.com</a></h3>
             <div>
                 <p style={styles.intro}>HEY {name.toUpperCase()}!</p>
                 <p style={styles.message}>We are thrilled to provide you with personalized GRE flashcards to aid in your preparation 😀 <br /> <br /> Below, you'll find the flashcards crafted just for you. Review them carefully and keep practicing to enhance your vocabulary skills.</p>
@@ -161,6 +164,9 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
                         <li style={styles.tipsItem}> - Take regular breaks to avoid burnout and keep your mind fresh.</li>
                     </ul>
                 </div>
+                {paypalOrderId !== 'NOT_PAYPAL' && (
+                    <p style={styles.footerText}>You can also view your flashcards <a href={orderUrl} style={styles.footerLink}>here</a>.</p>
+                )}
                 <p style={styles.footerText}>We hope you find these resources helpful. For more tips and personalized GRE study materials, visit <a href="https://greasyvocab.com" style={styles.footerLink}>GREasyvocab.com</a>.</p>
                 <p style={styles.footerText}>Best of luck with your studies!</p>
             </div>
@@ -168,4 +174,4 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
             <p style={styles.team}> - The GREasy Team 🤙🏽</p>
         </div>
     );
-}
+};

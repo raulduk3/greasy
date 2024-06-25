@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { getUser } from '@/lib/user/get';
 import generateFlashcards from '@/lib/flashcards/generateFlashcards';
+import createOrder from '@/lib/createOrder';
 import { DynamicFormProps } from './forms/DynamicForm';
 import { redirect } from 'next/navigation';
 
@@ -72,12 +73,13 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
             if (currentFormIndex === formComponents.length - 1) {
                 try {
                     setLoading(true);
-
+                    
                     const userData: UserData = await getUser(Object.assign({}, ...[...formData, data]));
+                    const order = await createOrder(userData.user_id, userData.id);
                     let flashcards: Flashcard[] = await generateFlashcards({
                         id: userData.id || 'NOT_PAYPAL',
                         ...userData,
-                    }, generation_size);
+                    }, order, generation_size);
 
                     let sent = await sendEmail(userData, flashcards);
                     if (sent.status !== 200) {

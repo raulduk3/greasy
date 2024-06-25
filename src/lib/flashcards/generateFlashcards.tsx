@@ -60,11 +60,12 @@ const getWords = async function(wordCount: number): Promise<WordData[]> {
  * and storing the flashcards in the database.
  * 
  * @param {UserData} userData - Data about the user, including their preferences.
+ * @param {number} orderId - The ID of the order for which to generate flashcards.
  * @param {number} wordCount - Number of words to retrieve for flashcards.
  * @returns {Promise<Flashcard[]>} - A promise that resolves to an array of generated flashcard objects.
  */
 const generateFlashcards = traceable(
-    async function generateFlashcards(userData: UserData, wordCount: number): Promise<Flashcard[]> {
+    async function generateFlashcards(userData: UserData, orderId: number, wordCount: number): Promise<Flashcard[]> {
         
         const openai = wrapOpenAI(new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
@@ -114,14 +115,6 @@ const generateFlashcards = traceable(
 
         // Filter out any null completions
         const flashcardSentences: Flashcard[] = completions;
-        
-        // Insert a new order for the bundle
-        const { rows: orderRows } = await sql`
-            INSERT INTO orders (user_id, paypal_order_id)
-            VALUES (${userData.user_id}, ${userData.id})
-            RETURNING order_id;
-        `;
-        const orderId: number = orderRows[0].order_id;
 
         // Insert sentences and flashcards into the database
         for (const flashcard of flashcardSentences) {
