@@ -9,7 +9,7 @@ const ContactPage: React.FC = () => {
                     I would love to hear from you! Whether you have questions, feedback, or just want to connect, feel free to reach out.
                 </p>
                 <p className="max-w-xl text-left">
-                    You can email me at <a href={`mailto:rawalvarez731@gmail.com?subject=GREasy Support Request ${new Date().toDateString()}`} className="text-green-500 no-underline">rawalvarez731@gmail.com</a>. 
+                    You can email me at <a href={`mailto:rawalvarez731@gmail.com?subject=GREasy Support Request ${new Date().toDateString()}`} className="text-green-500 underline">rawalvarez731@gmail.com</a>. 
                 </p>
                 <p>
                     I strive to respond to all inquiries within 24 hours. I look forward to connecting with you and assisting you in your GRE preparation journey!
