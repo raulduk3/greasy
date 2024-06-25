@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: Request) {
     const authHeader = req.headers.get('Authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+        return new Response(JSON.stringify({ error: 'Missing header' }), { status: 401 });
     }
 
     const token = authHeader.split(' ')[1];

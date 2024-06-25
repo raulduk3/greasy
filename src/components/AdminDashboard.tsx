@@ -33,8 +33,8 @@ const AdminDashboard: React.FC = () => {
                     },
                 });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch orders');
+                if (response.status === 401) {
+                    throw new Error('Failed to fetch orders ' + (await response.json()).error);
                 }
 
                 const data = await response.json();
