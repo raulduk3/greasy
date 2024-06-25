@@ -1,5 +1,3 @@
-import client from '@/lib/utils/paypal';
-import paypal from '@paypal/checkout-server-sdk';
 import { generateAccessToken } from '@/lib/utils/paypal';
 
 import { PAYPAL_BASE_URL } from '@/lib/utils/papyalConstants';
@@ -46,9 +44,9 @@ export async function POST(req: Request) {
     try {
         const { orderID } = await req.json();
         const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
-        Response.json(jsonResponse, { status: httpStatusCode});
+        return Response.json(jsonResponse, { status: httpStatusCode});
     } catch (error) {
         console.error("Failed to create order:", error);
-        Response.json({ error: "Failed to capture order." }, { status: 500 });
+        return Response.json({ error: "Failed to capture order." }, { status: 500 });
     }
 };

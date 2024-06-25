@@ -138,7 +138,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
     return (
         <div style={styles.container}>
             <h1 style={styles.header}>GR<span style={styles.headerSpan}>Easy</span></h1>
-            <h3 style={styles.subheader}>Here are your flashcards from <a href={orderUrl} style={styles.subheaderLink}>GREasyvocab.com</a></h3>
+            <h3 style={styles.subheader}>Here are your flashcards from <a href="https://greasyvocab.com" style={styles.subheaderLink}>GREasyvocab.com</a></h3>
             <div>
                 <p style={styles.intro}>HEY {name.toUpperCase()}!</p>
                 <p style={styles.message}>We are thrilled to provide you with personalized GRE flashcards to aid in your preparation 😀 <br /> <br /> Below, you'll find the flashcards crafted just for you. Review them carefully and keep practicing to enhance your vocabulary skills.</p>

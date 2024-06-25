@@ -17,7 +17,7 @@ interface PayFormProps extends DynamicFormProps {
 const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => {
     const [message, setMessage] = useState<string | null>(null);
 
-    async function createOrder(data: any, actions: any) {
+    async function newOrder() {
         try {
             const response = await fetch("/api/paypal/createOrder", {
                 method: "POST",
@@ -55,11 +55,55 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
 
     async function onApprove(data: any, actions: any) {
         try {
-            const order = await actions.order.capture();
-            onSubmit({ paid: true, ...order });
+            const response = await fetch(
+                `/api/paypal/captureOrder`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID,
+                    }),
+                }
+            );
+
+            const orderData = await response.json();
+            // Three cases to handle:
+            //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+            //   (2) Other non-recoverable errors -> Show a failure message
+            //   (3) Successful transaction -> Show confirmation or thank you message
+
+            const errorDetail = orderData?.details?.[0];
+
+            if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
+                // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+                // recoverable state, per https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
+                return actions.restart();
+            } else if (errorDetail) {
+                // (2) Other non-recoverable errors -> Show a failure message
+                throw new Error(
+                    `${errorDetail.description} (${orderData.debug_id})`
+                );
+            } else {
+                // (3) Successful transaction -> Show confirmation or thank you message
+                // Or go to another URL:  actions.redirect('thank_you.html');
+                const order = await actions.order.capture();
+                onSubmit({ paid: true, ...order });
+                setMessage(
+                    `Transaction ${order.status}: ${order.id}. See console for all available details`
+                );
+                console.log(
+                    "Capture result",
+                    orderData,
+                    JSON.stringify(orderData, null, 2)
+                );
+            }
         } catch (error) {
             console.error(error);
-            setMessage(`Could not capture the order...${error}`);
+            setMessage(
+                `Sorry, your transaction could not be processed...${error}`
+            );
         }
     }
 
@@ -98,7 +142,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                             label: 'pay',
                             height: 50
                         }}
-                        createOrder={createOrder}
+                        createOrder={newOrder}
                         onApprove={onApprove}
                     />
                 </PayPalScriptProvider>

@@ -9,6 +9,5 @@ export default async function createOrder(user_id: any, id: any) {
         RETURNING order_id;
     `;
     const orderId: number = orderRows[0].order_id;
-    console.log('orderId:', orderId);
     return orderId;
 }
