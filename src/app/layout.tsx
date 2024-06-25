@@ -113,7 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						GR<span className="text-green-500">Easy</span>
 					</Link>
 					<p className="text-m text-center mx-4 mt-3 mb-4">Personalized GRE flashcards directly to your inbox</p>
-					<nav className="flex justify-center space-x-4 mb-4">
+					<nav className="flex justify-center space-x-6 mb-4">
 						<Link href="/about" className="underline">
 							About
 						</Link>
