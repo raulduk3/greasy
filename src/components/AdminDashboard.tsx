@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,12 +17,13 @@ const AdminDashboard: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
+    const router = useRouter();
+
     useEffect(() => {
         const fetchOrders = async () => {
             const token = localStorage.getItem('token');
             if (!token) {
-                setError('No token found');
-                setLoading(false);
+                router.push('/login');
                 return;
             }
 
@@ -38,9 +40,10 @@ const AdminDashboard: React.FC = () => {
                 }
 
                 const data = await response.json();
-                console.log(data);
+    
                 setOrders(data);
             } catch (error: any) {
+                router.push('/login');
                 setError(error.message);
             } finally {
                 setLoading(false);
