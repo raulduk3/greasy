@@ -13,7 +13,7 @@ export default function Hero() {
                     </p>
                     <Link href="/about" className="text-green-500 text-l mt-2 self-start text-left">Plus, 50% of all purchases go directly to support Palestine.</Link>
                     <Link href="/q/basic">
-                        <button className="bg-green-500 shadow-sm text-white text-lg  p-5 rounded mt-4 w-full font-bold hover:bg-green-600 transition duration-200">
+                        <button className="bg-green-500 shadow-sm text-white text-lg p-5 rounded mt-4 w-full font-bold hover:bg-green-600 transition duration-200">
                             Buy cards!
                         </button>
                     </Link>
