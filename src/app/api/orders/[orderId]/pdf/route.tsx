@@ -1,8 +1,9 @@
 import { Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer';
 import React from 'react';
 import { sql } from '@vercel/postgres';
+import { NextResponse } from 'next/server';
 
-function mirrorArray(arr) {
+function mirrorArray(arr: Array<any>): Array<any> {
     let mirrored = [];
     for (let i = 0; i < arr.length; i += 2) {
         if (i + 1 < arr.length) {
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const chunkFlashcards = (flashcards, size) => {
+const chunkFlashcards = (flashcards: any, size: number) => {
     const chunks = [];
     for (let i = 0; i < flashcards.length; i += size) {
         chunks.push(flashcards.slice(i, i + size));
@@ -58,7 +59,7 @@ const chunkFlashcards = (flashcards, size) => {
     return chunks;
 };
 
-const FlashcardPDF = ({ flashcards }) => {
+const FlashcardPDF = ({ flashcards }: { flashcards: any}) => {
     const chunkedFlashcards = chunkFlashcards(flashcards, 15);
 
     return (
@@ -67,7 +68,7 @@ const FlashcardPDF = ({ flashcards }) => {
                 <React.Fragment key={index}>
                     <Page size="A4" style={styles.page}>
                         <View style={styles.grid}>
-                            {chunk.map((flashcard, idx) => (
+                            {chunk.map((flashcard: any, idx: number) => (
                                 <View key={idx} style={styles.flashcard_front}>
                                     <Text style={styles.word}>{flashcard.word}</Text>
                                 </View>
@@ -78,7 +79,7 @@ const FlashcardPDF = ({ flashcards }) => {
                         <View style={styles.grid}>
                             {mirrorArray(chunk).map((flashcard, idx) => (
                                 <View key={idx} style={styles.flashcard_back}>
-                                    <Text style={{fontSize: '14', color: 'rgb(34 197 94)', alignSelf: 'flex-start', ...styles.details }}>{flashcard.word} | {flashcard.part_of_speech}</Text>
+                                    <Text style={[{fontSize: '14', color: 'rgb(34 197 94)', alignSelf: 'flex-start'},styles.details]}>{flashcard.word} | {flashcard.part_of_speech}</Text>
                                     <Text style={styles.details}>{flashcard.definition}</Text>
                                     <Text style={{ marginTop: '5px', ...styles.details }}>{flashcard.sentence}</Text>
                                 </View>
@@ -115,8 +116,8 @@ export async function GET(req: Request, { params }: { params: { orderId: string 
         const pdfDoc = pdf();
         pdfDoc.updateContainer(<FlashcardPDF flashcards={flashcards} />);
         const pdfBuffer = await pdfDoc.toBuffer();
-
-        return new Response(pdfBuffer, {
+        
+        return new NextResponse(pdfBuffer as any, {
             headers: {
                 'Content-Type': 'application/pdf',
                 'Content-Disposition': 'attachment; filename=flashcards.pdf',
