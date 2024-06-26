@@ -20,9 +20,10 @@ const FeedbackPage: React.FC = () => {
     };
 
     return (
-        <div className='flex flex-col flex-1 text-pretty w-2/5 self-center justify-center flex-basis p-6'>
+        <div className='flex flex-col flex-1 text-pretty w-full md:w-2/5 self-center justify-center flex-basis p-6'>
             <div className="flex self-center justify-center h-100 flex-col p-8 font-sans gap-3 w-full bg-white text-black rounded-lg">
                 <h1 className="text-2xl">Feedback</h1>
+                <p>Any advice, questions, or demands are appreciated :)</p>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <textarea
                         className="w-full p-2 border rounded"
