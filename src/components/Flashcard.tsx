@@ -12,7 +12,7 @@ const Flashcard = ({ word }: { word: any }) => {
     return (
         <div
             onClick={handleFlip}
-            className="relative w-1/4 h-72 m-2 text-black cursor-pointer"
+            className="relative  h-72 m-2 text-black cursor-pointer"
             style={{ perspective: '1000px' }}
         >
             <div
@@ -26,7 +26,7 @@ const Flashcard = ({ word }: { word: any }) => {
                     <h2 className="text-2xl font-bold">{word.word}</h2>
                 </div>
                 <div
-                    className="absolute w-full h-full flex flex-col items-center justify-center bg-gray-100 border border-gray-300 transform rotate-y-180"
+                    className="absolute w-full h-full flex flex-col items-center justify-center bg-gray-100 border px-6 border-gray-300 transform rotate-y-180"
                     style={{ backfaceVisibility: 'hidden', borderRadius: '10px', transform: 'rotateY(180deg)' }}
                 >
                     <p className="text-lg mb-2">{word.definition}</p>

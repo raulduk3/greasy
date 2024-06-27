@@ -53,7 +53,7 @@ const Home = () => {
             <Hero />
             <Banner />
             <h1 className="text-2xl font-semibold pt-8 drop-shadow-lg">Example flashcards</h1>
-            <div className="flex flex-wrap w-full justify-center pb-12 p-6 gap-4">
+            <div className="flex flex-col items-stretch flex-wrap w-full justify-center pb-12 p-6 gap-4">
                 {exampleWords.map((word) => (
                     <Flashcard key={word.word_id} word={word} />
                 ))}
