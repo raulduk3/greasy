@@ -16,10 +16,6 @@ interface FlashcardGameProps {
     name: string;
 }
 
-interface User {
-    name: string;
-}
-
 const FlashcardGame: React.FC<FlashcardGameProps> = ({ flashcards, name }) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [flipped, setFlipped] = useState<boolean>(false);
@@ -46,7 +42,7 @@ const FlashcardGame: React.FC<FlashcardGameProps> = ({ flashcards, name }) => {
     return (
         <div className="flashcard-game flex justify-center items-center p-40">
             {flashcards.length > 0 && (
-                <div className={`flashcard bg-white shadow-lg text-black rounded-lg w-2/5 p-6 text-left ${zoomed ? 'zoomed' : ''} ${flipped ? 'flipped' : ''}`}>
+                <div className={`flashcard bg-white shadow-lg text-black rounded-lg w-full md:w-2/5 p-6 text-left ${zoomed ? 'zoomed' : ''} ${flipped ? 'flipped' : ''}`}>
                     <h2 className="text-xl font-bold mb-4">{name.split(' ')[0]}'s GREasy Vocabulary Cards</h2>
                     <div className="flashcard-content h-96 flex flex-col justify-between">
                         {flipped ? (

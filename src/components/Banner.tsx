@@ -1,17 +1,15 @@
 import React from 'react';
-import { getRecentSentences } from '@/lib/recentSentences';
+import { getRecentSentences, getSentenceCount } from '@/lib/recentSentences';
 import { getWordCount } from '@/lib/wordCount';
 
 const StatsBanner = async () => {
     const recentSentences = await getRecentSentences();
     const wordCount = await getWordCount();
+    const sentenceCount = getSentenceCount();
 
     return (
         <>
-            <h1 id="why-use-greasy" style={{
-                paddingBottom: '10px',
-                borderBottom: '2px solid white',
-            }} className="text-4xl uppercase text-white mt-6">Why Use GREasy?</h1>
+            <h1 id="why-use-greasy" className="text-4xl font-semibold text-white mt-6">Why Use GREasy?</h1>
             <div className="text-black px-6 py-6 pb-12 items-center flex flex-col gap-6">
                 <div className="flex flex-col items-stretch w-full md:w-8/12 gap-6">
                     <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
@@ -28,7 +26,7 @@ const StatsBanner = async () => {
                                     <strong>Support for a Good Cause:</strong> By choosing GREasy, you're supporting a small business dedicated to social justice. A portion of our proceeds goes to support important causes, making your purchase impactful beyond just your own success.
                                 </li>
                                 <li className="mb-2">
-                                    <strong>Custom Sentence Creation:</strong> With GREasy, you can write your own sentences to further personalize your flashcards, a feature not offered by major competitors.
+                                    <strong>Future Expansion:</strong> GREasy plans to expand into a full online platform where users can track their progress and collect flashcards together. First-time users will qualify for exclusive discounts on these new features, including full-length practice tests.
                                 </li>
                                 <li className="mb-2">
                                     <strong>Affordable Pricing:</strong> Our prices are highly competitive, offering more value compared to other GRE flashcards on the market. Get the best study tools without breaking the bank.
@@ -41,7 +39,8 @@ const StatsBanner = async () => {
                         <div className="p-6 border bg-white flex flex-col rounded shadow-lg">
                             <h4 className="text-xl text-black font-semibold mb-4">What People Are Saying About GREasy</h4>
                             <p className="text-base italic mb-2">"GREasy's personalized flashcards have transformed my study sessions. Highly recommend!" - Karina B.</p>
-                            <p className="text-base italic mb-2">"The best GRE prep tool I've used. The sentences are relevant and easy to remember." - Sam H.</p>
+                            <p className="text-base italic mb-2">"Great GRE prep tool. The sentences are relevant and concise." - Sam H.</p>
+                            <p className="text-base italic mb-2">"Much cheaper than other options and giving back!" - Julían C.</p>
                             <p className="text-sm italic mt-auto">Current Word Count: {wordCount}</p>
                         </div>
                     </div>
@@ -52,6 +51,7 @@ const StatsBanner = async () => {
                                 <li key={index} className="leading-relaxed text-lg">{sentence}.</li>
                             ))}
                         </ul>
+                        <p className="text-sm italic pt-6">Current Sentence Count: {sentenceCount}</p>
                     </div>
                 </div>
             </div>
