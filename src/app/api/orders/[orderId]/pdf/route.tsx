@@ -60,7 +60,7 @@ const chunkFlashcards = (flashcards: any, size: number) => {
 };
 
 const FlashcardPDF = ({ flashcards }: { flashcards: any}) => {
-    const chunkedFlashcards = chunkFlashcards(flashcards, 15);
+    const chunkedFlashcards = chunkFlashcards(flashcards, 10);
 
     return (
         <Document>
