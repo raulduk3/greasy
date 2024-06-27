@@ -6,9 +6,9 @@ import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className=' pb-24 '>
-            <h1 className='font-semibold text-[3rem] w-full text-center text-white mb-8 leading-tight drop-shadow-lg'>Packages</h1>
-            <div className="flex flex-col lg:flex-row items-stretch align-center gap-6 justify-center w-full">
+        <div className='pb-24 '>
+            <h1 className='font-semibold text-[3rem] w-full text-center text-white leading-tight drop-shadow-lg'>Packages</h1>
+            <div className="flex flex-col lg:flex-row items-stretch align-center gap-6 justify-center w-full p-6">
                 {packages.map((pkg, index) => (
                     <PackageCard key={index} index={index} {...pkg} />
                 ))}
