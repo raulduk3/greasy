@@ -137,7 +137,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
                 ))}
             </ul>
             {pdfUrl ? (
-                <iframe src={pdfUrl} className='mb-6' width="100%" height="600px"></iframe>
+                <iframe src={pdfUrl} className='mb-6 max-w-full overflow-hidden' width="100%" height="600px"></iframe>
             ) : (
                 <p>Loading PDF...</p>
             )}
