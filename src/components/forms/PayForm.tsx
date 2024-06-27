@@ -110,13 +110,13 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                         <span className="font-semibold">Item:</span>
                         <span className='text-right'>{name}</span>
                     </div>
-                    <div className="flex justify-between py-1">
+                    <div className="flex flex-col md:flex-row justify-between py-1">
                         <span className="font-semibold">Price:</span>
                         <input 
                             type="text" 
                             value={customAmount} 
                             onChange={(e) => setCustomAmount(e.target.value)} 
-                            className="text-right border p-1"
+                            className="text-right max-w border p-1"
                         />
                     </div>
                 </div>
