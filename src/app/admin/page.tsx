@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import AdminDashboard from '@/components/AdminDashboard';
+import AdminDashboard from '@/components/misc/AdminDashboard';
 import { useRouter } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
@@ -24,9 +24,7 @@ const AdminPage: React.FC = () => {
     }
 
     return (
-        <div>
             <AdminDashboard />
-        </div>
     );
 };
 

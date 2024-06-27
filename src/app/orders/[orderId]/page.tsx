@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import FlashcardGame from '@/components/FlashcardGame';
+import FlashcardGame from '@/components/misc/FlashcardGame';
 import { saveAs } from 'file-saver';
 
 interface Flashcard {

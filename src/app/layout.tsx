@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils/utils';
 
 import '@/styles/global.css'; // Import the global styles from the appropriate file
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
 	title: "GREasy",
@@ -108,28 +109,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en" className={inter.className}>
 			<body className={cn("flex flex-col min-h-screen max-w-full overflow-x-hidden font-sans bg-slate-700 text-white", inter.className)}>
-				<header className="flex flex-col items-center text-white min-h-[20vh]">
-					<Link href="/" className="text-6xl mt-5 font-bold no-underline">
-						GR<span className="text-green-500">Easy</span>
-					</Link>
-					<p className="text-m text-center mx-4 mt-3 mb-4">Personalized GRE flashcards directly to your inbox</p>
-					<nav className="flex justify-center space-x-6 mb-4">
-						<Link href="/about" className="underline">
-							About
-						</Link>
-						<Link href="/" className="underline">
-							Home
-						</Link>
-						<Link href="/contact" className="underline">
-							Contact
-						</Link>
-					</nav>
-					<div className="w-full bg-red-600 text-sm p-1 text-white text-center text-sm py-1">
-						<span>Genocide in Palestine is ongoing. Learn more and support: </span>
-						<Link href="https://www.hrw.org/world-report/2024/country-chapters/israel-and-palestine" className="underline" target="_blank">Human Rights Watch</Link>
-					</div>
-				</header>
-				<main className="flex flex-col grow flex-1 items-center justify-start w-full h-full">
+				<Header></Header>
+				<main className="flex flex-col grow flex-1 items-center mt-[5rem] justify-start w-full h-full">
 					{children}
 					<Analytics />
 					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />

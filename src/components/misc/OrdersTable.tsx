@@ -1,10 +1,5 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-
-export const dynamic = 'force-dynamic';
 
 interface Order {
     order_id: number;
@@ -14,21 +9,14 @@ interface Order {
     paypal_order_id: string;
 }
 
-const AdminDashboard: React.FC = () => {
+const OrderTable: React.FC = () => {
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const router = useRouter();
-
     useEffect(() => {
         const fetchOrders = async () => {
             const token = localStorage.getItem('token');
-            if (!token) {
-                router.push('/login');
-                return;
-            }
-
             try {
                 const response = await fetch('/api/orders', {
                     headers: {
@@ -36,16 +24,12 @@ const AdminDashboard: React.FC = () => {
                         'Content-Type': 'application/json',
                     },
                 });
-
                 if (response.status === 401) {
                     throw new Error('Failed to fetch orders ' + (await response.json()).error);
                 }
-
                 const data = await response.json();
-    
                 setOrders(data);
             } catch (error: any) {
-                router.push('/login');
                 setError(error.message);
             } finally {
                 setLoading(false);
@@ -53,15 +37,15 @@ const AdminDashboard: React.FC = () => {
         };
 
         fetchOrders();
-    }, [router]);
+    }, []);
 
     if (loading) return <div className='p-6'>Loading...</div>;
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="p-6 self-justify-center flex flex-col">
-            <h1 className="text-2xl mb-4">Admin Dashboard</h1>
-            <table className="min-w-full bg-white text-black p-2">
+        <div className="w-lg mb-6">
+            <h2 className="text-xl mb-4">Orders</h2>
+            <table className="bg-white w-full text-black p-2">
                 <thead>
                     <tr>
                         <th className="py-2 px-4 border-b">Order ID</th>
@@ -91,4 +75,4 @@ const AdminDashboard: React.FC = () => {
     );
 };
 
-export default AdminDashboard;
+export default OrderTable;

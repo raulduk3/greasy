@@ -15,8 +15,8 @@ export default function Home() {
     return (
         <> 
             <Hero></Hero>
-            <PricingSection></PricingSection>
             <Banner></Banner>
+            <PricingSection></PricingSection>
         </>
     );
 }
