@@ -9,7 +9,7 @@ const StatsBanner = async () => {
 
     return (
         <>
-            <div className="text-black px-6 items-center flex flex-col gap-6 w-full">
+            <div className="text-black px-6 items-center flex flex-col gap-6 pt-4 w-full">
                 <div className="flex flex-col items-stretch w-full lg:w-8/12 gap-6">
                     <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
                         <div className="p-6 border bg-white flex flex-col rounded shadow-lg">
