@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Hero from "@/components/Hero";
+import Banner from "@/components/Banner";
 
 import ContactForm from '@/components/forms/ContactForm';
 import FriendsForm from '@/components/forms/FriendsForm';
@@ -15,6 +16,7 @@ export default function Home() {
         <> 
             <Hero></Hero>
             <PricingSection></PricingSection>
+            <Banner></Banner>
         </>
     );
 }
