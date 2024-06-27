@@ -27,7 +27,7 @@ const Header = () => {
             <div className="w-full flex h-full mx-auto my-auto px-5 sm:px-6 items-center justify-between">
                 <div className="flex items-center align-center justify-between h-16 md:h-20 grow flex-1">
                     <h2 className="shrink-0 mr-4 text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
-                        <Link href="/" className="text-black text-[2.8rem] p-2 block hover:underline" aria-label="GREasy">
+                        <Link href="/" className="text-black text-[2.8rem] p-2 block" aria-label="GREasy">
                             GR<span className='text-green-500'>Easy</span>
                         </Link>
                     </h2>
