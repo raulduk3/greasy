@@ -11,7 +11,7 @@ export async function POST(req: Request) {
         const { data, error } = await resend.emails.send({
             from: 'GREasy <cards@greasyvocab.com>',
             to: [userData.email.trim()],
-            subject: `Your GREasy Flashcards 🎉 ${userData.id !== 'NOT_PAYPAL' ? "Order #" + userData.id : 'Free Pack'}`,
+            subject: `Your GREasy Flashcards 🎉 ${userData.id ? "Order #" + userData.id : 'Free Pack'}`,
             react: <EmailTemplate
                 flashcards={flashcards}
                 paypalOrderId={userData.id}
