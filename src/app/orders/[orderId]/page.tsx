@@ -21,13 +21,37 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
     const [error, setError] = useState<string | null>(null);
     const [order, setOrder] = useState<any>({
         user: {
-            name: ' ',
-        }
+            name: '',
+        },
     });
     const router = useRouter();
     const orderId = params.orderId;
 
     useEffect(() => {
+        const fetchOrder = async () => {
+            try {
+                const response = await fetch(`/api/orders/${orderId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        router.push('/404');
+                    } else {
+                        throw new Error('Failed to fetch order');
+                    }
+                    return;
+                }
+
+                const data = await response.json();
+                setOrder(data);
+            } catch (error: any) {
+                setError(error.message);
+            }
+        };
         const fetchFlashcards = async () => {
             try {
                 const response = await fetch(`/api/orders/${orderId}/flashcards`, {
@@ -68,30 +92,10 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
             }
         };
 
-        const fetchOrder = async () => {
-            try {
-                const response = await fetch(`/api/orders/${orderId}/`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch order');
-                }
-
-                const data = await response.json();
-                setOrder(data);
-            } catch (error: any) {
-                setError(error.message);
-            }
-        };
-
         fetchOrder();
         fetchFlashcards();
         fetchPdfUrl();
-    }, [orderId]);
+    }, [orderId, router]);
 
     const downloadCSV = () => {
         const csvRows = [
@@ -124,7 +128,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl mb-4 p-0">GREasy Order #{orderId} for {order.user.name.split(" ")[0]}</h1>
+            <h1 className="text-2xl mb-4 p-0">GREasy Order #{orderId} for {order?.user?.name?.split(" ")[0]}</h1>
             <FlashcardGame name={order.user.name} flashcards={flashcards} />
             <h1 className="text-2xl mt-10 mb-4 p-0">Print Your Order</h1>
             <ul className="list-none mb-6">
@@ -149,22 +153,20 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
                     Download CSV
                 </button>
             </div>
-            <table className="max-w-8/12 text-black text-left bg-white mb-6">
-                <thead>
+            <table className="max-w-8/12 text-black text-center bg-white mb-6">
+                <thead className='bg-slate-300 text-slate-700'>
                     <tr>
                         <th className="p-2">Word</th>
                         <th className="p-2">Definition</th>
-                        <th className="p-2">Part of Speech</th>
                         <th className="p-2">Sentence</th>
                     </tr>
                 </thead>
                 <tbody>
                     {flashcards.map(flashcard => (
-                        <tr key={flashcard.flashcard_id} className="text-left">
-                            <td className="p-2">{flashcard.word}</td>
-                            <td className="p-2">{flashcard.definition}</td>
-                            <td className="p-2">{flashcard.part_of_speech}</td>
-                            <td className="p-2">{flashcard.sentence}</td>
+                        <tr key={flashcard.flashcard_id} className="text-left even:bg-slate-300 odd:bg-white">
+                            <td className="p-3 ">{flashcard.word} <span className='text-sm'>{flashcard.part_of_speech}</span></td>
+                            <td className="p-3 ">{flashcard.definition}</td>
+                            <td className="p-3 ">{flashcard.sentence}</td>
                         </tr>
                     ))}
                 </tbody>
