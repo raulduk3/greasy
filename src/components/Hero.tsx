@@ -11,9 +11,6 @@ export default function Hero() {
                         Using advanced LLM technology, we transform the personal data you provide into customized flashcards.
                         Complete our survey and receive a formatted PDF of flashcards through email.
                     </p>
-                    <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
-                        No credit card information or personal data is stored. All personal information is discarded after use. This website does not use cookies. It’s a very simple tool that provides printable and viewable flashcards of important and popular GRE words.
-                    </p>
                     <Link href={'/about'}>
                         <p className="mt-2 text-green-500 text-l text-gray-700 text-left self-start text-left">
                             Plus, 50% of all donations go directly to support Palestine. It's purely a donation, so you can pay as much as you want, or nothing at all.
