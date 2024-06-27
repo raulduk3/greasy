@@ -19,6 +19,20 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        flip: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(180deg)' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 0.5s ease-in-out',
+        flip: 'flip 0.6s ease-in-out',
+      },
       transitionDuration: {
         '1800': '1800ms',
       },

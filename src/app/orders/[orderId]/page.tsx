@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import FlashcardGame from '@/components/FlashcardGame';
+import { saveAs } from 'file-saver';
 
 interface Flashcard {
     flashcard_id: number;
@@ -17,6 +19,11 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [order, setOrder] = useState<any>({
+        user: {
+            name: ' ',
+        }
+    });
     const router = useRouter();
     const orderId = params.orderId;
 
@@ -61,11 +68,53 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
             }
         };
 
+        const fetchOrder = async () => {
+            try {
+                const response = await fetch(`/api/orders/${orderId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch order');
+                }
+
+                const data = await response.json();
+                setOrder(data);
+            } catch (error: any) {
+                setError(error.message);
+            }
+        };
+
+        fetchOrder();
         fetchFlashcards();
         fetchPdfUrl();
     }, [orderId]);
 
-    if (loading) return <div>Loading...</div>;
+    const downloadCSV = () => {
+        const csvRows = [
+            ['Word', 'Definition', 'Part of Speech', 'Sentence'],
+            ...flashcards.map(flashcard => [
+                flashcard.word,
+                flashcard.definition,
+                flashcard.part_of_speech,
+                flashcard.sentence
+            ])
+        ];
+
+        const csvContent = csvRows.map(row => row.map(item => `"${item}"`).join(',')).join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        saveAs(blob, `flashcards_order_${orderId}.csv`);
+    };
+
+    if (loading) return (<div className="flex flex-col  grow w-full justify-center  items-center justify-center">
+        <div className="text-center">
+            <p className="text-center">Loading...</p>
+        </div>
+    </div>);
     if (error) return <div>{error}</div>;
 
     const printInstructions = `1. Set your printer to print two-sided.
@@ -75,8 +124,9 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl mb-6 text-center">Flashcards for Order #{orderId}</h1>
-            <h1 className="text-2xl mt-10 mb-6 text-center">Print Your Order</h1>
+            <h1 className="text-2xl mb-4 p-0">GREasy Order #{orderId} for {order.user.name.split(" ")[0]}</h1>
+            <FlashcardGame name={order.user.name} flashcards={flashcards} />
+            <h1 className="text-2xl mt-10 mb-4 p-0">Print Your Order</h1>
             <ul className="list-none mb-6">
                 {printInstructions.split('\n').map((instruction, index) => (
                     <li key={index}>{instruction}</li>
@@ -87,16 +137,38 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
             ) : (
                 <p>Loading PDF...</p>
             )}
-            <div className="grid grid-cols-1 text-black md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {flashcards.map(flashcard => (
-                    <div key={flashcard.flashcard_id} className="p-4 bg-white rounded shadow">
-                        <h2 className="text-xl font-bold">{flashcard.word}</h2>
-                        <p><strong>Definition:</strong> {flashcard.definition}</p>
-                        <p><strong>Part of Speech:</strong> {flashcard.part_of_speech}</p>
-                        <p><strong>Sentence:</strong> {flashcard.sentence}</p>
-                    </div>
-                ))}
+            <h2 className="text-xl mb-4">Flashcards Table</h2>
+            <div className="mb-4 flex gap-4">
+                <button onClick={() => setFlashcards([...flashcards].sort(() => Math.random() - 0.5))} className="px-4 py-2 bg-blue-500 text-white rounded">
+                    Shuffle
+                </button>
+                <button onClick={() => setFlashcards([...flashcards].sort((a, b) => a.word.localeCompare(b.word)))} className="px-4 py-2 bg-blue-500 text-white rounded">
+                    Sort Alphabetically
+                </button>
+                <button onClick={downloadCSV} className="px-4 py-2 bg-green-500 text-white rounded">
+                    Download CSV
+                </button>
             </div>
+            <table className="max-w-8/12 text-black text-left bg-white mb-6">
+                <thead>
+                    <tr>
+                        <th className="p-2">Word</th>
+                        <th className="p-2">Definition</th>
+                        <th className="p-2">Part of Speech</th>
+                        <th className="p-2">Sentence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {flashcards.map(flashcard => (
+                        <tr key={flashcard.flashcard_id} className="text-left">
+                            <td className="p-2">{flashcard.word}</td>
+                            <td className="p-2">{flashcard.definition}</td>
+                            <td className="p-2">{flashcard.part_of_speech}</td>
+                            <td className="p-2">{flashcard.sentence}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }

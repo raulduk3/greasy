@@ -4,7 +4,7 @@ import React from 'react';
 import { getRecentSentences } from '@/lib/recentSentences';
 import { getWordCount } from '@/lib/wordCount';
 
-const StatsBanner = async () => {
+const StatsBanner =  () => {
     const recentSentences = await getRecentSentences();
     const wordCount = await getWordCount();
 

@@ -53,7 +53,7 @@ const AdminDashboard: React.FC = () => {
         };
 
         fetchOrders();
-    }, []);
+    }, [router]);
 
     if (loading) return <div className='p-6'>Loading...</div>;
     if (error) return <div>{error}</div>;
