@@ -1,4 +1,4 @@
-import GenerateFlashcardQuestionnaire from '@/components/GenerateFlashcardQuestionnaire';
+import GenerateFlashcardQuestionnaire from '@/components/forms/GenerateFlashcardQuestionnaire';
 
 import PayForm from '@/components/forms/PayForm';
 import ContactForm from '@/components/forms/ContactForm';

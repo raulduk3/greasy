@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { getUser } from '@/lib/user/get';
 import generateFlashcards from '@/lib/flashcards/generateFlashcards';
 import createOrder from '@/lib/createOrder';
-import { DynamicFormProps } from './forms/DynamicForm';
+import { DynamicFormProps } from './DynamicForm';
 import { redirect } from 'next/navigation';
 
 import type { Flashcard } from '@/lib/flashcards/types';
