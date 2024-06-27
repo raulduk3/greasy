@@ -33,7 +33,7 @@ const StatsBanner = async () => {
                             </ul>
                         </div>
                         <div className="p-6 border bg-white flex flex-col rounded shadow-lg leading-tight">
-                            <h4 className="text-xl text-black mb-4 mt-1">What People Are Saying About GREasy</h4>
+                            <h4 className="text-xl text-black mb-2 mt-1">What People Are Saying About GREasy</h4>
                             <p className="text-base italic mb-2">"GREasy's personalized flashcards have transformed my study sessions. Highly recommend!" - Karina B.</p>
                             <p className="text-base italic mb-2">"Great GRE prep tool. The sentences are relevant and concise." - Sam H.</p>
                             <p className="text-base italic mb-2">"Much cheaper than other options and giving back!" - Julían C.</p>
@@ -41,7 +41,7 @@ const StatsBanner = async () => {
                         </div>
                     </div>
                     <div className="w- p-6 text-black bg-white rounded shadow-lg flex-1 flex flex-col">
-                        <h3 className="text-4xl mb-4 text-black">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
+                        <h3 className="text-4xl mb-2 text-black leading-tight">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
                         <ul className="flex flex-col gap-4 text-xl">
                             {recentSentences.map((sentence, index) => (
                                 <li key={index} className="leading-relaxed text-lg">{sentence}.</li>
