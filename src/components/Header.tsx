@@ -43,7 +43,7 @@ const Header = () => {
                         </Link>
                     </nav>
                     <div className="md:hidden flex items-center">
-                        <button onClick={toggleMenu} className="text-2xl">
+                        <button onClick={toggleMenu} className="text-2xl px-2">
                             <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
                         </button>
                     </div>
