@@ -110,7 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en" className={inter.className}>
 			<body className={cn("flex flex-col min-h-screen max-w-full overflow-x-hidden font-sans bg-slate-700 text-white", inter.className)}>
 				<Header></Header>
-				<main className="flex flex-col grow flex-1 items-center mt-[5rem] justify-start w-full h-full">
+				<main className="flex flex-col grow flex-1 items-center mt-[5rem] pb-24 gap-24 justify-start w-full h-full">
 					{children}
 					<Analytics />
 					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
