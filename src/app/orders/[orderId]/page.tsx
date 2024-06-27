@@ -141,7 +141,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
             ) : (
                 <p>Loading PDF...</p>
             )}
-            <h2 className="text-xl hidden lg:flex flex-col mb-4">Flashcards Table</h2>
+            <h2 className="text-xl hidden lg:flexmb-4">Flashcards Table</h2>
             <div className="mb-4 hidden lg:flex flex-col md:flex-row gap-4">
                 <button onClick={() => setFlashcards([...flashcards].sort(() => Math.random() - 0.5))} className="px-4 py-2 bg-blue-500 text-white rounded">
                     Shuffle
@@ -153,7 +153,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
                     Download CSV
                 </button>
             </div>
-            <table className="max-w-1/2 hidden lg:flex flex-col text-black text-center bg-white mb-6 overflow-scroll">
+            <table className="max-w-1/2 text-black text-center bg-white mb-6 overflow-scroll">
                 <thead className='bg-slate-300 text-slate-700'>
                     <tr>
                         <th className="p-2">Word</th>
@@ -163,7 +163,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
                 </thead>
                 <tbody>
                     {flashcards.map(flashcard => (
-                        <tr key={flashcard.flashcard_id} className="text-left even:bg-slate-300 odd:bg-white">
+                        <tr key={flashcard.flashcard_id} className="text-left text-sm md:text-md even:bg-slate-300 odd:bg-white">
                             <td className="p-3 ">{flashcard.word} <span className='text-sm'>{flashcard.part_of_speech}</span></td>
                             <td className="p-3 ">{flashcard.definition}</td>
                             <td className="p-3 ">{flashcard.sentence}</td>
