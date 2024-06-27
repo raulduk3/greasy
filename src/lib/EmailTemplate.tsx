@@ -19,13 +19,13 @@ const styles = {
         backgroundColor: '#FFFFFF',
         color: '#666',
         textAlign: 'center' as 'center',
-        width: '45%',
+        maxWidth: '580x',
         margin: 'auto',
         fontFamily: 'Arial, sans-serif',
     },
     header: {
         margin: '1rem 0',
-        fontSize: '3rem',
+        fontSize: '2.5rem',
         color: 'rgb(34, 197, 94)',
     },
     headerSpan: {
@@ -57,10 +57,10 @@ const styles = {
     },
     flashcards: {
         width: '80%',
-        backgroundColor: '#475569',
         margin: '2rem auto',
     },
     flashcard: {
+        backgroundColor: '#475569',
         border: '1px solid #ddd',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         padding: '1rem',
