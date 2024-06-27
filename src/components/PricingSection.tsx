@@ -10,7 +10,7 @@ export const PricingSection: React.FC = () => {
             <h1 style={{
                 paddingBottom: '10px',
                 borderBottom: '2px solid white',
-            }} className='text-4xl uppercase font-semibold text-white m-6'>Packages</h1>
+            }} className='text-4xl uppercase text-white m-6'>Packages</h1>
             <div className="flex flex-col lg:flex-row items-stretch align-center px-6 pb-6 gap-8 justify-center w-full">
                 {packages.map((pkg, index) => (
                     <PackageCard key={index} index={index} {...pkg} />

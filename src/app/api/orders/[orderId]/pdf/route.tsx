@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         border: '1px dashed #000',
         justifyContent: 'center',
-        padding: 15,
+        padding: 22,
     },
     flashcard_back: {
         width: '50%',
         height: '20%',
         border: '1px dashed #000',
         justifyContent: 'space-between',
-        padding: 15,
+        padding: 22,
     },
     word: {
         fontSize: 24,
