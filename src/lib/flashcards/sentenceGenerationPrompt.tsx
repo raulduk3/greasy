@@ -6,9 +6,8 @@ function getRandomElement(arr: string[]) {
 
 export default async function sentenceGenerationPrompt(word: { id: any; word: any; definition: any; example: any; partOfSpeech: any; }, friends: string[], locations: string[], activities: string[]) {
     return `
-        ${word.definition}
-        ${word.example}
-        Use the name ${getRandomElement(friends)} in ${getRandomElement(locations)}, inspired by ${getRandomElement(activities)}.
-        Write a 20-25 word GRE-style sentence that clearly illustrates the definition of '${word}.' You MUST use ${word.word}.
+    ${word}: ${word.partOfSpeech} ${word.definition}. 
+    ${word.example}. 
+    Using the name ${getRandomElement(friends)} and set in ${getRandomElement(locations)}, inspired by ${getRandomElement(activities)}, write a 20-23 word GRE-style sentence that correctly demonstrates the definition of '${word.word}'.
     `.trim().replace(/\n/g, '');
 }
