@@ -127,7 +127,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
         4. Study!`;
 
     return (
-        <div className="m-6 w-10/12 md:w-10/12">
+        <div className="m-6 w-11/12 md:w-10/12">
             <h1 className="text-2xl mb-4 p-0">GREasy Order #{orderId} for {order?.user?.name?.split(" ")[0]}</h1>
             <FlashcardGame name={order.user.name} flashcards={flashcards} />
             <h1 className="text-2xl mt-10 mb-4 p-0">Print Your Order</h1>
@@ -153,7 +153,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
                     Download CSV
                 </button>
             </div>
-            <table className="max-w-1/2 text-black text-center bg-white mb-6 overflow-scroll">
+            <table className="w-full text-black text-center bg-white mb-6 overflow-scroll">
                 <thead className='bg-slate-300 text-slate-700'>
                     <tr>
                         <th className="p-2">Word</th>
