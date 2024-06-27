@@ -9,13 +9,14 @@ export default function Hero() {
                     <h1 className="text-2xl lg:text-6xl text-gray-900 self-start text-left leading-tight">Generate bundles today with tailored sentences.</h1>
                     <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
                         Using advanced LLM technology, we transform the personal data you provide into customized flashcards.
-                        Complete our survey and recieve a formatted PDF of flashcards through email.
+                        Complete our survey and receive a formatted PDF of flashcards through email.
                     </p>
-                    <Link href={'/about'}>
-                        <p className="mt-2 text-l text-green-700 text-left self-start text-left">
-                            Plus, 50% of all purchases go directly to support Palestine. It's purely a donation, so you can pay as much as you want, or nothing at all.
-                        </p>
-                    </Link>
+                    <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
+                        Plus, 50% of all purchases go directly to support Palestine. It's purely a donation, so you can pay as much as you want, or nothing at all.
+                    </p>
+                    <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
+                        No credit card information or personal data is stored. All personal information is discarded after use. This website does not use cookies. It’s a very simple tool that provides printable and viewable flashcards of important and popular GRE words.
+                    </p>
                     <Link href="/q/basic">
                         <button className="bg-green-500 shadow-sm text-white text-lg p-5 rounded mt-8 w-full font-bold hover:bg-green-600 transition duration-200">
                             Generate for free!
