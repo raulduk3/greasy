@@ -16,6 +16,7 @@ interface PayFormProps extends DynamicFormProps {
 
 const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => {
     const [message, setMessage] = useState<string | null>(null);
+    const [customAmount, setCustomAmount] = useState<string>(cost);
 
     async function newOrder() {
         try {
@@ -31,7 +32,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                             quantity: "1",
                         },
                     ],
-                    cost: cost,
+                    cost: customAmount,
                 }),
             });
 
@@ -69,25 +70,15 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
             );
 
             const orderData = await response.json();
-            // Three cases to handle:
-            //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-            //   (2) Other non-recoverable errors -> Show a failure message
-            //   (3) Successful transaction -> Show confirmation or thank you message
-
             const errorDetail = orderData?.details?.[0];
 
             if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
-                // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                // recoverable state, per https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
                 return actions.restart();
             } else if (errorDetail) {
-                // (2) Other non-recoverable errors -> Show a failure message
                 throw new Error(
                     `${errorDetail.description} (${orderData.debug_id})`
                 );
             } else {
-                // (3) Successful transaction -> Show confirmation or thank you message
-                // Or go to another URL:  actions.redirect('thank_you.html');
                 const order = await actions.order.capture();
                 onSubmit({ paid: true, ...order });
                 setMessage(
@@ -111,7 +102,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
         <form className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-full">
             <div className="w-full mb-10">
                 <h2 className="text-2xl mb-1">Ready to generate cards</h2>
-                <p className="text-lg">Please use PayPal to complete your purchase</p>
+                <p className="text-lg">Please use PayPal to complete your purchase. Donate as much as you want!</p>
             </div>
             <div className="w-full mb-10">
                 <div className="border-t border-b py-2">
@@ -121,7 +112,12 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                     </div>
                     <div className="flex justify-between py-1">
                         <span className="font-semibold">Price:</span>
-                        <span>${cost}</span>
+                        <input 
+                            type="text" 
+                            value={customAmount} 
+                            onChange={(e) => setCustomAmount(e.target.value)} 
+                            className="text-right border p-1"
+                        />
                     </div>
                 </div>
             </div>
@@ -130,7 +126,6 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                 <PayPalScriptProvider
                     options={{
                         clientId: "Af9Y7lGXuJAuJbnad2wCA348ncAFjAKnq0CSs30APlpWEl6JHWiYugTR2jxm1fq3eltw2yb9TfU57aOl",
-                        disableFunding: 'credit,card',
                         currency: 'USD',
                         intent: 'capture'
                     }}

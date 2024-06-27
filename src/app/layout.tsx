@@ -110,16 +110,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en" className={inter.className}>
 			<body className={cn("flex flex-col min-h-screen w-[100vw] overflow-x-hidden font-sans bg-slate-700 text-white", inter.className)}>
 				<Header></Header>
-				<main className="flex flex-col grow flex-1 items-center justify-center mt-[5rem] gap-6 lg:gap-6 justify-start w-full h-full">
+				<main className="flex flex-col grow flex-1 items-center justify-center mt-[5rem] gap-6 pb-6 lg:gap-6 justify-start w-full h-full">
 					{children}
 					<Analytics />
 					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
 				</main>
 				<footer className="flex flex-col text-black  bg-white items-center p-6 gap-2 text-sm">
 					<nav className="flex justify-center space-x-4 mb-2">
-						<Link href="/donation" className="underline">
-							Donation
-						</Link>
 						<Link href="/feedback" className="underline">
 							Feedback
 						</Link>

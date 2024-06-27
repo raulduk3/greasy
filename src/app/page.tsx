@@ -16,7 +16,7 @@ export default function Home() {
         <> 
             <Hero></Hero>
             <Banner></Banner>
-            <PricingSection></PricingSection>
+            {/* <PricingSection></PricingSection> */}
         </>
     );
 }

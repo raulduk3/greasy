@@ -9,10 +9,10 @@ const StatsBanner = async () => {
 
     return (
         <>
-            <div className="text-black px-6 items-center flex flex-col gap-6 pt-4 w-full">
-                <div className="flex flex-col items-stretch w-full lg:w-8/12 gap-6">
-                    <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
-                        <div className="p-6 border bg-white flex flex-col rounded shadow-lg">
+            <div className="text-black px-6 items-center flex flex-col gap-6 w-full">
+                <div className="flex flex-col items-stretch w-full lg:w-10/12 gap-6">
+                    <div className="flex bg-white rounded shadow-lg flex-col md:flex-row items-stretch justify-center gap-6">
+                        <div className="p-6  bg-white flex flex-col">
                             <h1 id="why-use-greasy" className="font-semibold text-[3em] text-left mb-4 self-start leading-tight">Why GREasy?</h1>
                             <ul className="list-none text-lg">
                                 <li className="mb-2">
@@ -32,22 +32,22 @@ const StatsBanner = async () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="p-6 border bg-white flex flex-col rounded shadow-lg leading-tight">
+                        <div className="p-6  bg-white flex flex-col leading-tight">
                             <h4 className="text-xl text-black mb-2 mt-1">What People Are Saying About GREasy</h4>
                             <p className="text-base italic mb-2">"GREasy's personalized flashcards have transformed my study sessions. Highly recommend!" - Karina B.</p>
                             <p className="text-base italic mb-2">"Great GRE prep tool. The sentences are relevant and concise." - Sam H.</p>
                             <p className="text-base italic mb-2">"Much cheaper than other options and giving back!" - Julían C.</p>
-                            <p className="text-sm italic mt-auto">Current Word Count: {wordCount}</p>
                         </div>
                     </div>
-                    <div className="w- p-6 text-black bg-white rounded shadow-lg flex-1 flex flex-col">
-                        <h3 className="text-4xl mb-2 text-black leading-tight">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
+                    <div className="w- p-6 text-black bg-white flex-1 flex flex-col">
+                        <h3 className="text-4xl mb-2 font-semibold text-black leading-tight">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
                         <ul className="flex flex-col gap-4 text-xl">
                             {recentSentences.map((sentence, index) => (
                                 <li key={index} className="leading-relaxed text-lg">{sentence}.</li>
                             ))}
                         </ul>
                         <p className="text-sm italic pt-4 justify-self-end">Current Sentence Count: {sentenceCount}</p>
+                            <p className="text-sm italic mt-auto">Current Word Count: {wordCount}</p>
                     </div>
                 </div>
             </div>
