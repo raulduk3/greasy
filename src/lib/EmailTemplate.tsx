@@ -19,7 +19,8 @@ const styles = {
         backgroundColor: '#FFFFFF',
         color: '#666',
         textAlign: 'center' as 'center',
-        width: '40%',
+        width: '45%',
+        margin: 'auto',
         fontFamily: 'Arial, sans-serif',
     },
     header: {
@@ -56,10 +57,10 @@ const styles = {
     },
     flashcards: {
         width: '80%',
+        backgroundColor: '#475569',
         margin: '2rem auto',
     },
     flashcard: {
-        backgroundColor: '#FFF',
         border: '1px solid #ddd',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         padding: '1rem',
@@ -76,7 +77,7 @@ const styles = {
     flashcardText: {
         margin: '0.5rem 0',
         fontSize: '1rem',
-        color: '#666',
+        color: 'white',
     },
     flashcardLink: {
         color: 'rgb(34, 197, 94)',
