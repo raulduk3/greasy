@@ -118,7 +118,7 @@ const WordTable: React.FC = () => {
     };
 
     return (
-        <div className='text-black'>
+        <div className='text-black max-w-full overflow-scroll'>
             <h2 className="text-xl text-white mb-4">Manage Words</h2>
             <input 
                 type="text" 

@@ -24,7 +24,7 @@ const AdminPage: React.FC = () => {
     }
 
     return (
-            <AdminDashboard />
+        <AdminDashboard />
     );
 };
 

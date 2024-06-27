@@ -9,7 +9,7 @@ const StatsBanner = async () => {
 
     return (
         <>
-            <div className="text-black px-6 items-center flex flex-col gap-6">
+            <div className="text-black px-6 items-center flex flex-col gap-6 w-full">
                 <div className="flex flex-col items-stretch w-full lg:w-8/12 gap-6">
                     <div className="flex flex-col md:flex-row items-stretch justify-center gap-6">
                         <div className="p-6 border bg-white flex flex-col rounded shadow-lg">
@@ -41,7 +41,7 @@ const StatsBanner = async () => {
                         </div>
                     </div>
                     <div className="w- p-6 text-black bg-white rounded shadow-lg flex-1 flex flex-col">
-                        <h3 className="text-4xl mb-4 text-black">Generated Sentences on <span className='text-green-500'>GREasyvocab.com</span></h3>
+                        <h3 className="text-4xl mb-4 text-black">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
                         <ul className="flex flex-col gap-4 text-xl">
                             {recentSentences.map((sentence, index) => (
                                 <li key={index} className="leading-relaxed text-lg">{sentence}.</li>
