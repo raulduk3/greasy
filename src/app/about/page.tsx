@@ -16,7 +16,7 @@ const AboutPage: React.FC = () => {
                     This project is not only about education; <Link href="/donation" className="text-green-500 underline">it's also about giving back.</Link> Fifty percent of proceeds are donated to support humanitarian efforts in Palestine. I believe in the power of education and the importance of helping those in need.
                 </p>
                 <p className="max-w-xll text-left">
-                    Thank you for joining us on this journey. I hope that GREasy helps you achieve your GRE goals and makes your study sessions a little brighter. Together, let's make learning fun and impactful!
+                    Thank you for joining me on this journey. I hope that GREasy helps you achieve your GRE goals and makes your study sessions a little brighter. Together, let's make learning fun and impactful!
                 </p>
             </div>
         </div>
