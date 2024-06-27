@@ -6,8 +6,8 @@ import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
     return (
-        <div className='bg-white rounded-lg mx-6 p-6'>
-            <h1 className='font-semibold text-[3rem] w-full mb-2 text-black leading-tight'>Packages</h1>
+        <div className=' pb-24 '>
+            <h1 className='font-semibold text-[3rem] w-full text-center text-white mb-8 leading-tight drop-shadow-lg'>Packages</h1>
             <div className="flex flex-col lg:flex-row items-stretch align-center gap-6 justify-center w-full">
                 {packages.map((pkg, index) => (
                     <PackageCard key={index} index={index} {...pkg} />
@@ -34,17 +34,17 @@ const PackageCard: React.FC<{
 
     return (
         <div ref={ref_main} className={`flex flex-col flex flex-1 items-stretch align-center w-auto transition-opacity ease-in duration-1800`}>
-            <div ref={ref_sub} className="bg-green-500 flex flex-1 h-full flex-col flex-basis text-white px-5 py-5 gap-1 shadow-lg rounded-sm text-left">
+            <div ref={ref_sub} className="bg-white flex flex-1 h-full flex-col flex-basis text-black px-5 py-5 gap-1 shadow-lg rounded-sm text-left">
                 <h1 className="text-xl text-wrap">{title}</h1>
-                <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-100'> | {description}</span></p>
-                <ul className="list-disc ml-4 text-white">
+                <p className="text-l mb-1">{price}<span className='italic text-sm text-gray-900'> | {description}</span></p>
+                <ul className="list-disc ml-4 text-black">
                     {features.map((feature, idx) => (
                         <li key={idx}>{feature}</li>
                     ))}
                 </ul>
                 <div className='flex flex-1 flex-row justify-center my-2'> 
                     <Link href={link}
-                            className="shadow bg-slate-700 text-white w-5/12 py-2 px-4 rounded mt-5 align-center self-end text-center font-bold no-underline hover:bg-green-600 transition duration-200"
+                            className="shadow bg-green-500 text-white w-5/12 py-2 px-4 rounded mt-5 align-center self-end text-center font-bold no-underline hover:bg-green-600 transition duration-200"
                             role="button"
                             aria-label={`Start ${title}`}
                             >
