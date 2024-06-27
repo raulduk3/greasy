@@ -19,7 +19,7 @@ const styles = {
         backgroundColor: '#FFFFFF',
         color: '#666',
         textAlign: 'center' as 'center',
-        maxWidth: '580x',
+        maxWidth: '600px',
         margin: 'auto',
         fontFamily: 'Arial, sans-serif',
     },
@@ -60,7 +60,7 @@ const styles = {
         margin: '2rem auto',
     },
     flashcard: {
-        backgroundColor: '#475569',
+        backgroundColor: '#334454',
         border: '1px solid #ddd',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         padding: '1rem',
