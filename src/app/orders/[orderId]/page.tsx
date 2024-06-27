@@ -141,8 +141,8 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
             ) : (
                 <p>Loading PDF...</p>
             )}
-            <h2 className="text-xl hidden lg:flexmb-4">Flashcards Table</h2>
-            <div className="mb-4 hidden lg:flex flex-col md:flex-row gap-4">
+            <h2 className="text-xl lg:flex mb-4">Flashcards Table</h2>
+            <div className="mb-4 lg:flex flex-col md:flex-row gap-4">
                 <button onClick={() => setFlashcards([...flashcards].sort(() => Math.random() - 0.5))} className="px-4 py-2 bg-blue-500 text-white rounded">
                     Shuffle
                 </button>
