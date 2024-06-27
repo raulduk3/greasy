@@ -50,7 +50,7 @@ const Header = () => {
                 </div>
             </div>
             {menuOpen && (
-                <nav className="md:hidden bg-white shadow-lg">
+                <nav className={`md:hidden ${top ? 'bg-white' : 'bg-white/90 backdrop-blur-sm shadow-lg'} shadow-lg`}>
                     <ul className="flex flex-col items-center space-y-4 py-4">
                         <li>
                             <Link href="/about" className="block hover:underline" onClick={toggleMenu}>
