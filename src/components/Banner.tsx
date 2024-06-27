@@ -9,9 +9,9 @@ const StatsBanner = async () => {
 
     return (
         <>
-            <div className="text-black px-6 items-center flex flex-col gap-6 w-full">
-                <div className="flex flex-col items-stretch w-full lg:w-10/12 gap-6">
-                    <div className="flex bg-white rounded-lg shadow-lg flex-col md:flex-row items-stretch justify-center gap-6">
+            <div className="text-black items-center flex flex-col w-full">
+                <div className="flex flex-col items-stretch w-full lg:w-full">
+                    <div className="flex bg-white shadow-lg flex-col md:flex-row items-stretch justify-center gap-6 p-6">
                         <div className="p-6  bg-white flex flex-col">
                             <h1 id="why-use-greasy" className="font-semibold text-[3em] text-left mb-4 self-start leading-tight">Why GREasy?</h1>
                             <ul className="list-none text-lg">
@@ -39,7 +39,7 @@ const StatsBanner = async () => {
                             <p className="text-base italic mb-2">"Much cheaper than other options and giving back!" - Julían C.</p>
                         </div>
                     </div>
-                    <div className="w- p-6 text-black  bg-white flex-1 flex flex-col">
+                    <div className="p-12 text-black  bg-white flex-1 flex flex-col">
                         <h3 className="text-4xl mb-2 font-semibold text-black leading-tight">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
                         <ul className="flex flex-col gap-4 text-xl">
                             {recentSentences.map((sentence, index) => (
