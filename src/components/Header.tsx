@@ -23,7 +23,7 @@ const Header = () => {
     };
 
     return (
-        <header className={`fixed w-[100vw] text-black z-30 transition duration-300 h-[5rem] ease-in-out ${top ? 'bg-white' : 'bg-white/90 backdrop-blur-sm shadow-lg'}`}>
+        <header className={`fixed w-full text-black z-30 transition duration-300 h-[5rem] ease-in-out ${top ? 'bg-white' : 'bg-white/90 backdrop-blur-sm shadow-lg'}`}>
             <div className="w-full flex h-full mx-auto my-auto px-5 sm:px-6 items-center justify-between w-full">
                 <div className="flex items-center align-center justify-between h-16 md:h-20 grow flex-1">
                     <h2 className="shrink-0 mr-4 text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
@@ -31,7 +31,7 @@ const Header = () => {
                             GR<span className='text-green-500'>Easy</span>
                         </Link>
                     </h2>
-                    <nav className="hidden md:flex space-x-6">
+                    <nav className="hidden md:flex space-x-6 px-2">
                         <Link href="/about" className="hover:underline">
                             About
                         </Link>
@@ -51,7 +51,7 @@ const Header = () => {
             </div>
             {menuOpen && (
                 <nav className={`md:hidden ${top ? 'bg-white' : 'bg-white/90 backdrop-blur-sm'} shadow-lg`}>
-                    <ul className="flex flex-col items-center space-y-4 py-4">
+                    <ul className="flex flex-col items-center space-y-4 py-4 px-2">
                         <li>
                             <Link href="/about" className="block hover:underline" onClick={toggleMenu}>
                                 About
