@@ -9,7 +9,7 @@ interface Order {
     paypal_order_id: string;
 }
 
-const OrderTable: React.FC = () => {
+const OrderTable: React.FC = async () => {
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -25,6 +25,7 @@ const OrderTable: React.FC = () => {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
+                    cache: 'no-store',
                 });
                 if (response.status === 401) {
                     throw new Error('Failed to fetch orders ' + (await response.json()).error);

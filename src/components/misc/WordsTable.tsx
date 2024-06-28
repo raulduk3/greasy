@@ -25,6 +25,7 @@ const WordTable: React.FC = () => {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
+                    cache: 'no-store',
                 });
                 const data = await response.json();
                 const sortedWords = data.sort((a: Word, b: Word) => a.word.localeCompare(b.word));
