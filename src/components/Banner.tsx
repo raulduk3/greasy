@@ -9,10 +9,10 @@ const StatsBanner = async () => {
 
     return (
         <>
-            <div className="text-black items-center flex flex-col w-full">
+            <div className="text-black items-center flex flex-col max-w-full gap-2">
                 <div className="flex flex-col items-stretch w-full lg:w-full">
-                    <div className="flex bg-white shadow-lg flex-col md:flex-row items-stretch justify-center gap-6 p-6">
-                        <div className="p-6  bg-white flex flex-col">
+                    <div className="flex bg-white shadow-lg flex-col md:flex-row items-stretch justify-center pt-6 px-12">
+                        <div className="bg-white flex flex-col">
                             <h1 id="why-use-greasy" className="font-semibold text-[3em] text-left mb-4 self-start leading-tight">Why GREasy?</h1>
                             <ul className="list-none text-lg">
                                 <li className="mb-2">
@@ -32,14 +32,14 @@ const StatsBanner = async () => {
                                 <strong>No credit card information or personal data is stored. </strong> All personal information is discarded after use. This website does not use cookies. It’s a very simple tool that provides printable and viewable flashcards of important and popular GRE words.
                             </p>
                         </div>
-                        <div className="p-6  bg-white flex flex-col leading-tight">
-                            <h4 className="text-xl text-black mb-2 mt-1">What People Are Saying About GREasy</h4>
+                        {/* <div className="bg-white flex flex-col leading-tight p-6 md:py-0">
+                            <h4 className="text-xl text-black mt-2 mb-4">What People Are Saying About GREasy</h4>
                             <p className="text-base italic mb-2">"GREasy's personalized flashcards have transformed my study sessions. Highly recommend!" - Karina B.</p>
                             <p className="text-base italic mb-2">"Great GRE prep tool. The sentences are relevant and concise." - Sam H.</p>
                             <p className="text-base italic mb-2">"Much cheaper than other options and giving back!" - Julían C.</p>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="p-12 text-black  bg-white flex-1 flex flex-col">
+                    <div className="text-black bg-white flex-1 flex flex-col px-12 pb-6">
                         <h3 className="text-4xl mb-2 font-semibold text-black leading-tight">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
                         <ul className="flex flex-col gap-4 text-xl">
                             {recentSentences.map((sentence, index) => (
