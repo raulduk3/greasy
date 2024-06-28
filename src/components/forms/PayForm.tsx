@@ -127,6 +127,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                     options={{
                         clientId: "Af9Y7lGXuJAuJbnad2wCA348ncAFjAKnq0CSs30APlpWEl6JHWiYugTR2jxm1fq3eltw2yb9TfU57aOl",
                         currency: 'USD',
+                        disableFunding: 'card,credit',
                         intent: 'capture'
                     }}
                 >
@@ -134,6 +135,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                         style={{
                             color: 'gold',
                             shape: 'rect',
+                            
                             label: 'pay',
                             height: 50
                         }}
