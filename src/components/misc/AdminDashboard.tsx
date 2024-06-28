@@ -13,12 +13,39 @@ const AdminDashboard: React.FC = () => {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            router.push('/login');
-        } else {
-            setLoading(false);
-        }
+        const validateToken = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                router.push('/login');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/validate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                if (!response.ok) {
+                    router.push('/login');
+                } else {
+                    const data = await response.json();
+                    if (!data.valid) {
+                        router.push('/login');
+                    } else {
+                        setLoading(false);
+                    }
+                }
+            } catch (error) {
+                setError('Failed to validate token');
+                router.push('/login');
+            }
+        };
+
+        validateToken();
     }, [router]);
 
     if (loading) return <div className='p-6'>Loading...</div>;
