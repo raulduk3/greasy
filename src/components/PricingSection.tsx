@@ -2,7 +2,6 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { useIsVisible } from '@/lib/utils/useIsVisible';
 
 export const PricingSection: React.FC = () => {
     return (
@@ -27,10 +26,8 @@ const PackageCard: React.FC<{
     index: number;
 }> = ({ title, index, price, description, features, link, linkText }) => {
     const ref_main = useRef<HTMLDivElement>(null);
-    const isSectionVisible = useIsVisible(ref_main);
 
     const ref_sub = useRef<HTMLDivElement>(null);
-    const isCardVisible = useIsVisible(ref_sub);
 
     return (
         <div ref={ref_main} className={`flex flex-col flex flex-1 items-stretch align-center w-auto transition-opacity ease-in duration-1800`}>
