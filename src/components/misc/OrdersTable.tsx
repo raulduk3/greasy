@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 interface Order {
@@ -9,7 +11,7 @@ interface Order {
     paypal_order_id: string;
 }
 
-const OrderTable: React.FC = async () => {
+const OrderTable: React.FC = () => {
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -20,18 +22,24 @@ const OrderTable: React.FC = async () => {
         const fetchOrders = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await fetch('/api/orders', {
+                const response = fetch('/api/orders', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
-                    cache: 'no-store',
+                    cache: 'no-store'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Token validation failed');
+                    }
+                    return response.json();
+                }).then(data => {
+                    setOrders(data);
+                })
+                .catch(() => {
+                    setError('Failed to fetch orders');
                 });
-                if (response.status === 401) {
-                    throw new Error('Failed to fetch orders ' + (await response.json()).error);
-                }
-                const data = await response.json();
-                setOrders(data);
             } catch (error: any) {
                 setError(error.message);
             } finally {
@@ -42,22 +50,25 @@ const OrderTable: React.FC = async () => {
         fetchOrders();
     }, []);
 
-    const handleResendEmail = async (orderId: number) => {
+    const handleResendEmail = (orderId: number) => {
         setSending(true);
         setMessage(null);
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`/api/orders/${orderId}/resend`, {
+            fetch(`/api/orders/${orderId}/resend`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to resend email');
+                }
+                return response.json();
+            }).then(() => {
+                setMessage('Email sent successfully');
             });
-            if (!response.ok) {
-                throw new Error('Failed to resend email');
-            }
-            setMessage('Email sent successfully');
         } catch (error: any) {
             setMessage(error.message);
         } finally {

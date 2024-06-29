@@ -5,44 +5,43 @@ import { useRouter } from 'next/navigation';
 import OrderTable from '@/components/misc/OrdersTable';
 import WordTable from '@/components/misc/WordsTable';
 
-export const dynamic = 'force-dynamic';
-
 const AdminDashboard: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
     useEffect(() => {
-        const validateToken = async () => {
+        const validateToken = () => {
             const token = localStorage.getItem('token');
             if (!token) {
                 router.push('/login');
                 return;
             }
 
-            try {
-                const response = await fetch('/api/validate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ token }),
-                });
-
+            fetch('/api/validate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token }),
+            })
+            .then(response => {
                 if (!response.ok) {
+                    throw new Error('Token validation failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (!data.valid) {
                     router.push('/login');
                 } else {
-                    const data = await response.json();
-                    if (!data.valid) {
-                        router.push('/login');
-                    } else {
-                        setLoading(false);
-                    }
+                    setLoading(false);
                 }
-            } catch (error) {
+            })
+            .catch(() => {
                 setError('Failed to validate token');
                 router.push('/login');
-            }
+            });
         };
 
         validateToken();
@@ -55,7 +54,7 @@ const AdminDashboard: React.FC = () => {
         <div className="p-6 overflow-hidden max-w-10/12 self-justify-center flex flex-col">
             <h1 className="text-2xl mb-4">Admin Dashboard</h1>
             <OrderTable />
-            <WordTable />
+            {/* <WordTable /> */}
         </div>
     );
 };

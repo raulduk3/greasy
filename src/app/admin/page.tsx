@@ -1,6 +1,6 @@
 import AdminDashboard from '@/components/misc/AdminDashboard';
 
-const AdminPage: React.FC = () => {
+const AdminPage: React.FC = async () => {
     return (
         <AdminDashboard />
     );

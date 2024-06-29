@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface Word {
     word_id: number;
@@ -15,28 +18,42 @@ const WordTable: React.FC = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [wordsPerPage] = useState<number>(10);
     const [currentPaginationStart, setCurrentPaginationStart] = useState<number>(1);
+    const router = useRouter();
 
     useEffect(() => {
         const fetchWords = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await fetch('/api/words', {
+                fetch('/api/words', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
                     cache: 'no-store',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Token validation failed');
+                        router.push('/login');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    return data.sort((a: Word, b: Word) => a.word.localeCompare(b.word));
+                })
+                .then(sortedWords => {
+                    setWords(sortedWords);
+                })
+                .catch(() => {
+                    console.error('Failed to fetch words');
                 });
-                const data = await response.json();
-                const sortedWords = data.sort((a: Word, b: Word) => a.word.localeCompare(b.word));
-                setWords(sortedWords);
             } catch (error) {
                 console.error('Error fetching words:', error);
             }
         };
 
         fetchWords();
-    }, []);
+    }, [router]);
 
     const handleEditClick = (word: Word) => {
         setEditingWord(word);
@@ -45,14 +62,22 @@ const WordTable: React.FC = () => {
     const handleDeleteClick = async (wordId: number) => {
         const token = localStorage.getItem('token');
         try {
-            await fetch(`/api/words/${wordId}`, {
+            fetch(`/api/words/${wordId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete word');
+                }
+                return response.json();
+            })
+            .then(word => {;
+                setWords(words.filter(word => word.word_id !== wordId));
             });
-            setWords(words.filter(word => word.word_id !== wordId));
         } catch (error) {
             console.error('Error deleting word:', error);
         }
