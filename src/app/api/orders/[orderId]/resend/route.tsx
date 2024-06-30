@@ -5,9 +5,10 @@ import { Flashcard } from '@/lib/flashcards/types';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req: Request, params: any) {
+export async function POST(req: Request, { params }: any) {
     try {
-        const { order_id, user_id } = params;
+        const order_id = params.orderId;
+        const { user_id } = await req.json();
 
         const userData = (await sql`
             SELECT 
@@ -30,15 +31,11 @@ export async function POST(req: Request, params: any) {
             JOIN words w ON f.word_id = w.word_id
             JOIN sentences s ON f.sentence_id = s.sentence_id
             JOIN orders o ON f.order_id = o.order_id
-            WHERE o.paypal_order_id = ${order_id}
-        `).rows.map((row: QueryResultRow) => ({
-            flashcard_id: row.flashcard_id,
-            word_id: row.word_id,
-            word: row.word,
-            definition: row.definition,
-            part_of_speech: row.part_of_speech,
-            sentence: row.sentence
-        }));
+            WHERE o.paypal_order_id=${order_id}
+        `).rows;
+
+        console.log(order_id);
+        console.log(userData);
 
         const { data, error } = await resend.emails.send({
             from: 'GREasy <cards@greasyvocab.com>',
@@ -57,6 +54,7 @@ export async function POST(req: Request, params: any) {
 
         return Response.json(data);
     } catch (error) {
+        console.log(error);
         return Response.json({ error }, { status: 500 });
     }
 }

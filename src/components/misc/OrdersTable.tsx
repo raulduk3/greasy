@@ -50,17 +50,18 @@ const OrderTable: React.FC = () => {
         fetchOrders();
     }, []);
 
-    const handleResendEmail = (orderId: number) => {
+    const handleResendEmail = (order_id: string, user_id: string) => {
         setSending(true);
         setMessage(null);
         const token = localStorage.getItem('token');
         try {
-            fetch(`/api/orders/${orderId}/resend`, {
+            fetch(`/api/orders/${order_id}/resend`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ user_id: user_id }),
             }).then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to resend email');
@@ -88,6 +89,7 @@ const OrderTable: React.FC = () => {
                     <tr>
                         <th className="py-2 px-4 border-b">Order ID</th>
                         <th className="py-2 px-4 border-b">Date</th>
+                        <th className="py-2 px-4 border-b">User ID</th>
                         <th className="py-2 px-4 border-b">User Name</th>
                         <th className="py-2 px-4 border-b">User Email</th>
                         <th className="py-2 px-4 border-b">PayPal Order ID</th>
@@ -100,6 +102,7 @@ const OrderTable: React.FC = () => {
                         <tr key={order.order_id}>
                             <td className="py-2 px-4 border-b">{order.order_id}</td>
                             <td className="py-2 px-4 border-b">{new Date(order.created_at).toLocaleString()}</td>
+                            <td className="py-2 px-4 border-b">{order.user_id}</td>
                             <td className="py-2 px-4 border-b">{order.user_name}</td>
                             <td className="py-2 px-4 border-b">{order.user_email}</td>
                             <td className="py-2 px-4 border-b">{order.paypal_order_id}</td>
@@ -108,7 +111,7 @@ const OrderTable: React.FC = () => {
                             </td>
                             <td className="py-2 px-4 border-b">
                                 <button
-                                    onClick={() => handleResendEmail(order.order_id)}
+                                    onClick={() => handleResendEmail(order.paypal_order_id, order.user_id)}
                                     className="bg-blue-500 text-white px-4 py-2 rounded"
                                     disabled={sending}
                                 >
