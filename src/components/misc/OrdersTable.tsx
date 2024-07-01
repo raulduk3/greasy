@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 interface Order {
+    user_id: string;
     order_id: number;
     created_at: string;
     user_name: string;
