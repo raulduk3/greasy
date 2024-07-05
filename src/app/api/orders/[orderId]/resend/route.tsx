@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-import { EmailTemplate } from '@/lib/emailTemplate';
+import { EmailTemplate } from '@/lib/utils/emailTemplate';
 import { QueryResultRow, sql } from '@vercel/postgres';
 import { Flashcard } from '@/lib/flashcards/types';
 

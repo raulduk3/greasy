@@ -1,5 +1,5 @@
 // src/app/api/validateToken/route.tsx
-import { verifyToken } from '@/lib/auth';
+import { verifyToken } from '@/lib/utils/auth';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {

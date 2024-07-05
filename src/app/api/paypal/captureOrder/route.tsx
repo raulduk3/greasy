@@ -1,6 +1,6 @@
 import { generateAccessToken } from '@/lib/utils/paypal';
 
-import { PAYPAL_BASE_URL } from '@/lib/utils/papyalConstants';
+import { PAYPAL_BASE_URL } from '@/lib/utils/paypal';
 
 async function handleResponse(response: any) {
     try {

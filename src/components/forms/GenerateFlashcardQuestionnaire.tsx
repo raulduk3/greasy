@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { getUser } from '@/lib/user/get';
 import generateFlashcards from '@/lib/flashcards/generateFlashcards';
-import createOrder from '@/lib/createOrder';
+import createOrder from '@/lib/orders/createOrder';
 import { DynamicFormProps } from './DynamicForm';
 import { redirect } from 'next/navigation';
 

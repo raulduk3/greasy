@@ -1,6 +1,6 @@
 // src/app/api/words/[id]/route.tsx
 import { sql } from '@vercel/postgres';
-import { verifyToken } from '@/lib/auth';
+import { verifyToken } from '@/lib/utils/auth';
 
 export const dynamic = 'force-dynamic';
 

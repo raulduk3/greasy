@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { comparePassword, generateToken, hashPassword } from '@/lib/auth';
+import { comparePassword, generateToken, hashPassword } from '@/lib/utils/auth';
 
 const users = async function() {
     let password = await hashPassword(process.env.ADMIN_PASSWORD ?? '');
