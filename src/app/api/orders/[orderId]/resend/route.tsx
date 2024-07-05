@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-import { EmailTemplate } from '@/lib/EmailTemplate';
+import { EmailTemplate } from '@/lib/emailTemplate';
 import { QueryResultRow, sql } from '@vercel/postgres';
 import { Flashcard } from '@/lib/flashcards/types';
 
@@ -34,16 +34,13 @@ export async function POST(req: Request, { params }: any) {
             WHERE o.paypal_order_id=${order_id}
         `).rows;
 
-        console.log(order_id);
-        console.log(userData);
-
         const { data, error } = await resend.emails.send({
             from: 'GREasy <cards@greasyvocab.com>',
             to: [userData.email.trim()],
             subject: `Your GREasy Flashcards 🎉 ${order_id ? "Order #" + order_id : 'Free Pack'}`,
             react: <EmailTemplate
                 flashcards={flashcards}
-                paypalOrderId={userData.id}
+                paypalOrderId={order_id}
                 name={userData.name.split(" ")[0]} />
         });
 

@@ -3,7 +3,7 @@ import React from 'react';
 interface Flashcard {
     word: string;
     partOfSpeech: string;
-    def: string;
+    definition: string;
     sentence: string;
 }
 
@@ -150,7 +150,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
                     <div key={index} style={styles.flashcard}>
                         <h2 style={styles.flashcardHeading}>{flashcard.word}</h2>
                         <p style={styles.flashcardText}>{flashcard.partOfSpeech}</p>
-                        <p style={styles.flashcardText}>{flashcard.def}</p>
+                        <p style={styles.flashcardText}>{flashcard.definition}</p>
                         <p style={styles.flashcardText}>{flashcard.sentence}</p>
                         <a href={`https://en.wiktionary.org/wiki/${flashcard.word.toLowerCase()}`} style={styles.flashcardLink}>Wiktionary</a>
                     </div>
