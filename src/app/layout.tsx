@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				</main>
 				<footer className="flex flex-col text-black  bg-white items-center p-6 gap-2 text-sm">
 					<nav className="flex justify-center space-x-4 mb-2">
-						<Link href="/feedback" className="underline">
+						<Link href="/feedback" className="">
 							Feedback
 						</Link>
 					</nav>

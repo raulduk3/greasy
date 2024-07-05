@@ -21,7 +21,7 @@ export const dynamic = 'force-dynamic';
  * @returns {Promise<Response>} - The response from the email API.
  */
 function sendEmail(userData: UserData, flashcards: Flashcard[]): Promise<Response> {
-    return fetch('/api/sendEmail', {
+    return fetch('/api/email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
