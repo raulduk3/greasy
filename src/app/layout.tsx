@@ -116,11 +116,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<script key={'ldjson-script'} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
 				</main>
 				<footer className="flex flex-col text-black  bg-white items-center p-6 gap-2 text-sm">
-					<nav className="flex justify-center space-x-4 mb-2">
+					{/* <nav className="flex justify-center space-x-4 mb-2">
 						<Link href="/feedback" className="">
 							Feedback
 						</Link>
-					</nav>
+					</nav> */}
 					<div className="flex space-x-4">
 						<Link href="/terms-of-service" className="">Terms of Service</Link>
 					</div>

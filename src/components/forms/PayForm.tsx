@@ -136,7 +136,6 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                         style={{
                             color: 'gold',
                             shape: 'rect',
-                            
                             label: 'pay',
                             height: 50
                         }}
