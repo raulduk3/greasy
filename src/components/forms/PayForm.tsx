@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { DynamicFormProps } from './DynamicForm';
+import crypto from 'crypto';
 
 // Renders errors or successful transactions on the screen.
 function Message({ content }: { content: string | null }) {
@@ -24,7 +25,24 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
         customAmountRef.current = e.target.value;
     };
 
+    const generateFakeId = () => {
+        return crypto.randomBytes(4).toString('hex'); // Generates a unique 8-character ID
+    };
+
     async function newOrder() {
+        const amount = parseFloat(customAmountRef.current);
+        if (amount <= 0) {
+            const fakeId = generateFakeId();
+            onSubmit({
+                paid: true,
+                id: fakeId,
+                status: 'COMPLETED',
+                details: `Free order for ${name}`,
+            });
+            setMessage(`Free order processed. Order ID: ${fakeId}`);
+            return fakeId;
+        }
+
         try {
             console.log('customAmount', customAmountRef.current);
             const response = await fetch("/api/paypal/createOrder", {
