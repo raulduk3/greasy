@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { DynamicFormProps } from './DynamicForm';
 
@@ -17,10 +17,16 @@ interface PayFormProps extends DynamicFormProps {
 const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => {
     const [message, setMessage] = useState<string | null>(null);
     const [customAmount, setCustomAmount] = useState<string>(cost);
+    const customAmountRef = useRef<string>(customAmount);
+
+    const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCustomAmount(e.target.value);
+        customAmountRef.current = e.target.value;
+    };
 
     async function newOrder() {
         try {
-            console.log('customAmount', customAmount);
+            console.log('customAmount', customAmountRef.current);
             const response = await fetch("/api/paypal/createOrder", {
                 method: "POST",
                 headers: {
@@ -33,7 +39,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                             quantity: "1",
                         },
                     ],
-                    cost: customAmount,
+                    cost: customAmountRef.current,
                 }),
             });
 
@@ -116,7 +122,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                         <input 
                             type="text" 
                             value={customAmount} 
-                            onChange={(e) => setCustomAmount(e.target.value)} 
+                            onChange={handleCustomAmountChange} 
                             className="text-right max-w border p-1"
                         />
                     </div>
