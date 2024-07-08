@@ -20,6 +20,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
 
     async function newOrder() {
         try {
+            console.log('customAmount', customAmount);
             const response = await fetch("/api/paypal/createOrder", {
                 method: "POST",
                 headers: {
