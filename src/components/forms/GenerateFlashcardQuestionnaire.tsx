@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { getUser } from '@/lib/user/get';
 import generateFlashcards from '@/lib/flashcards/generateFlashcards';
 import createOrder from '@/lib/orders/createOrder';
@@ -10,6 +10,8 @@ import { redirect } from 'next/navigation';
 
 import type { Flashcard } from '@/lib/flashcards/types';
 import { UserData } from '@/lib/user/types';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import CompletionMessage from '@/components/CompletionMessage';
 
 export const dynamic = 'force-dynamic';
 
@@ -56,6 +58,7 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
     const [loading, setLoading] = useState<boolean>(false);
     const [formData, setFormData] = useState<UserData[]>([]);
     const [completed, setCompleted] = useState<boolean>(false);
+    const [orderId, setOrderId] = useState<number | null>(null);
     const [fadeOut, setFadeOut] = useState<boolean>(false);
 
     useEffect(() => {
@@ -78,6 +81,7 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
                     
                     const userData: UserData = await getUser(Object.assign({}, ...[...formData, data]));
                     const order = await createOrder(userData.user_id, userData.id);
+                    setOrderId(userData.id);
                     let flashcards: Flashcard[] = await generateFlashcards({
                         id: userData.id || 'NOT_PAYPAL',
                         ...userData,
@@ -108,22 +112,14 @@ export default function GenerateFlashcardQuestionnaire({ input_length, cost, nam
     return (
         !loading ? <div className={`p-12 flex grow w-full justify-center transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
             {completed ? (
-                <div className="flex flex-col items-center justify-center">
-                    <div className="text-center">
-                        <p>Completed.</p>
-                        <p>Check your email for your flashcards.</p>
-                        <p><Link href="/">Back.</Link></p>
-                    </div>
-                </div>
+                <CompletionMessage orderId={orderId!} />
             ) : (
-                <div className="flex flex-col  grow w-full justify-center  items-center justify-center">
+                <div className="flex flex-col grow w-full justify-center items-center">
                     <CurrentForm reusable={reusable} cost={cost} name={name} length={input_length} onSubmit={iterate} title={''} description={''} placeholder={''} />
                 </div>
             )}
-        </div> : <div className="flex flex-col  grow w-full justify-center  items-center justify-center">
-            <div className="text-center">
-                <p className="text-center">Loading...</p>
-            </div>
+        </div> : <div className="flex flex-col grow w-full justify-center items-center">
+            <LoadingSpinner />
         </div>
     );
 }

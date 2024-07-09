@@ -82,7 +82,7 @@ const OrderTable: React.FC = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="w-lg mb-6 max-w-full overflow-scroll">
+        <div className="w-lg mb-6 max-w-fullß">
             <h2 className="text-xl mb-4">Orders</h2>
             {message && <div className="p-4 mb-4 text-green-500">{message}</div>}
             <table className="bg-white w-full text-black p-2">

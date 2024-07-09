@@ -59,7 +59,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
                     <button type="submit" className="p-2 w-full bg-green-400 text-white font-bold rounded">Submit</button>
                 </div>
             </form>
-            {displayError && <p className="text-red-500">{displayError}</p>}
+            {displayError && <p className="mt-6">{displayError}</p>}
         </>
     );
 };

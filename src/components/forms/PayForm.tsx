@@ -7,7 +7,7 @@ import crypto from 'crypto';
 
 // Renders errors or successful transactions on the screen.
 function Message({ content }: { content: string | null }) {
-    return content ? <p className="text-red-500">{content}</p> : null;
+    return content ? <p className="text-red-500 my-6 ">{content}</p> : null;
 }
 
 interface PayFormProps extends DynamicFormProps {
@@ -26,7 +26,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
     };
 
     const generateFakeId = () => {
-        return crypto.randomBytes(4).toString('hex'); // Generates a unique 8-character ID
+        return crypto.randomBytes(6).toString('hex'); // Generates a unique 8-character ID
     };
 
     async function newOrder() {
@@ -150,7 +150,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
                 <Message content={message} />
                 <PayPalScriptProvider
                     options={{
-                        clientId: "Af9Y7lGXuJAuJbnad2wCA348ncAFjAKnq0CSs30APlpWEl6JHWiYugTR2jxm1fq3eltw2yb9TfU57aOl",
+                        clientId: "ATJ211K8-W1niaJgFslfdFiPFOj6D9hTreX5IIL5NOqvDqTec8BJJVF3vEbHSMlQ8l812h3hu2G6Ueig",
                         currency: 'USD',
                         disableFunding: 'card,credit',
                         intent: 'capture'

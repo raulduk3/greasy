@@ -46,8 +46,8 @@ const StatsBanner = async () => {
                                 <li key={index} className="leading-relaxed text-lg">{sentence}.</li>
                             ))}
                         </ul>
-                        <p className="text-sm italic pt-4 justify-self-end">Current Sentence Count: {sentenceCount}</p>
-                        <p className="text-sm italic mt-auto">Current Word Count: {wordCount}</p>
+                        {/* <p className="text-sm italic pt-4 justify-self-end">Current Sentence Count: {sentenceCount}</p>
+                        <p className="text-sm italic mt-auto">Current Word Count: {wordCount}</p> */}
                     </div>
                 </div>
             </div>

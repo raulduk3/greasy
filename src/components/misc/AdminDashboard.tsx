@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import OrderTable from '@/components/misc/OrdersTable';
 import WordTable from '@/components/misc/WordsTable';
+import LoadingSpinner from '../LoadingSpinner';
 
 const AdminDashboard: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -47,14 +48,14 @@ const AdminDashboard: React.FC = () => {
         validateToken();
     }, [router]);
 
-    if (loading) return <div className='p-6'>Loading...</div>;
+    if (loading) return <LoadingSpinner />;
     if (error) return <div>{error}</div>;
 
     return (
         <div className="p-6 overflow-hidden max-w-10/12 self-justify-center flex flex-col">
             <h1 className="text-2xl mb-4">Admin Dashboard</h1>
             <OrderTable />
-            {/* <WordTable /> */}
+            <WordTable />
         </div>
     );
 };

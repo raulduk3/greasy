@@ -26,7 +26,7 @@ const styles = {
     header: {
         margin: '1rem 0',
         fontSize: '2.5rem',
-        color: 'rgb(34, 197, 94)',
+        color: 'black',
     },
     headerSpan: {
         color: 'rgb(34, 197, 94)',
@@ -146,7 +146,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ flashcar
                 </p>
             </div>
             <div style={styles.flashcards}>
-                {flashcards.map((flashcard, index) => (
+                {flashcards.slice(0, 20).map((flashcard, index) => (
                     <div key={index} style={styles.flashcard}>
                         <h2 style={styles.flashcardHeading}>{flashcard.word}</h2>
                         <p style={styles.flashcardText}>{flashcard.partOfSpeech}</p>
