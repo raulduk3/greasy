@@ -13,7 +13,7 @@ export default function Hero() {
                     </p>
                     <Link href={'/about'}>
                         <p className="mt-2 text-green-500 text-l text-gray-700 text-left self-start text-left">
-                            Plus, 50% of all donations go directly to support Palestine. It's purely a donation, so you can pay as much as you want, or nothing at all.
+                            Plus, 50% of all donations go directly to supporting humanitarian efforts worldwide. It's purely a donation, so you can pay as much as you want, or nothing at all.
                         </p>
                     </Link>
                     <Link href="/q/basic">
