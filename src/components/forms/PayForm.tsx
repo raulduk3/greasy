@@ -31,7 +31,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
 
     async function newOrder() {
         const amount = parseFloat(customAmountRef.current);
-        if (amount <= 0) {
+        if (amount <= 0.00) {
             const fakeId = generateFakeId();
             onSubmit({
                 paid: true,
