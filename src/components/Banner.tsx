@@ -10,7 +10,7 @@ const StatsBanner = async () => {
     return (
         <>
             <div className="text-black items-center flex flex-col w-full bg-white gap-2">
-                <div className="flex flex-col items-stretch w-8/12">
+                <div className="flex flex-col items-stretch w-full md:w-8/12">
                     <div className="text-black flex-1 flex flex-col px-12 py-3 pt-6">
                         <h1 id="why-use-greasy" className="font-semibold text-[3em] mb-2 text-left self-start leading-tight">Why GREasy?</h1>
                         <ul className="list-none text-lg">
