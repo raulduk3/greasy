@@ -5,7 +5,7 @@ export default function Hero() {
     return (
         <div className="flex flex-col flex-grow min-h-[calc(100vh-5rem)] w-full shadow-lg">
             <div className="flex flex-1 items-center justify-center bg-cover bg-center bg-opacity-90 min-h-full w-full" style={{ backgroundImage: 'url(/hero.jpeg)' }}>
-                <div className="bg-white lg:p-8 p-12 md:rounded-lg text-center flex items-center flex-col w-auto md:w-[35%] shadow-lg">
+                <div className="bg-white lg:p-8 p-12 md:rounded-lg text-center flex items-center flex-col md:w-3/4 lg:w-2/5 shadow-lg">
                     <h1 className="text-2xl lg:text-6xl text-gray-900 self-start text-left mb-2 leading-tight">Generate bundles of personalized flashcards with tailored sentences.</h1>
                     <p className="mt-2 text-l text-gray-700 text-left self-start text-left">
                         Using advanced LLM technology, we transform the personal data you provide into customized flashcards.
