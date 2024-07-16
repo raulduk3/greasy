@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="flex text-black flex-col flex-1 text-pretty self-center justify-center flex-basis p-6">
-            <form onSubmit={handleLogin} className="p-6 bg-white rounded shadow-md">
+            <form onSubmit={handleLogin} className="p-6 bg-white rounded">
                 <h1 className="text-2xl mb-4">Login</h1>
                 {error && <p className="text-red-500">{error}</p>}
                 <div className="mb-4">
@@ -48,7 +48,7 @@ const LoginPage: React.FC = () => {
                         className="border px-4 py-2 w-full"
                     />
                 </div>
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Login</button>
+                <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">Login</button>
             </form>
         </div>
     );

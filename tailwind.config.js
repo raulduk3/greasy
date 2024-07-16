@@ -1,4 +1,6 @@
 import { fontFamily } from "tailwindcss/defaultTheme"
+const colors = require('tailwindcss/colors')
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -20,6 +22,7 @@ module.exports = {
     },
     colors: {
       white: '#ffffff',
+      slate: colors.slate,
       black: '#000000',
       green: {
         500: '#6dcc39'

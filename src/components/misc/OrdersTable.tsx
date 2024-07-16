@@ -108,12 +108,12 @@ const OrderTable: React.FC = () => {
                             <td className="py-2 px-4 border-b">{order.user_email}</td>
                             <td className="py-2 px-4 border-b">{order.paypal_order_id}</td>
                             <td className="py-2 px-4 border-b">
-                                <Link href={`/orders/${order.paypal_order_id}`} className="text-blue-500 underline">View Details</Link>
+                                <Link href={`/orders/${order.paypal_order_id}`} className="text-green-500 underline">View Details</Link>
                             </td>
                             <td className="py-2 px-4 border-b">
                                 <button
                                     onClick={() => handleResendEmail(order.paypal_order_id, order.user_id)}
-                                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                                    className="bg-green-500 text-white px-4 py-2 rounded"
                                     disabled={sending}
                                 >
                                     {sending ? 'Sending...' : 'Resend Email'}

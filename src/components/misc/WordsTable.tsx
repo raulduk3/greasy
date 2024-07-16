@@ -145,7 +145,7 @@ const WordTable: React.FC = () => {
 
     return (
         <div className='text-black max-w-full'>
-            <h2 className="text-xl text-white mb-4">Manage Words</h2>
+            <h2 className="text-xl text-black mb-4">Words</h2>
             <input 
                 type="text" 
                 placeholder="Search..." 
@@ -236,7 +236,7 @@ const WordTable: React.FC = () => {
                                 )}
                                 <button 
                                     onClick={() => handleDeleteClick(word.word_id)} 
-                                    className="text-red-500 underline p-2 bg-red-100 hover:bg-red-200 rounded ml-2"
+                                    className="text-red-500 underline p-2"
                                 >
                                     Delete
                                 </button>
@@ -258,7 +258,7 @@ const WordTable: React.FC = () => {
                     <button 
                         key={currentPaginationStart + index} 
                         onClick={() => paginate(currentPaginationStart + index)} 
-                        className={`px-3 py-1 mx-1 border border-gray-300 rounded ${currentPage === currentPaginationStart + index ? 'bg-blue-500 text-white' : 'bg-white text-black hover:bg-gray-100'}`}
+                        className={`px-3 py-1 mx-1 border border-gray-300 rounded ${currentPage === currentPaginationStart + index ? 'bg-green-500 text-white' : 'bg-white text-black hover:bg-gray-100'}`}
                     >
                         {currentPaginationStart + index}
                     </button>

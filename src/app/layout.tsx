@@ -108,7 +108,7 @@ const inter = Inter({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className={inter.className}>
-			<body className={cn("flex flex-col min-h-screen w-full overflow-x-hidden font-sans bg-slate-700 text-white", inter.className)}>
+			<body className={cn("flex flex-col min-h-screen w-full overflow-x-hidden font-sans", inter.className)}>
 				<Header></Header>
 				<main className="flex flex-col grow flex-1 items-center justify-center mt-[5rem] justify-start w-[100%] h-full text-black">
 					{children}

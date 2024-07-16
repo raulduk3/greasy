@@ -52,7 +52,7 @@ const AdminDashboard: React.FC = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="p-6 overflow-hidden max-w-10/12 self-justify-center flex flex-col">
+        <div className="p-6 overflow-hidden w-10/12 self-justify-center flex flex-col">
             <h1 className="text-2xl mb-4">Admin Dashboard</h1>
             <OrderTable />
             <WordTable />

@@ -124,7 +124,7 @@ const PayForm = ({ onSubmit, cost, name }: PayFormProps): React.ReactElement => 
     }
 
     return (
-        <form className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-full">
+        <form className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 max-w-full">
             <div className="w-full mb-10">
                 <h2 className="text-2xl mb-1">Ready to generate cards</h2>
                 <p className="text-lg">Please use PayPal to complete your purchase. Donate as much as you want!</p>

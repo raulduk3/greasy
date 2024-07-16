@@ -127,7 +127,7 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
         4. Study!`;
 
     return (
-        <div className="m-6 w-11/12 md:w-10/12">
+        <div className="m-6 w-11/12 md:w-10/12 bg-white">
             <h1 className="text-2xl mb-4 p-0">GREasy Order #{orderId} for {order?.user?.name?.split(" ")[0]}</h1>
             <FlashcardGame name={order.user.name} flashcards={flashcards} />
             <h1 className="text-2xl mt-10 mb-4 p-0">Print Your Order</h1>
@@ -143,13 +143,13 @@ export default function OrderPage({ params }: { params: { orderId: string } }) {
             )}
             <h2 className="text-xl lg:flex mb-4">Flashcards Table</h2>
             <div className="mb-4 lg:flex flex-col md:flex-row gap-4">
-                <button onClick={() => setFlashcards([...flashcards].sort(() => Math.random() - 0.5))} className="px-4 py-2 bg-blue-500 text-white rounded">
+                <button onClick={() => setFlashcards([...flashcards].sort(() => Math.random() - 0.5))} className="px-4 py-2 bg-green-500 rounded">
                     Shuffle
                 </button>
-                <button onClick={() => setFlashcards([...flashcards].sort((a, b) => a.word.localeCompare(b.word)))} className="px-4 py-2 bg-blue-500 text-white rounded">
+                <button onClick={() => setFlashcards([...flashcards].sort((a, b) => a.word.localeCompare(b.word)))} className="px-4 py-2 bg-green-500 rounded">
                     Sort Alphabetically
                 </button>
-                <button onClick={downloadCSV} className="px-4 py-2 bg-green-500 text-white rounded">
+                <button onClick={downloadCSV} className="px-4 py-2 bg-green-500 rounded">
                     Download CSV
                 </button>
             </div>
