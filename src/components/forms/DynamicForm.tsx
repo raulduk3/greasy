@@ -34,7 +34,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 shadow-md max-w-lg">
+            <form onSubmit={handleSubmit} className="flex flex-col items-center rounded justify-center p-8 bg-white text-gray-900 max-w-lg">
                 <div className="w-full mb-2">
                     <h2 className="text-2xl">{title}</h2>
                     <p className="text-lg">{description}</p>
@@ -49,14 +49,14 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ title, length, description, p
                                     value={inputs[index]} 
                                     onChange={(e) => handleChange(index, e.target.value)} 
                                     placeholder="..." 
-                                    className="border-b-2 border-gray-300 focus:border-green-400 outline-none p-2"
+                                    className="border-b-2 border-gray-300 focus:border-green-500 outline-none p-2"
                                 />
                             </label>
                         </div>
                     ))}
                 </div>
                 <div className="w-5/12 mt-4 self-start">
-                    <button type="submit" className="p-2 w-full bg-green-400 text-white font-bold rounded">Submit</button>
+                    <button type="submit" className="p-2 w-full bg-green-500 text-white font-bold rounded">Submit</button>
                 </div>
             </form>
             {displayError && <p className="mt-6">{displayError}</p>}

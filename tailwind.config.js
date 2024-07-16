@@ -18,6 +18,13 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    colors: {
+      white: '#ffffff',
+      black: '#000000',
+      green: {
+        500: '#6dcc39'
+      }
+    },
     extend: {
       keyframes: {
         fadeIn: {
