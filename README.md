@@ -2,6 +2,8 @@
 
 Welcome to GREasy, an advanced web application designed to generate personalized flashcards for efficient GRE preparation. This project leverages the power of Next.js, Tailwind CSS, and PostgreSQL to deliver a seamless user experience.
 
+Launched July 1st  2024.
+
 ## Project Overview
 
 GREasy is a SaaS application built to assist students in preparing for the GRE by providing personalized flashcards. The application allows users to create, manage, and review flashcards based on their individual study needs.
