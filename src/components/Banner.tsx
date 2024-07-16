@@ -32,7 +32,7 @@ const StatsBanner = async () => {
                         </p>
                     </div>
                     <div className="text-black bg-white flex-1 flex flex-col px-12 py-3 pb-6">
-                        <h3 className="text-4xl mb-2 font-semibold text-black leading-tight">Sentences generated on <span className='text-green-500'>GREasy</span></h3>
+                        <h3 className="text-4xl mb-2 font-semibold text-black leading-tight">Sentences generated on GREasy</h3>
                         <ul className="flex flex-col gap-4 text-xl">
                             {recentSentences.map((sentence, index) => (
                                 <li key={index} className="leading-relaxed text-lg">{sentence}.</li>
