@@ -18,7 +18,7 @@ export default function Hero() {
                         </Link>
                     </p>
                     <Link href="/q/basic">
-                        <button className="shadow-sm text-white bg-green-500 hover:border-2 hover:border-black font-bold text-lg p-5 rounded my-6 w-[100%] hover:bg-white hover:text-black transition duration-200">
+                        <button className="shadow-sm text-white bg-green-500 font-bold text-lg p-5 rounded my-6 w-[100%] hover:bg-white hover:text-black transition duration-200">
                             Take our survey today!
                         </button>
                     </Link>
