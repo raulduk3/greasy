@@ -1,8 +1,8 @@
-# GREasy
+# [GREasy](https://greasyvocab.com)
 
 Welcome to GREasy, an advanced web application designed to generate personalized flashcards for efficient GRE preparation. This project leverages the power of Next.js, Tailwind CSS, and PostgreSQL to deliver a seamless user experience.
 
-Launched July 1st  2024.
+Launched July 1st  2024
 
 ## Project Overview
 
