@@ -96,6 +96,8 @@ const generateFlashcards = traceable(
                 const completion = await openai.chat.completions.create({
                     model: "gpt-3.5-turbo",
                     stop: '.',
+                    temperature: 0.5,
+                    top_p: 0.7,
                     max_tokens: 120,
                     messages: [{ content: prompt.prompt, role: "system" }],
                 });
