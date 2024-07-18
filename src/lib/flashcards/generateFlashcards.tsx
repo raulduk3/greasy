@@ -94,7 +94,7 @@ const generateFlashcards = traceable(
         const completions: Flashcard[] = await Promise.all(prompts.map(async (prompt): Promise<Flashcard> => {
             try {
                 const completion = await openai.chat.completions.create({
-                    model: "gpt-3.5-turbo",
+                    model: "gpt-4o-mini",
                     stop: '.',
                     temperature: 0.5,
                     top_p: 0.7,
