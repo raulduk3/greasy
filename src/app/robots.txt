@@ -1,8 +1,8 @@
 User-agent: *
 Disallow: /api/
 Disallow: /server/
-Disallow: /private/
-Disallow: /q/
+Disallow: /admin/
+Disallow: /login/
 Allow: /
 
 Sitemap: https://greasyvocab.com/sitemap.xml
