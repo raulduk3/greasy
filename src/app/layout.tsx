@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 		"GRE vocab improvement"
 	],
 	openGraph: {
-		siteName: "GREasy",
+		siteName: "greasy.com ",
 		title: "GREasy",
 		description: "Personalized GRE flashcards directly to your inbox.",
 		type: "website",
